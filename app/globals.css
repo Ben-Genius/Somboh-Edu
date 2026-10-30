@@ -1,0 +1,1285 @@
+@import "tailwindcss";
+
+/* Registered so a photo's corner fold can be tweened with a plain CSS
+   transition, without JavaScript driving every frame. */
+@property --peel {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 18px;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-clay: var(--clay);
+  --color-surface: var(--surface);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-gold: var(--gold);
+  --color-gold-ink: var(--gold-ink);
+  --color-line: var(--line);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 1.25rem;
+}
+
+:root {
+  color-scheme: light dark;
+
+  --paper: #faf7f0;
+  --clay: #efe7d6;
+  --surface: #ffffff;
+  --surface-soft: #fcfaf4;
+  --forest: #0f3d2e;
+  --forest-deep: #0a2a20;
+  --ink: #17201b;
+  --ink-soft: #4b554e;
+  --gold: #c8962e;
+  --gold-ink: #6f4f10;
+  --line: rgba(23, 32, 27, 0.14);
+  --line-strong: rgba(23, 32, 27, 0.32);
+  --shadow-card: 0 1px 2px rgba(23, 32, 27, 0.04),
+    0 18px 44px -28px rgba(23, 32, 27, 0.28);
+  --shadow-float: 0 2px 4px rgba(23, 32, 27, 0.05),
+    0 28px 60px -32px rgba(23, 32, 27, 0.35);
+  --on-gold: #17201b;
+  --on-forest: #faf7f0;
+  --focus: #0f3d2e;
+  --danger: #9a2f20;
+  --success: #1f6845;
+  --nav-height: 4.5rem;
+
+  /* The two sheets that peek out from under stacked documents. Warmer and
+     darker than the top sheet so the stack reads even on paper-coloured
+     backgrounds. */
+  --sheet-a: #f2ead8;
+  --sheet-b: #e2d5ba;
+  --seam: rgba(23, 32, 27, 0.1);
+  --tear-edge: rgba(23, 32, 27, 0.14);
+  /* Masking tape on pinned notes. Warm, translucent, never a solid block. */
+  --tape: rgba(200, 150, 46, 0.26);
+  --tape-line: rgba(111, 79, 16, 0.22);
+
+  /* Paper fibre. A tiny tiles-noise SVG, laid over the whole page so white,
+     clay and forest sections all read as the same physical material. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0e1411;
+    --clay: #18211c;
+    --surface: #121a16;
+    --surface-soft: #101713;
+    --forest: #123b2c;
+    --forest-deep: #0a241b;
+    --ink: #f1ede3;
+    --ink-soft: #b7c0b8;
+    --gold: #ddb15a;
+    --gold-ink: #e9c57a;
+    --line: rgba(241, 237, 227, 0.18);
+    --line-strong: rgba(241, 237, 227, 0.38);
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4),
+      0 18px 44px -28px rgba(0, 0, 0, 0.8);
+    --shadow-float: 0 2px 6px rgba(0, 0, 0, 0.45),
+      0 30px 60px -30px rgba(0, 0, 0, 0.9);
+    --on-gold: #17201b;
+    --on-forest: #f1ede3;
+    --focus: #f0c766;
+    --danger: #f3a495;
+    --success: #8fd6ae;
+    --sheet-a: #1d2a23;
+    --sheet-b: #26332b;
+    --seam: rgba(0, 0, 0, 0.45);
+    --tear-edge: rgba(0, 0, 0, 0.5);
+    --tape: rgba(221, 177, 90, 0.22);
+    --tape-line: rgba(233, 197, 122, 0.3);
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-height) + 1.5rem);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  /* The sheet: one grain layer above every surface, below toasts. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    pointer-events: none;
+    background-image: var(--grain);
+    background-size: 220px 220px;
+    opacity: 0.24;
+    mix-blend-mode: multiply;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body::before {
+      opacity: 0.08;
+      mix-blend-mode: screen;
+    }
+  }
+
+  @media print {
+    body::before {
+      display: none;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.032em;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--on-gold);
+  }
+
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 104rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 3.8vw, 3.5rem);
+  }
+
+  .section {
+    padding-block: clamp(4rem, 8.5vw, 7.75rem);
+  }
+
+  .section-tight {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .hairline {
+    border-top: 1px solid var(--line);
+  }
+
+  .display-1 {
+    font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(2.8rem, 6.6vw, 6.3rem);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  .display-2 {
+    font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(2.1rem, 4.7vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  .display-3 {
+    font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(1.6rem, 2.7vw, 2.45rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.185em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .eyebrow::before {
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--gold);
+    flex: none;
+  }
+
+  .lede {
+    font-size: clamp(1.0625rem, 1.45vw, 1.25rem);
+    line-height: 1.62;
+    color: var(--ink-soft);
+    max-width: 40rem;
+  }
+
+  .body-copy {
+    color: var(--ink-soft);
+  }
+
+  .body-copy strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .prose-editorial>*+* {
+    margin-top: 1.1em;
+  }
+
+  .prose-editorial {
+    max-width: 42rem;
+    color: var(--ink-soft);
+    font-size: 1.0625rem;
+    line-height: 1.72;
+  }
+
+  .prose-editorial p:first-child {
+    color: var(--ink);
+    font-size: 1.2rem;
+    line-height: 1.55;
+  }
+
+  .btn {
+    display: inline-flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0.7rem 1.35rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      box-shadow 220ms ease,
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  /* A circular chip inside the pill, echoing the reference sites. */
+  .btn-arrow {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border-radius: 999px;
+    background: color-mix(in srgb, currentColor 14%, transparent);
+    flex: none;
+    margin-right: -0.55rem;
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn:hover .btn-arrow {
+    transform: translateX(2px) rotate(-45deg);
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--on-gold);
+    box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--gold) 70%, #000);
+  }
+
+  .btn-gold:hover {
+    background: color-mix(in srgb, var(--gold) 88%, #000);
+  }
+
+  .btn-forest {
+    background: var(--forest);
+    color: var(--on-forest);
+    box-shadow: 0 12px 26px -16px rgba(10, 42, 32, 0.9);
+  }
+
+  .btn-forest:hover {
+    background: var(--forest-deep);
+  }
+
+  .btn-quiet {
+    border-color: var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+  }
+
+  .btn-quiet:hover {
+    border-color: var(--ink);
+    background: var(--surface-soft);
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 1.5rem;
+    background: var(--surface);
+    box-shadow:
+      5px 6px 0 -1px var(--sheet-a),
+      5px 6px 0 0 var(--line),
+      var(--shadow-card);
+  }
+
+  .card-lift {
+    transition:
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 260ms ease,
+      border-color 260ms ease;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      7px 9px 0 -1px var(--sheet-a),
+      7px 9px 0 0 var(--line),
+      var(--shadow-float);
+    border-color: var(--line-strong);
+  }
+
+  /* A pinned note: a card with a strip of masking tape across its top edge. */
+  .paper-note {
+    position: relative;
+  }
+
+  .paper-note::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 50%;
+    width: clamp(5.5rem, 9vw, 7.5rem);
+    height: 1.5rem;
+    transform: translateX(-50%) rotate(-1.7deg);
+    background:
+      repeating-linear-gradient(90deg,
+        transparent 0 2px,
+        color-mix(in srgb, var(--tape-line) 45%, transparent) 2px 3px),
+      var(--tape);
+    border-inline: 1px dashed var(--tape-line);
+    pointer-events: none;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--line);
+    border-radius: 0.45rem;
+    background: var(--surface);
+    box-shadow:
+      2px 2px 0 -1px var(--sheet-a),
+      2px 2px 0 0 var(--line);
+    padding: 0.3rem 0.7rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* The door motif: an arch is the shape a student walks through. */
+  .arch-frame {
+    border-radius: 999px 999px 1.4rem 1.4rem;
+    overflow: hidden;
+    background: var(--clay);
+  }
+
+  .photo-frame {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: var(--clay);
+  }
+
+  /* A photo corner lifting off the page, after the reference site's card peel.
+     The picture is cut along the fold and the folded-back triangle sits over
+     the cut, so the page shows through the notch and the flap covers it. One
+     registered custom property animates the cut and the flap together; the
+     crease is drawn into the flap's gradient because the frame clips its own
+     overflow. Hover is the only interaction; nothing here needs JavaScript. */
+  .peel-frame {
+    --peel: 34px;
+    transition: --peel 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .peel-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--surface);
+    pointer-events: none;
+  }
+
+  .peel-photo {
+    z-index: 1;
+  }
+
+  .peel-curl {
+    position: absolute;
+    z-index: 2;
+    width: var(--peel);
+    height: var(--peel);
+    pointer-events: none;
+  }
+
+  .peel-curl::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .peel-br .peel-photo {
+    clip-path: polygon(0 0,
+        100% 0,
+        100% calc(100% - var(--peel)),
+        calc(100% - var(--peel)) 100%,
+        0 100%);
+  }
+
+  .peel-br .peel-curl {
+    right: 0;
+    bottom: 0;
+  }
+
+  .peel-br .peel-curl::before {
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    background: linear-gradient(135deg,
+        var(--paper) 0 47%,
+        rgba(23, 32, 27, 0.4) 50%,
+        rgba(23, 32, 27, 0.4) 51.5%,
+        var(--surface) 55%,
+        var(--surface) 84%,
+        var(--sheet-a) 100%);
+  }
+
+  .peel-bl .peel-photo {
+    clip-path: polygon(0 0,
+        100% 0,
+        100% 100%,
+        var(--peel) 100%,
+        0 calc(100% - var(--peel)));
+  }
+
+  .peel-bl .peel-curl {
+    left: 0;
+    bottom: 0;
+  }
+
+  .peel-bl .peel-curl::before {
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+    background: linear-gradient(225deg,
+        var(--paper) 0 47%,
+        rgba(23, 32, 27, 0.4) 50%,
+        rgba(23, 32, 27, 0.4) 51.5%,
+        var(--surface) 55%,
+        var(--surface) 84%,
+        var(--sheet-a) 100%);
+  }
+
+  .peel-tr .peel-photo {
+    clip-path: polygon(0 0,
+        calc(100% - var(--peel)) 0,
+        100% var(--peel),
+        100% 100%,
+        0 100%);
+  }
+
+  .peel-tr .peel-curl {
+    right: 0;
+    top: 0;
+  }
+
+  .peel-tr .peel-curl::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    background: linear-gradient(45deg,
+        var(--paper) 0 47%,
+        rgba(23, 32, 27, 0.4) 50%,
+        rgba(23, 32, 27, 0.4) 51.5%,
+        var(--surface) 55%,
+        var(--surface) 84%,
+        var(--sheet-a) 100%);
+  }
+
+  .peel-tl .peel-photo {
+    clip-path: polygon(var(--peel) 0,
+        100% 0,
+        100% 100%,
+        0 100%,
+        0 var(--peel));
+  }
+
+  .peel-tl .peel-curl {
+    left: 0;
+    top: 0;
+  }
+
+  .peel-tl .peel-curl::before {
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    background: linear-gradient(315deg,
+        var(--paper) 0 47%,
+        rgba(23, 32, 27, 0.4) 50%,
+        rgba(23, 32, 27, 0.4) 51.5%,
+        var(--surface) 55%,
+        var(--surface) 84%,
+        var(--sheet-a) 100%);
+  }
+
+  /* The shadow the lifted corner casts on the picture. It is painted inside a
+     peel-sized tile pinned to the same corner, so its diagonal band always
+     lands on the fold, whatever the fold's current size. */
+  .peel-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: var(--peel) var(--peel);
+  }
+
+  .peel-br::after {
+    background-image: linear-gradient(135deg,
+        transparent 0 42%,
+        rgba(23, 32, 27, 0.38) 50%,
+        transparent 58%);
+    background-position: right bottom;
+  }
+
+  .peel-bl::after {
+    background-image: linear-gradient(225deg,
+        transparent 0 42%,
+        rgba(23, 32, 27, 0.38) 50%,
+        transparent 58%);
+    background-position: left bottom;
+  }
+
+  .peel-tr::after {
+    background-image: linear-gradient(45deg,
+        transparent 0 42%,
+        rgba(23, 32, 27, 0.38) 50%,
+        transparent 58%);
+    background-position: right top;
+  }
+
+  .peel-tl::after {
+    background-image: linear-gradient(315deg,
+        transparent 0 42%,
+        rgba(23, 32, 27, 0.38) 50%,
+        transparent 58%);
+    background-position: left top;
+  }
+
+  /* The route change sheet. A warm paper page with a torn lower edge lifts
+     away; a second, darker tear trails 12px behind it so the rip reads as two
+     sheets rather than a rectangle sliding up. */
+  .route-veil-sheet {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg,
+        var(--paper) 0%,
+        var(--paper) 62%,
+        var(--sheet-a) 100%);
+    box-shadow: 0 40px 70px -40px rgba(23, 32, 27, 0.5);
+  }
+
+  .route-veil-under {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    z-index: 0;
+    translate: 0 18px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .route-veil-sheet {
+      box-shadow: 0 40px 70px -40px rgba(0, 0, 0, 0.85);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .peel-frame:hover {
+      --peel: 64px;
+    }
+  }
+
+  /* A second sheet slipped behind a photograph, slightly askew. */
+  .paper-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border: 1px solid var(--line);
+    background: var(--sheet-b);
+    transform: rotate(-1.4deg) translate(7px, 9px);
+    transform-origin: 50% 55%;
+    pointer-events: none;
+    /* Torn along the two edges that show beyond the photograph. */
+    clip-path: polygon(0% 0%, 100% 0%, 99.0% 3.8%, 98.0% 7.7%, 98.9% 11.5%, 99.6% 15.4%, 98.6% 19.2%, 99.8% 23.1%, 99.8% 26.9%, 98.5% 30.8%, 95.8% 34.6%, 98.6% 38.5%, 99.7% 42.3%, 98.8% 46.2%, 99.6% 50.0%, 99.9% 53.8%, 99.0% 57.7%, 98.9% 61.5%, 98.9% 65.4%, 99.0% 69.2%, 95.8% 73.1%, 98.2% 76.9%, 99.3% 80.8%, 99.4% 84.6%, 98.3% 88.5%, 98.1% 92.3%, 97.9% 96.2%, 100.0% 100.0%, 97.7% 97.6%, 95.5% 97.5%, 93.2% 99.8%, 90.9% 98.0%, 88.6% 99.8%, 86.4% 97.5%, 84.1% 99.7%, 81.8% 99.7%, 79.5% 97.9%, 77.3% 98.5%, 75.0% 99.5%, 72.7% 99.7%, 70.5% 99.7%, 68.2% 99.4%, 65.9% 97.5%, 63.6% 96.8%, 61.4% 99.5%, 59.1% 97.8%, 56.8% 97.3%, 54.5% 99.4%, 52.3% 98.0%, 50.0% 99.2%, 47.7% 99.8%, 45.5% 99.4%, 43.2% 99.0%, 40.9% 97.5%, 38.6% 96.1%, 36.4% 99.5%, 34.1% 97.6%, 31.8% 99.4%, 29.5% 95.7%, 27.3% 97.1%, 25.0% 97.7%, 22.7% 98.9%, 20.5% 97.5%, 18.2% 99.4%, 15.9% 99.3%, 13.6% 98.4%, 11.4% 99.5%, 9.1% 99.8%, 6.8% 96.1%, 4.5% 98.4%, 2.3% 97.6%, 0.0% 100.0%, 0% 100%);
+  }
+
+  .paper-backdrop-arch {
+    border-radius: 999px 999px 1.4rem 1.4rem;
+  }
+
+  .paper-backdrop-photo {
+    border-radius: 1.6rem;
+  }
+
+  /* The hero's wavy paper cut. One clip path (defined by WaveMedia) is shared
+     by the backing sheet, the white mat and the photograph itself, so all
+     three edges follow the same hand-cut line. */
+  .wave-sheet {
+    position: absolute;
+    inset: -10px;
+    z-index: 0;
+    background: var(--sheet-b);
+    clip-path: var(--wave-photo);
+    transform: rotate(-1deg) translate(7px, 9px);
+    transform-origin: 50% 50%;
+    pointer-events: none;
+  }
+
+  .wave-shadow {
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 22px 30px rgba(23, 32, 27, 0.28));
+  }
+
+  .wave-mat {
+    position: absolute;
+    inset: -10px;
+    background: var(--surface);
+    clip-path: var(--wave-photo);
+  }
+
+  .wave-photo {
+    position: relative;
+    background: var(--clay);
+    clip-path: var(--wave-photo);
+  }
+
+  .wave-note-shadow {
+    filter: drop-shadow(0 16px 26px rgba(23, 32, 27, 0.2));
+  }
+
+  .wave-note {
+    background: var(--surface);
+    clip-path: var(--wave-note);
+    padding: 1.2rem 1.35rem 1.4rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .wave-shadow {
+      filter: drop-shadow(0 22px 30px rgba(0, 0, 0, 0.7));
+    }
+
+    .wave-note-shadow {
+      filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.6));
+    }
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(color-mix(in srgb, var(--ink) 16%, transparent) 1px,
+        transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* A torn bottom edge. The strip takes the colour of the section it belongs
+     to, so the next section shows through the tear. */
+  .paper-tear {
+    position: relative;
+    display: block;
+    line-height: 0;
+  }
+
+  .paper-tear svg {
+    display: block;
+    width: 100%;
+    height: clamp(30px, 4.6vw, 64px);
+    filter: drop-shadow(0 1px 0 rgba(23, 32, 27, 0.16)) drop-shadow(0 12px 16px rgba(23, 32, 27, 0.1));
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .paper-tear svg {
+      filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.55)) drop-shadow(0 12px 16px rgba(0, 0, 0, 0.4));
+    }
+  }
+
+  /* Photographs behave like cut-outs laid on the sheet: a white mat, a
+     hairline where the mat meets the page, then a soft shadow. */
+  .arch-frame,
+  .photo-frame {
+    box-shadow:
+      0 0 0 5px var(--surface),
+      0 0 0 6px var(--line),
+      0 20px 38px -24px rgba(23, 32, 27, 0.5);
+  }
+
+  @media (prefers-color-scheme: dark) {
+
+    .arch-frame,
+    .photo-frame {
+      box-shadow:
+        0 0 0 5px var(--surface),
+        0 0 0 6px var(--line),
+        0 20px 38px -20px rgba(0, 0, 0, 0.9);
+    }
+  }
+
+  .link-quiet {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+    transition: border-color 180ms ease, color 180ms ease;
+  }
+
+  .link-quiet:hover {
+    border-color: var(--ink);
+  }
+
+  .icon-btn {
+    position: relative;
+    display: inline-grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    box-shadow:
+      2px 2px 0 -1px var(--sheet-a),
+      2px 2px 0 0 var(--line);
+    color: var(--ink);
+    transition: background-color 180ms ease, border-color 180ms ease;
+  }
+
+  .icon-btn:hover {
+    background: var(--clay);
+    border-color: var(--line-strong);
+  }
+
+  /* 44px minimum hit area without changing visual size. */
+  .icon-btn::after,
+  .tap::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
+
+  .tap {
+    position: relative;
+  }
+
+  .kbd {
+    display: none;
+    align-items: center;
+    gap: 0.15rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 5px;
+    padding: 0.1rem 0.3rem;
+    color: var(--ink-soft);
+    font-family: var(--font-inter), ui-sans-serif, sans-serif;
+    font-size: 0.625rem;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .kbd {
+      display: inline-flex;
+    }
+  }
+
+  .hover-only {
+    display: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hover-only {
+      display: flex;
+    }
+  }
+
+  .field-label {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .field-hint {
+    margin-top: 0.35rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+
+  .field-error {
+    margin-top: 0.35rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--danger);
+  }
+
+  .field-input {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid var(--line-strong);
+    border-radius: 0.5rem;
+    background: var(--surface);
+    box-shadow:
+      inset 0 1px 2px rgba(23, 32, 27, 0.06),
+      2px 2px 0 -1px var(--sheet-a);
+    padding: 0.7rem 0.85rem;
+    color: var(--ink);
+    transition:
+      border-color 160ms ease,
+      background-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .field-input {
+      box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.35),
+        2px 2px 0 -1px var(--sheet-a);
+    }
+  }
+
+  .field-input::placeholder {
+    color: color-mix(in srgb, var(--ink-soft) 78%, transparent);
+  }
+
+  .field-input:hover {
+    border-color: var(--ink-soft);
+  }
+
+  .field-input:focus-visible {
+    border-color: var(--focus);
+    outline: 2px solid var(--focus);
+    outline-offset: 1px;
+  }
+
+  .field-input[aria-invalid="true"] {
+    border-color: var(--danger);
+  }
+
+  textarea.field-input {
+    min-height: 9rem;
+    resize: vertical;
+  }
+
+  .choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    min-height: 44px;
+    padding-block: 0.45rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .choice input {
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-top: 0.18rem;
+    accent-color: var(--forest);
+    flex: none;
+  }
+
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    box-shadow:
+      4px 5px 0 -1px var(--sheet-a),
+      4px 5px 0 0 var(--line),
+      var(--shadow-card);
+  }
+
+  /* A second and third sheet peeking out from under a document. */
+  .paper-stack {
+    box-shadow:
+      6px 7px 0 -1px var(--sheet-a),
+      6px 7px 0 0 var(--line),
+      12px 14px 0 -1px var(--sheet-b),
+      12px 14px 0 0 var(--line),
+      var(--shadow-card);
+  }
+
+  /* Every band below the first is a sheet laid on the one above it: a soft
+     shadow at the top edge, no hard rule. Torn strips sit above this and read
+     as the same material. */
+  main>section {
+    position: relative;
+  }
+
+  main>section:not(:first-of-type)::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 18px;
+    background: linear-gradient(to bottom, var(--seam), transparent);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .stat-value {
+    font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 0.88;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+
+  .footnote-ref {
+    display: inline-block;
+    min-width: 1.1rem;
+    min-height: 1.1rem;
+    color: var(--gold-ink);
+    font-family: var(--font-inter), sans-serif;
+    font-size: 0.66rem;
+    font-weight: 700;
+    line-height: 1.1rem;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    vertical-align: super;
+  }
+
+  .on-forest {
+    --focus: var(--paper);
+    background: var(--forest);
+    color: var(--on-forest);
+  }
+
+  .on-forest h1,
+  .on-forest h2,
+  .on-forest h3,
+  .on-forest .display-1,
+  .on-forest .display-2,
+  .on-forest .display-3 {
+    color: var(--on-forest);
+  }
+
+  .on-forest .eyebrow,
+  .on-forest .lede,
+  .on-forest .body-copy,
+  .on-forest .prose-editorial {
+    color: color-mix(in srgb, var(--on-forest) 78%, transparent);
+  }
+
+  .on-forest .btn-quiet {
+    background: transparent;
+    border-color: color-mix(in srgb, var(--on-forest) 40%, transparent);
+    color: var(--on-forest);
+  }
+
+  .on-forest .btn-quiet:hover {
+    background: color-mix(in srgb, var(--on-forest) 12%, transparent);
+    border-color: var(--on-forest);
+  }
+
+  .on-clay {
+    background: var(--clay);
+  }
+
+  .grid-line {
+    background-image: linear-gradient(to right,
+        var(--line) 1px,
+        transparent 1px);
+    background-size: 25% 100%;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    transform: translateY(-160%);
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.65rem 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 160ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .site-header {
+    padding-top: env(safe-area-inset-top);
+    background: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* The frosted pill inside the navigation frame. */
+  .nav-glass {
+    background: color-mix(in srgb, var(--surface) 78%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 12px 32px -18px rgba(23, 32, 27, 0.35);
+  }
+
+  .nav-item {
+    color: var(--ink);
+    transition: opacity 0.28s ease, color 0.28s ease;
+  }
+
+  /* While the pill is hovered, everything but the hovered item recedes. */
+  .nav-links-group:hover .nav-item:not(:hover) {
+    opacity: 0.45;
+  }
+
+  .nav-cta {
+    background: var(--forest-deep);
+    color: var(--on-forest);
+    transition: background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.28s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--forest);
+  }
+
+  .nav-track,
+  .nav-stroke {
+    fill: none;
+    pointer-events: none;
+  }
+
+  .nav-track {
+    stroke: var(--line);
+    stroke-width: 1.25;
+  }
+
+  .nav-stroke {
+    stroke: var(--gold);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    will-change: stroke-dasharray, stroke-dashoffset;
+  }
+
+  .safe-bottom {
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  }
+
+  .footer-safe {
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@supports (corner-shape: squircle) {
+
+  .btn,
+  .panel,
+  .icon-btn,
+  .field-input,
+  .squircle {
+    corner-shape: squircle;
+  }
+}
+
+/*
+ * Deep links to a get-involved panel (/get-involved#donors) should show that
+ * panel on the very first paint, before React has hydrated. Until React sets
+ * data-active, the URL fragment alone decides visibility; afterwards the
+ * component owns it, because replaceState does not move :target in every
+ * browser.
+ */
+.involve-tabs .involve-panel {
+  display: none;
+}
+
+.involve-tabs:not([data-active]) .involve-panel[data-default] {
+  display: block;
+}
+
+.involve-tabs:not([data-active]) .involve-panel:target {
+  display: block;
+}
+
+.involve-tabs:not([data-active]):has(.involve-panel:target) .involve-panel[data-default]:not(:target) {
+  display: none;
+}
+
+.involve-tabs[data-active="students"] [data-panel="students"],
+.involve-tabs[data-active="partners"] [data-panel="partners"],
+.involve-tabs[data-active="donors"] [data-panel="donors"] {
+  display: block;
+}
+
+::view-transition-group(page-title) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(page-title),
+::view-transition-new(page-title) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-group(*) {
+  animation-duration: 340ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Lenis owns smooth scrolling; native smoothing would fight it. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@media print {
+
+  .site-header,
+  .site-footer,
+  .skip-link {
+    display: none !important;
+  }
+}
