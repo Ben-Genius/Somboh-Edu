@@ -564,9 +564,6 @@
   .h-\[2px\] {
     height: 2px;
   }
-  .h-\[18px\] {
-    height: 18px;
-  }
   .h-\[18rem\] {
     height: 18rem;
   }
@@ -689,9 +686,6 @@
   }
   .w-52 {
     width: calc(var(--spacing) * 52);
-  }
-  .w-\[18px\] {
-    width: 18px;
   }
   .w-\[18rem\] {
     width: 18rem;
@@ -1214,9 +1208,6 @@
   }
   .px-1\.5 {
     padding-inline: calc(var(--spacing) * 1.5);
-  }
-  .px-2\.5 {
-    padding-inline: calc(var(--spacing) * 2.5);
   }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
@@ -1767,11 +1758,6 @@
       display: none;
     }
   }
-  @media (width < 48rem) {
-    .max-md\:hidden {
-      display: none;
-    }
-  }
   @media (width >= 40rem) {
     .sm\:right-10 {
       right: calc(var(--spacing) * 10);
@@ -1928,9 +1914,6 @@
     .md\:gap-8 {
       gap: calc(var(--spacing) * 8);
     }
-    .md\:px-3\.5 {
-      padding-inline: calc(var(--spacing) * 3.5);
-    }
     .md\:px-4 {
       padding-inline: calc(var(--spacing) * 4);
     }
@@ -2023,6 +2006,9 @@
     .lg\:justify-end {
       justify-content: flex-end;
     }
+    .lg\:gap-5 {
+      gap: calc(var(--spacing) * 5);
+    }
     .lg\:gap-8 {
       gap: calc(var(--spacing) * 8);
     }
@@ -2056,10 +2042,8 @@
     .lg\:pb-28 {
       padding-bottom: calc(var(--spacing) * 28);
     }
-  }
-  @media (width >= 80rem) {
-    .xl\:inline {
-      display: inline;
+    .lg\:pb-32 {
+      padding-bottom: calc(var(--spacing) * 32);
     }
   }
   .\[\&_\[cmdk-group-heading\]\]\:px-3 [cmdk-group-heading] {
@@ -2173,7 +2157,6 @@
   }
   body {
     margin: 0;
-    background-color: var(--paper);
     color: var(--ink);
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     font-size: 1rem;
@@ -3028,7 +3011,72 @@
   .site-header {
     padding-top: env(safe-area-inset-top);
     background: none;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    isolation: isolate;
+  }
+  .site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.08) 55%,
+        rgba(255, 255, 255, 0.18) 100%
+      ),
+      var(--surface);
+    @supports (color: color-mix(in lab, red, red)) {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.08) 55%,
+        rgba(255, 255, 255, 0.18) 100%
+      ),
+      color-mix(in srgb, var(--surface) 38%, transparent);
+    }
+    backdrop-filter: blur(22px) saturate(180%) brightness(1.04);
+    -webkit-backdrop-filter: blur(22px) saturate(180%) brightness(1.04);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.35),
+      0 1px 0 rgba(23, 32, 27, 0.08),
+      0 18px 40px -22px rgba(23, 32, 27, 0.45);
+  }
+  .site-header[data-scrolled="true"]::before {
+    opacity: 1;
+  }
+  @media (prefers-color-scheme: dark) {
+    .site-header::before {
+      background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.14) 0%,
+          rgba(255, 255, 255, 0.02) 55%,
+          rgba(255, 255, 255, 0.06) 100%
+        ),
+        var(--surface);
+      @supports (color: color-mix(in lab, red, red)) {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.14) 0%,
+          rgba(255, 255, 255, 0.02) 55%,
+          rgba(255, 255, 255, 0.06) 100%
+        ),
+        color-mix(in srgb, var(--surface) 42%, transparent);
+      }
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+        0 1px 0 rgba(0, 0, 0, 0.5),
+        0 18px 40px -22px rgba(0, 0, 0, 0.8);
+    }
+  }
+  @media (prefers-reduced-transparency: reduce) {
+    .site-header::before {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: var(--surface);
+    }
   }
   .nav-glass {
     background: var(--surface);

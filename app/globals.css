@@ -114,7 +114,7 @@
 
   body {
     margin: 0;
-    background-color: var(--paper);
+    /* background-color: var(--paper); */
     color: var(--ink);
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     font-size: 1rem;
@@ -1112,7 +1112,92 @@
   .site-header {
     padding-top: env(safe-area-inset-top);
     background: none;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    isolation: isolate;
+  }
+
+  /* Liquid glass, shown once the page scrolls: a translucent pane that blurs
+     and saturates what is behind it, a bright rim catching light along the
+     top and bottom edges, and a soft specular sheen across the upper half.
+     It lives on a pseudo-element so it can fade in without moving content. */
+  .site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.08) 55%,
+        rgba(255, 255, 255, 0.18) 100%
+      ),
+      color-mix(in srgb, var(--surface) 38%, transparent);
+    backdrop-filter: blur(22px) saturate(180%) brightness(1.04);
+    -webkit-backdrop-filter: blur(22px) saturate(180%) brightness(1.04);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.35),
+      0 1px 0 rgba(23, 32, 27, 0.08),
+      0 18px 40px -22px rgba(23, 32, 27, 0.45);
+  }
+
+  .site-header[data-scrolled="true"]::before {
+    opacity: 1;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .site-header::before {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.14) 0%,
+          rgba(255, 255, 255, 0.02) 55%,
+          rgba(255, 255, 255, 0.06) 100%
+        ),
+        color-mix(in srgb, var(--surface) 42%, transparent);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+        0 1px 0 rgba(0, 0, 0, 0.5),
+        0 18px 40px -22px rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .site-header::before {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: var(--surface);
+    }
+  }
+
+  /* Hero pencil sketches. Strokes are normalised with pathLength, so one
+     dash value draws any of them; they only start hidden once the script
+     has marked the hero ready, and never under reduced motion. */
+  .hero-sketches {
+    opacity: 0.7;
+  }
+
+  .sk-label {
+    font-family: "Bradley Hand", "Segoe Print", "Marker Felt", "Comic Sans MS",
+      cursive;
+    letter-spacing: 0.02em;
+  }
+
+  .sk-ready .sk-path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  .sk-ready .sk-path[data-dashed="true"] {
+    stroke-dasharray: 1;
+  }
+
+  .sk-ready .sk-label {
+    opacity: 0;
   }
 
   /* The frosted pill inside the navigation frame. */

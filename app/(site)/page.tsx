@@ -4,6 +4,7 @@ import { ArchMedia, PhotoFrame } from "@/components/arch-media";
 import { CommitmentCycle } from "@/components/commitment-cycle";
 import { CtaPaths } from "@/components/cta-paths";
 import { FounderNote } from "@/components/founder-note";
+import { HeroSketches } from "@/components/hero-sketches";
 import { ArrowRight } from "@/components/icons";
 import { PaperTear } from "@/components/paper-tear";
 import { ProgramIndex } from "@/components/program-index";
@@ -33,7 +34,8 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-surface">
-        <div className="shell relative pb-24 pt-10 lg:pb-28 lg:pt-14">
+        <HeroSketches />
+        <div className="shell relative pb-24 pt-10 lg:pb-32 lg:pt-14">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <p className="eyebrow">{hero.eyebrow}</p>
             <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
@@ -43,9 +45,9 @@ export default function HomePage() {
           <WaveRule className="mt-4 text-line" />
 
           <div className="mt-10 grid gap-14 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-6 lg:pb-6">
+            <div className="lg:col-span-5 lg:pb-6">
               <ViewTransition name="page-title" share="morph" default="none">
-                <h1 className="display-1 max-w-[12ch] text-ink">
+                <h1 className="display-1 max-w-[14ch] text-ink">
                   {hero.title}
                 </h1>
               </ViewTransition>
@@ -97,14 +99,14 @@ export default function HomePage() {
               </dl>
             </div>
 
-            <div className="lg:col-span-6 lg:col-start-7">
+            <div className="lg:col-span-7 lg:col-start-6">
               <WaveMedia
                 src="/images/students-portrait.jpg"
                 alt="Three students standing together on the KNUST campus in Kumasi."
                 caption="Placeholder photograph: students at KNUST, Kumasi. Photo by Enyonam Caroline, CC BY 4.0. Not an SEF program image."
                 blur="students"
                 priority
-                sizes="(min-width: 1024px) 48vw, 100vw"
+                sizes="(min-width: 1024px) 58vw, 100vw"
                 ratio="1 / 1"
                 badge={
                   <div>
@@ -129,6 +131,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <PaperTear from="var(--surface)" to="var(--paper)" />
 
       <ProgramStrip />
 

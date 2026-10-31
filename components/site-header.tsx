@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { programs } from "@/content/programs";
 import { navigation } from "@/content/site";
 import { ui } from "@/content/ui";
-import { ArrowRight, MenuIcon, SearchIcon } from "./icons";
+import { ArrowRight, MenuIcon } from "./icons";
 import { NavDropdown, type NavDropdownItem } from "./nav-dropdown";
 import { NavFrame } from "./nav-frame";
 import { Wordmark } from "./wordmark";
@@ -42,6 +42,7 @@ const itemClass =
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuMounted, setMenuMounted] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
@@ -55,6 +56,13 @@ export function SiteHeader() {
   const openCommand = useCallback(() => {
     setCommandMounted(true);
     setCommandOpen(true);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -90,98 +98,85 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="site-header sticky top-0 z-50">
+      <header
+        data-scrolled={scrolled}
+        className="site-header sticky top-0 z-50"
+      >
         <div className="flex min-h-[var(--nav-height)] items-center justify-between gap-4 px-6 py-3 sm:px-12 lg:px-16">
           <Wordmark />
 
-          <div className="hidden lg:block">
-            <NavFrame>
-              <nav
-                aria-label={ui.primaryNav}
-                className="nav-glass nav-links-group relative z-10 flex items-stretch rounded-[4px]"
-              >
-                {navigation.primary.map((item) => {
-                  const href = "href" in item ? item.href : undefined;
-                  const active =
-                    item.menu === "about"
-                      ? navigation.about.some(
-                          (entry) => entry.href === pathname,
-                        )
-                      : href === "/"
-                        ? pathname === "/"
-                        : href !== undefined && pathname.startsWith(href);
-
-                  if (item.menu === "about") {
-                    return (
-                      <NavDropdown
-                        key={item.label}
-                        label={item.label}
-                        heading={ui.nav.aboutLabel}
-                        items={aboutItems}
-                        active={active}
-                      />
-                    );
-                  }
-
-                  if (item.menu === "programs") {
-                    return (
-                      <NavDropdown
-                        key={item.label}
-                        label={item.label}
-                        href={href}
-                        heading={ui.nav.menuLabel}
-                        items={programItems}
-                        footerLink={{
-                          label: ui.nav.allPrograms,
-                          href: "/programs",
-                        }}
-                        active={active}
-                      />
-                    );
-                  }
-
-                  return (
-                    <Link
-                      key={item.label}
-                      href={href!}
-                      prefetch
-                      data-nav-item
-                      data-active={active}
-                      aria-current={active ? "page" : undefined}
-                      className={`nav-item ${itemClass}`}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
-                <Link
-                  href={navigation.cta.href}
-                  prefetch
-                  data-nav-item
-                  className={`nav-item nav-cta ml-1 px-7 font-semibold ${itemClass} `}
+          <div className="flex items-center gap-2 lg:gap-5">
+            <div className="hidden lg:block">
+              <NavFrame>
+                <nav
+                  aria-label={ui.primaryNav}
+                  className="nav-glass nav-links-group relative z-10 flex items-stretch rounded-[4px]"
                 >
-                  {ui.nav.apply}
-                </Link>
-              </nav>
-            </NavFrame>
-          </div>
+                  {navigation.primary.map((item) => {
+                    const href = "href" in item ? item.href : undefined;
+                    const active =
+                      item.menu === "about"
+                        ? navigation.about.some(
+                            (entry) => entry.href === pathname,
+                          )
+                        : href === "/"
+                          ? pathname === "/"
+                          : href !== undefined && pathname.startsWith(href);
 
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={openCommand}
-              aria-label={ui.openSearch}
-              aria-keyshortcuts="/ Control+K Meta+K"
-              className="tap inline-flex h-10 items-center justify-center gap-2 rounded-full border border-line bg-transparent px-2.5 text-sm font-medium text-ink transition-colors hover:border-line-strong hover:bg-clay md:px-3.5"
-            >
-              <SearchIcon className="h-[18px] w-[18px]" />
-              <span className="hidden xl:inline">
-                {ui.command.shortcutHint}
-              </span>
-              <span className="kbd max-md:hidden" aria-hidden="true">
-                ⌘K
-              </span>
-            </button>
+                    if (item.menu === "about") {
+                      return (
+                        <NavDropdown
+                          key={item.label}
+                          label={item.label}
+                          heading={ui.nav.aboutLabel}
+                          items={aboutItems}
+                          active={active}
+                        />
+                      );
+                    }
+
+                    if (item.menu === "programs") {
+                      return (
+                        <NavDropdown
+                          key={item.label}
+                          label={item.label}
+                          href={href}
+                          heading={ui.nav.menuLabel}
+                          items={programItems}
+                          footerLink={{
+                            label: ui.nav.allPrograms,
+                            href: "/programs",
+                          }}
+                          active={active}
+                        />
+                      );
+                    }
+
+                    return (
+                      <Link
+                        key={item.label}
+                        href={href!}
+                        prefetch
+                        data-nav-item
+                        data-active={active}
+                        aria-current={active ? "page" : undefined}
+                        className={`nav-item ${itemClass}`}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                  <Link
+                    href={navigation.cta.href}
+                    prefetch
+                    data-nav-item
+                    className={`nav-item nav-cta ml-1 px-7 font-semibold ${itemClass} `}
+                  >
+                    {ui.nav.apply}
+                  </Link>
+                </nav>
+              </NavFrame>
+            </div>
 
             <Link
               href={navigation.cta.href}

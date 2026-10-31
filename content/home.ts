@@ -9,9 +9,9 @@ export const homePage = {
   },
   hero: {
     eyebrow: "Somboh Educational Foundation · Ghana",
-    title: "Where you're from should never decide where you study.",
+    title: "Your grades got you this far. We help you get in and get funded.",
     subline:
-      "SAT preparation, essay mentorship, and full-scholarship guidance for Ghanaian students applying to top universities at home and abroad.",
+      "SAT coaching, essay mentorship, and full-scholarship guidance for Ghanaian students aiming at top universities, at home and abroad.",
     primary: { label: "Explore our programs", href: "#programs" } satisfies Link,
     secondary: { label: "Get involved", href: "/get-involved" } satisfies Link,
     asideLabel: "Who we serve",
