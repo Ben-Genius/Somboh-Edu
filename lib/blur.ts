@@ -41,4 +41,25 @@ export const imageBlur = {
     "#6F8B5B",
     '<rect width="20" height="20" fill="#6F8B5B"/><circle cx="7" cy="8" r="3.6" fill="#3A2B22"/><circle cx="14" cy="9" r="3.6" fill="#4A3428"/><rect x="8" y="14" width="4" height="5" fill="#8B5A3C"/>',
   ),
+  // Program photographs: three bands of each picture's own average colour.
+  programAcademic: svgBlur(
+    "#8B8081",
+    '<rect y="7" width="20" height="7" fill="#6B5C78"/><rect y="14" width="20" height="6" fill="#494C7C"/>',
+  ),
+  programMentorship: svgBlur(
+    "#8F7A88",
+    '<rect y="7" width="20" height="7" fill="#987488"/><rect y="14" width="20" height="6" fill="#B68C9B"/>',
+  ),
+  programAid: svgBlur(
+    "#C1C8B1",
+    '<rect y="7" width="20" height="7" fill="#938BAF"/><rect y="14" width="20" height="6" fill="#6263A9"/>',
+  ),
+  programSkills: svgBlur(
+    "#CAD6E2",
+    '<rect y="7" width="20" height="7" fill="#9EABBA"/><rect y="14" width="20" height="6" fill="#768995"/>',
+  ),
+  programCommunity: svgBlur(
+    "#898078",
+    '<rect y="7" width="20" height="7" fill="#767C74"/><rect y="14" width="20" height="6" fill="#8C8A83"/>',
+  ),
 } as const;

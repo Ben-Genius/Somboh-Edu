@@ -24,16 +24,12 @@ export function SectionHeading({
   }
 
   return (
-    <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-      <div className="md:col-span-3">
-        <p className="eyebrow">{eyebrow}</p>
-      </div>
-      <div className="md:col-span-8 md:col-start-5">
-        <h2 id={id} className="display-2 max-w-[20ch]">
-          {heading}
-        </h2>
-        {intro ? <p className="lede mt-6">{intro}</p> : null}
-      </div>
+    <div className="max-w-3xl">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2 id={id} className="display-2 mt-6 max-w-[22ch]">
+        {heading}
+      </h2>
+      {intro ? <p className="lede mt-6">{intro}</p> : null}
     </div>
   );
 }

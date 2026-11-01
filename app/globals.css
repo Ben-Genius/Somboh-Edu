@@ -704,6 +704,14 @@
 
   .paper-backdrop-photo {
     border-radius: 1.6rem;
+    /* Rotation is in degrees, so on wide frames it lifts a whole corner;
+       keep landscape sheets almost square to the photograph. */
+    transform: rotate(-0.5deg) translate(6px, 8px);
+  }
+
+  figure:has(> div > .paper-backdrop) > figcaption {
+    position: relative;
+    z-index: 1;
   }
 
   /* The hero's wavy paper cut. One clip path (defined by WaveMedia) is shared
@@ -1192,12 +1200,79 @@
     stroke-dashoffset: 1;
   }
 
-  .sk-ready .sk-path[data-dashed="true"] {
-    stroke-dasharray: 1;
-  }
-
   .sk-ready .sk-label {
     opacity: 0;
+  }
+
+  /* Text effects (components/ui). Every one rests on the finished text;
+     `armed` hides it once JavaScript has mounted, `played` reveals it. */
+  .tg-word {
+    display: inline;
+    transition:
+      opacity 0.5s ease,
+      filter 0.5s ease;
+  }
+
+  .text-generate[data-reveal="armed"] .tg-word {
+    opacity: 0;
+    filter: blur(6px);
+    transition: none;
+  }
+
+  .tw-char {
+    transition: opacity 0.01s linear;
+  }
+
+  .typewriter[data-reveal="armed"] .tw-char {
+    opacity: 0;
+    transition: none;
+  }
+
+  .tw-caret {
+    display: none;
+  }
+
+  .typewriter[data-reveal="played"] .tw-caret {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.9em;
+    margin-left: 0.06em;
+    vertical-align: -0.08em;
+    background: var(--gold);
+    animation:
+      tw-blink 0.8s steps(1) infinite,
+      tw-done 0.3s ease forwards calc(var(--tw-total) + 1.6s);
+  }
+
+  @keyframes tw-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes tw-done {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .marker {
+    background-image: linear-gradient(
+      color-mix(in srgb, var(--gold) 34%, transparent),
+      color-mix(in srgb, var(--gold) 34%, transparent)
+    );
+    background-repeat: no-repeat;
+    background-position: 0 88%;
+    background-size: 100% 0.42em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    transition: background-size 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .marker[data-reveal="armed"] {
+    background-size: 0% 0.42em;
+    transition: none;
   }
 
   /* The frosted pill inside the navigation frame. */

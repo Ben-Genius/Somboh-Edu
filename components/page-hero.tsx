@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { BlueprintSketches } from "./blueprint-sketches";
 import { ViewTransition } from "./view-transition";
 
 /**
@@ -18,6 +19,7 @@ export function PageHero({
 }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-surface">
+      <BlueprintSketches set="page" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-48 -top-56 h-[34rem] w-[34rem] rounded-full border border-gold/25"

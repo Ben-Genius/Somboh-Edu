@@ -217,25 +217,6 @@ export function PaperMotion() {
               scrollTrigger: { trigger: shell, start: "top 88%", once: true },
             });
           }
-
-          // Section: each one settles from a slight scale as it takes the
-          // viewport, scrubbed to the scroll.
-          if (!onScreen) {
-            gsap.fromTo(
-              section,
-              { scale: 0.97, transformOrigin: "50% 0%" },
-              {
-                scale: 1,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: section,
-                  start: "top bottom",
-                  end: "top 40%",
-                  scrub: true,
-                },
-              },
-            );
-          }
         });
       });
 

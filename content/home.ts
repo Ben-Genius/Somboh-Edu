@@ -12,7 +12,10 @@ export const homePage = {
     title: "Your grades got you this far. We help you get in and get funded.",
     subline:
       "SAT coaching, essay mentorship, and full-scholarship guidance for Ghanaian students aiming at top universities, at home and abroad.",
-    primary: { label: "Explore our programs", href: "#programs" } satisfies Link,
+    primary: {
+      label: "Explore our programs",
+      href: "#programs",
+    } satisfies Link,
     secondary: { label: "Get involved", href: "/get-involved" } satisfies Link,
     asideLabel: "Who we serve",
     asideBody:
@@ -21,20 +24,19 @@ export const homePage = {
   },
   gap: {
     eyebrow: "The gap",
-    heading:
-      "Free SHS opened the door to secondary school. It did not open the door to university.",
+    heading: "Free school was step one. University is still out of reach.",
     paragraphs: [
-      "Ghana has made real progress in opening the doors of secondary education. The Free Senior High School policy, introduced in 2018, provides free tuition at all public secondary schools.",
-      "But a free secondary education does not guarantee a university education. Of roughly 446,000 candidates who completed WASSCE in 2021, only about 36% entered tertiary education the following year. Education advocates point to financing as a major barrier for needy students.",
-      "Studying abroad is growing fast. Ghana now ranks 14th in the world for sending students to the United States, with a record 12,825 there in 2024/25. Yet only about one in five is an undergraduate — the path that can transform the life of an eighteen-year-old from a modest home remains narrow.",
-      "The reason is rarely ability. It is information, guidance, and money.",
+      "Free SHS removed the cost of secondary school, not the cost of what comes next. Educators name financing as a major barrier for students from modest homes.",
+      "Studying abroad is a way through, but few of those students go as undergraduates.",
+      "The cause is rarely ability. It is information, guidance, and money.",
     ],
     stats: [
       {
         id: "transition",
         value: "36",
         unit: "%",
-        label: "of WASSCE candidates entered tertiary education the following year",
+        label:
+          "of WASSCE candidates entered tertiary education the following year",
         detail: "Roughly 446,000 candidates completed WASSCE in 2021.",
         sourceId: "wasce-tertiary",
         emphasis: true,
@@ -65,7 +67,7 @@ export const homePage = {
     ] satisfies Stat[],
     sourcesLabel: "Sources",
     sourcesNote:
-      "Every figure on this page is published by the organisations named below.",
+      "Every figure on this page is published by the organisations listed in the sources.",
   },
   programs: {
     eyebrow: "What we do",
