@@ -2,6 +2,7 @@ import Link from "next/link";
 import { homePage } from "@/content/home";
 import { ArchMedia } from "./arch-media";
 import { ArrowRight } from "./icons";
+import { ReadMore } from "./ui/read-more";
 
 /**
  * The founder's message. In full on the mission page; `compact` is the home
@@ -57,7 +58,7 @@ export function FounderNote({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <section id="founder" className="section bg-paper">
+    <section id="founder" className="section-tight bg-paper">
       <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-4">
           <ArchMedia
@@ -69,6 +70,7 @@ export function FounderNote({ compact = false }: { compact?: boolean }) {
             sizes="(min-width: 1024px) 30vw, 100vw"
           />
 
+          {/* Promise: moved under Read more beside the message.
           <div className="mt-10 border-t border-line pt-6">
             <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
               {founder.promiseHeading}
@@ -84,6 +86,7 @@ export function FounderNote({ compact = false }: { compact?: boolean }) {
               ))}
             </div>
           </div>
+          */}
         </div>
 
         <div className="lg:col-span-7 lg:col-start-6">
@@ -98,11 +101,28 @@ export function FounderNote({ compact = false }: { compact?: boolean }) {
             </p>
           </blockquote>
 
-          <div className="prose-editorial mt-8">
-            {founder.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
+          <ReadMore label="Read the full message">
+            <div className="prose-editorial mt-8">
+              {founder.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            <div className="mt-8 border-t border-line pt-6">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                {founder.promiseHeading}
+              </p>
+              <div className="mt-4 space-y-4">
+                {founder.promise.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="text-[0.9375rem] leading-relaxed text-ink-soft"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </ReadMore>
 
           <p className="mt-10 flex flex-wrap items-baseline gap-3 border-t border-line pt-8">
             <span className="font-display text-[2rem] italic leading-none text-ink">

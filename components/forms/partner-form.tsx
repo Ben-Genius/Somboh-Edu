@@ -44,6 +44,7 @@ export function PartnerForm() {
           required
           error={errors.name}
         />
+        {/* Role: hidden to keep the form short (optional).
         <TextField
           id={id("role")}
           name="role"
@@ -51,6 +52,7 @@ export function PartnerForm() {
           autoComplete="organization-title"
           error={errors.role}
         />
+        */}
         <TextField
           id={id("organisation")}
           name="organisation"
@@ -69,6 +71,7 @@ export function PartnerForm() {
           required
           error={errors.email}
         />
+        {/* Country: hidden to keep the form short (optional in lib/schemas.ts).
         <TextField
           id={id("country")}
           name="country"
@@ -77,6 +80,7 @@ export function PartnerForm() {
           required
           error={errors.country}
         />
+        */}
         <SelectField
           id={id("type")}
           name="type"

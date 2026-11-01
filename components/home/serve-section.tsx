@@ -51,11 +51,11 @@ export function ServeSection() {
 
         <div className="lg:col-span-5 lg:col-start-8 lg:pt-4">
           <ArchMedia
-            src="/images/community-planting.jpg"
+            src="/images/sef/group-serve.jpg"
             sticky
-            alt="Students and a teacher gathered around a sapling they have planted."
-            caption="Placeholder photograph: students planting trees. Photo by Otuo-Akyampong Boakye, CC BY-SA 4.0. Not an SEF program image."
-            blur="planting"
+            alt="Somboh Educational Foundation students from different schools standing together in SEF T-shirts."
+            caption="Somboh Educational Foundation students."
+            blur="sefGroupServe"
             ratio="4 / 5"
             sizes="(min-width: 1024px) 34vw, 100vw"
             peel="bl"

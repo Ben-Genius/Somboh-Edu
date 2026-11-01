@@ -36,11 +36,12 @@ export const studentSchema = z.object({
   region: z.enum(ghanaRegions, {
     errorMap: () => ({ message: "Choose your region." }),
   }),
-  school: required("your school", 160),
-  completionYear: z
-    .string()
-    .regex(/^\d{4}$/, "Choose your completion year."),
-  stage: required("where you are now", 80),
+  // Hidden in the form for now, so optional here.
+  // school: required("your school", 160),
+  school: optional(160),
+  completionYear: z.string().regex(/^\d{4}$/, "Choose your completion year."),
+  // stage: required("where you are now", 80),
+  stage: optional(80),
   interests: z
     .array(z.string().min(1).max(80))
     .min(1, "Choose at least one program."),
@@ -54,7 +55,8 @@ export const partnerSchema = z.object({
   role: optional(120),
   organisation: required("your organisation", 160),
   email,
-  country: required("your country", 80),
+  // country: required("your country", 80),
+  country: optional(80),
   type: required("your organisation type", 80),
   message: required("a sentence about the partnership", 3000),
   consent,
@@ -63,7 +65,8 @@ export const partnerSchema = z.object({
 export const donorSchema = z.object({
   name: required("your name", 120),
   email,
-  country: required("your country", 80),
+  // country: required("your country", 80),
+  country: optional(80),
   interest: required("what you are interested in", 120),
   message: required("what you would like to know", 3000),
   consent,
@@ -72,7 +75,9 @@ export const donorSchema = z.object({
 export const contactSchema = z.object({
   name: required("your name", 120),
   email,
-  topic: required("a topic", 120),
+  // Hidden in the form for now; messages arrive as general enquiries.
+  // topic: required("a topic", 120),
+  topic: optional(120).transform((value) => value || "General enquiry"),
   message: required("your message", 3000),
   consent,
 });

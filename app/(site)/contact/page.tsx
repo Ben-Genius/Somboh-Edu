@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/forms/contact-form";
 import { ArrowRight, MailIcon, MapPinIcon, PhoneIcon } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
-import { PaperTear } from "@/components/paper-tear";
+// import { PaperTear } from "@/components/paper-tear"; (its section is hidden below)
 import { contactPage } from "@/content/contact";
 import { pageMetadata } from "@/lib/metadata";
 import { siteConfig, isPlaceholder } from "@/lib/site-config";
@@ -114,11 +114,15 @@ export default function ContactPage() {
               <div className="mt-7">
                 <ContactForm />
               </div>
+              <p className="mt-5 text-[0.8125rem] leading-relaxed text-ink-soft">
+                {contactPage.response.body}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* "After you send": folded into one line under the form.
       <PaperTear from="var(--surface)" to="var(--paper)" />
 
       <section
@@ -146,6 +150,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      */}
     </>
   );
 }

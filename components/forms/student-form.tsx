@@ -1,14 +1,19 @@
 "use client";
 
+/* eslint-disable @typescript-eslint/no-unused-vars --
+   The email-verification panel is commented out in the JSX below; its state
+   and handlers stay so it can be switched back on. */
+
 import { useActionState, useRef, useState, useTransition } from "react";
 import { ghanaRegions, schoolCompletionYears } from "@/content/ghana";
 import { involvePage } from "@/content/involve";
 import { programs } from "@/content/programs";
-import { requestEmailCode, submitStudentInterest, verifyEmailCode } from "@/lib/actions";
 import {
-  initialActionResult,
-  type ActionResult,
-} from "@/lib/action-types";
+  requestEmailCode,
+  submitStudentInterest,
+  verifyEmailCode,
+} from "@/lib/actions";
+import { initialActionResult, type ActionResult } from "@/lib/action-types";
 import { useFieldPrefix, useIdempotencyKey } from "@/lib/hooks";
 import { CheckIcon, MailIcon } from "../icons";
 import {
@@ -135,6 +140,7 @@ export function StudentForm() {
           required
           error={errors.email ?? otpState.fieldErrors?.email}
         />
+        {/* Phone: hidden to keep the form short (optional in lib/schemas.ts).
         <TextField
           id={id("phone")}
           name="phone"
@@ -145,8 +151,10 @@ export function StudentForm() {
           inputMode="tel"
           error={errors.phone}
         />
+        */}
       </div>
 
+      {/* Email verification: hidden to keep the form short. The server treats it as optional.
       <div className="panel p-4 sm:p-5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="max-w-lg">
@@ -235,6 +243,7 @@ export function StudentForm() {
           <input type="hidden" name="emailVerified" value="yes" />
         ) : null}
       </div>
+      */}
 
       <div className="grid gap-5 sm:grid-cols-2">
         <SelectField
@@ -261,6 +270,7 @@ export function StudentForm() {
           required
           error={errors.completionYear}
         />
+        {/* School and current stage: hidden to keep the form short (optional in lib/schemas.ts).
         <TextField
           id={id("school")}
           name="school"
@@ -284,6 +294,7 @@ export function StudentForm() {
           error={errors.stage}
           className="sm:col-span-2"
         />
+        */}
       </div>
 
       <CheckboxGroup
@@ -305,7 +316,7 @@ export function StudentForm() {
         hint={fields.messageHint}
         required
         error={errors.message}
-        rows={6}
+        rows={4}
       />
 
       <ConsentField

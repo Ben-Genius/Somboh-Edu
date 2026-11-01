@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { PhotoFrame } from "@/components/arch-media";
+// import { PhotoFrame } from "@/components/arch-media"; (wide photo hidden below)
 import { CampusImage } from "@/components/campus-image";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { PaperTear } from "@/components/paper-tear";
 import { SectionHeading } from "@/components/section-heading";
 import { SourceFootnote, SourcesList } from "@/components/sources";
+import { ReadMore } from "@/components/ui/read-more";
 import { ViewTransition } from "@/components/view-transition";
 import { visionPage } from "@/content/vision";
 import { pageMetadata } from "@/lib/metadata";
@@ -39,37 +40,38 @@ export default function VisionPage() {
 
       <section
         aria-labelledby="vision-intro-heading"
-        className="section bg-surface"
+        className="section-tight bg-surface"
       >
-        <div className="shell grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-3">
+        <div className="shell grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <div className="lg:col-span-6">
             <p className="eyebrow">{intro.eyebrow}</p>
-          </div>
-          <div className="lg:col-span-8 lg:col-start-5">
-            <h2 id="vision-intro-heading" className="display-2 max-w-[20ch]">
+            <h2
+              id="vision-intro-heading"
+              className="display-2 mt-6 max-w-[20ch]"
+            >
               {intro.heading}
             </h2>
-            <div className="prose-editorial mt-7">
-              {intro.paragraphs.map((paragraph, index) => (
-                <p
-                  key={paragraph}
-                  className={
-                    index === 0
-                      ? "font-display text-[1.3rem] leading-relaxed tracking-[-0.015em] text-ink"
-                      : undefined
-                  }
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+          </div>
+          <div className="lg:col-span-6">
+            <p className="font-display text-[1.3rem] leading-relaxed tracking-[-0.015em] text-ink">
+              {intro.paragraphs[0]}
+            </p>
+            {intro.paragraphs.length > 1 ? (
+              <ReadMore>
+                <div className="prose-editorial mt-5">
+                  {intro.paragraphs.slice(1).map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </ReadMore>
+            ) : null}
           </div>
         </div>
       </section>
 
       <section
         aria-labelledby="vision-distance-heading"
-        className="section bg-paper"
+        className="section-tight bg-paper"
       >
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-12">
@@ -97,7 +99,10 @@ export default function VisionPage() {
                           </span>
                         ) : null}
                       </span>
-                      <SourceFootnote sourceId={stat.sourceId} className="ml-1" />
+                      <SourceFootnote
+                        sourceId={stat.sourceId}
+                        className="ml-1"
+                      />
                     </div>
                     <p className="mt-4 text-[0.875rem] leading-snug text-ink-soft">
                       {stat.label}
@@ -114,6 +119,7 @@ export default function VisionPage() {
             </div>
           </div>
 
+          {/* Wide photograph: hidden to keep the page short.
           <PhotoFrame
             src="/images/knust-great-hall.jpg"
             alt="The Great Hall at KNUST in Kumasi, photographed from the lawn."
@@ -123,13 +129,14 @@ export default function VisionPage() {
             sizes="(min-width: 1024px) 104rem, 100vw"
             className="mt-14"
           />
+          */}
         </div>
       </section>
 
       <section
         id="what-transformation-looks-like"
         aria-labelledby="vision-pillars-heading"
-        className="section bg-surface"
+        className="section-tight bg-surface"
       >
         <div className="shell">
           <SectionHeading
@@ -158,18 +165,17 @@ export default function VisionPage() {
 
       <section
         aria-labelledby="vision-detail-heading"
-        className="section bg-paper"
+        className="section-tight bg-paper"
       >
         <div className="shell">
-          <div className="grid gap-6 border-b border-line pb-10 md:grid-cols-12">
-            <div className="md:col-span-3">
-              <p className="eyebrow">In detail</p>
-            </div>
-            <div className="md:col-span-8 md:col-start-5">
-              <h2 id="vision-detail-heading" className="display-2 max-w-[20ch]">
-                What that future asks of us.
-              </h2>
-            </div>
+          <div className="border-b border-line pb-8">
+            <p className="eyebrow">In detail</p>
+            <h2
+              id="vision-detail-heading"
+              className="display-2 mt-6 max-w-[20ch]"
+            >
+              What that future asks of us.
+            </h2>
           </div>
 
           <div className="mt-2">
@@ -178,40 +184,39 @@ export default function VisionPage() {
                 key={section.id}
                 id={section.id}
                 aria-labelledby={`${section.id}-heading`}
-                className="grid gap-6 border-b border-line py-10 md:grid-cols-12 md:gap-8"
+                className="grid gap-4 border-b border-line py-8 md:grid-cols-12 md:gap-8"
               >
-                <div className="md:col-span-3">
+                <div className="md:col-span-5">
                   <p className="eyebrow">{section.eyebrow}</p>
-                </div>
-                <div className="md:col-span-7 md:col-start-5">
-                  <ViewTransition
-                    name={`vision-${section.id}`}
-                    default="none"
-                  >
+                  <ViewTransition name={`vision-${section.id}`} default="none">
                     <h3
                       id={`${section.id}-heading`}
-                      className="display-3 max-w-[22ch] text-ink"
+                      className="display-3 mt-4 max-w-[22ch] text-ink"
                     >
                       {section.heading}
                     </h3>
                   </ViewTransition>
-                  <div className="prose-editorial mt-5">
-                    {section.paragraphs.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
+                </div>
+                <div className="md:col-span-7">
+                  <ReadMore label="Read more" buttonClassName="md:mt-0">
+                    <div className="prose-editorial mt-5">
+                      {section.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
 
-                  {index === 0 ? (
-                    <CampusImage
-                      src="/images/balme-library.jpg"
-                      alt="The Balme Library at the University of Ghana, Accra."
-                      caption="Placeholder photograph: Balme Library, University of Ghana, Accra. Photo by Cca Raheem, CC BY 4.0. Not an SEF program image."
-                      blur="balme"
-                      ratio="16 / 10"
-                      sizes="(min-width: 768px) 55vw, 100vw"
-                      className="mt-8"
-                    />
-                  ) : null}
+                    {index === 0 ? (
+                      <CampusImage
+                        src="/images/balme-library.jpg"
+                        alt="The Balme Library at the University of Ghana, Accra."
+                        caption="Placeholder photograph: Balme Library, University of Ghana, Accra. Photo by Cca Raheem, CC BY 4.0. Not an SEF program image."
+                        blur="balme"
+                        ratio="16 / 10"
+                        sizes="(min-width: 768px) 55vw, 100vw"
+                        className="mt-8"
+                      />
+                    ) : null}
+                  </ReadMore>
                 </div>
               </article>
             ))}
@@ -223,7 +228,7 @@ export default function VisionPage() {
 
       <section
         aria-labelledby="vision-closing-heading"
-        className="section on-forest relative overflow-hidden"
+        className="section-tight on-forest relative overflow-hidden"
       >
         <div
           aria-hidden="true"

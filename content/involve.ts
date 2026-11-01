@@ -35,7 +35,7 @@ export const involvePage = {
       "SEF works with students aiming for universities at home and abroad. Tell us where you are and what you are aiming for. If we are not the right fit, we will say so.",
     note: "This is an expression of interest, not an offer of a place in a program. We review every submission.",
     imageCaption:
-      "Placeholder photograph: students at KNUST, Kumasi. Photo by Enyonam Caroline, CC BY 4.0. Not an SEF program image.",
+      "A Somboh Educational Foundation student.",
   },
   partners: {
     eyebrow: "For partners and universities",

@@ -7,7 +7,8 @@ import { JsonLd } from "@/components/json-ld";
 import { ArrowRight } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { PaperTear } from "@/components/paper-tear";
-import { ProgramIndex } from "@/components/program-index";
+// import { ProgramIndex } from "@/components/program-index"; (list hidden below)
+import { ReadMore } from "@/components/ui/read-more";
 import { SectionHeading } from "@/components/section-heading";
 import { SourceFootnote, SourcesList } from "@/components/sources";
 import { homePage } from "@/content/home";
@@ -44,11 +45,10 @@ export default function MissionPage() {
 
       <section
         aria-labelledby="mission-statement-heading"
-        className="section bg-surface"
+        className="section-tight bg-surface"
       >
-        <div className="shell grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <p className="eyebrow">{missionPage.statement.eyebrow}</p>
+        <div className="shell grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+          {/* Side photograph: hidden to keep the section short.
             <ArchMedia
               src="/images/knust-great-hall.jpg"
               alt="The Great Hall at KNUST in Kumasi, photographed from the lawn."
@@ -58,27 +58,33 @@ export default function MissionPage() {
               sizes="(min-width: 1024px) 22vw, 100vw"
               className="mt-10 hidden lg:block"
             />
-          </div>
-          <div className="lg:col-span-8 lg:col-start-5">
+          */}
+          <div className="lg:col-span-5">
+            <p className="eyebrow">{missionPage.statement.eyebrow}</p>
             <h2
               id="mission-statement-heading"
-              className="display-2 max-w-[18ch]"
+              className="display-2 mt-6 max-w-[18ch]"
             >
               {missionPage.statement.heading}
             </h2>
-            <div className="mt-8 border-l-2 border-gold pl-6">
-              {missionPage.statement.body.map((paragraph, index) => (
-                <p
-                  key={paragraph}
-                  className={
-                    index === 0
-                      ? "font-display text-[1.45rem] leading-snug tracking-[-0.02em] text-ink sm:text-[1.7rem]"
-                      : "mt-5 text-[1.0625rem] leading-relaxed text-ink-soft"
-                  }
-                >
-                  {paragraph}
-                </p>
-              ))}
+          </div>
+          <div className="lg:col-span-7">
+            <div className="border-l-2 border-gold pl-6">
+              <p className="font-display text-[1.45rem] leading-snug tracking-[-0.02em] text-ink sm:text-[1.7rem]">
+                {missionPage.statement.body[0]}
+              </p>
+              {missionPage.statement.body.length > 1 ? (
+                <ReadMore>
+                  {missionPage.statement.body.slice(1).map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="mt-5 text-[1.0625rem] leading-relaxed text-ink-soft"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </ReadMore>
+              ) : null}
             </div>
             <p className="mt-6 text-[0.75rem] leading-relaxed text-ink-soft">
               This statement is reproduced from the foundation&apos;s own
@@ -90,7 +96,7 @@ export default function MissionPage() {
 
       <section
         aria-labelledby="mission-gap-heading"
-        className="section bg-paper"
+        className="section-tight bg-paper"
       >
         <div className="shell">
           <SectionHeading
@@ -121,11 +127,13 @@ export default function MissionPage() {
                 <p className="mt-4 text-[0.875rem] font-semibold leading-snug text-ink">
                   {stat.label}
                 </p>
+                {/* Detail line: hidden to keep the cards short.
                 {stat.detail ? (
                   <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-soft">
                     {stat.detail}
                   </p>
                 ) : null}
+                */}
               </li>
             ))}
           </ul>
@@ -144,7 +152,7 @@ export default function MissionPage() {
 
       <section
         aria-labelledby="mission-programs-heading"
-        className="section bg-surface"
+        className="section-tight bg-surface"
       >
         <div className="shell">
           <SectionHeading
@@ -153,7 +161,29 @@ export default function MissionPage() {
             heading={missionPage.programs.heading}
             intro={missionPage.programs.intro}
           />
-          <ProgramIndex items={programs} className="mt-12" />
+          {/* Full program list: hidden here, the programs page owns it.
+          <ProgramIndex
+            items={programs}
+            showStudentsGet={false}
+            className="mt-12"
+          />
+          */}
+          <ul className="mt-10 flex flex-wrap gap-2.5">
+            {programs.map((program) => (
+              <li key={program.slug}>
+                <Link
+                  href={`/programs#${program.slug}`}
+                  prefetch
+                  className="tap inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-paper/60 px-4 text-[0.875rem] font-medium text-ink transition-colors hover:border-ink hover:bg-clay"
+                >
+                  <span className="tnum font-display text-xs text-gold-ink">
+                    {program.number}
+                  </span>
+                  {program.shortLabel}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <div className="mt-8 flex justify-end">
             <Link href="/programs" prefetch className="link-quiet text-sm">
               Explore the programs in full
@@ -166,7 +196,7 @@ export default function MissionPage() {
       <section
         id="who-we-serve"
         aria-labelledby="mission-serve-heading"
-        className="section relative overflow-clip bg-clay"
+        className="section-tight relative overflow-clip bg-clay"
       >
         <div
           aria-hidden="true"
@@ -202,11 +232,11 @@ export default function MissionPage() {
 
           <div className="lg:col-span-5 lg:col-start-8">
             <ArchMedia
-              src="/images/community-planting.jpg"
+              src="/images/sef/group-serve.jpg"
               sticky
-              alt="Students and a teacher gathered around a sapling they have planted."
-              caption="Placeholder photograph: students planting trees. Photo by Otuo-Akyampong Boakye, CC BY-SA 4.0. Not an SEF program image."
-              blur="planting"
+              alt="Somboh Educational Foundation students from different schools standing together in SEF T-shirts."
+              caption="Somboh Educational Foundation students."
+              blur="sefGroupServe"
               ratio="4 / 5"
               sizes="(min-width: 1024px) 34vw, 100vw"
               peel="bl"
@@ -218,23 +248,17 @@ export default function MissionPage() {
       <section
         id="commitment"
         aria-labelledby="mission-commitment-heading"
-        className="section bg-surface"
+        className="section-tight bg-surface"
       >
-        <div className="shell grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <p className="eyebrow">{missionPage.commitment.eyebrow}</p>
-          </div>
-          <div className="lg:col-span-7 lg:col-start-5">
-            <h2
-              id="mission-commitment-heading"
-              className="display-2 max-w-[16ch]"
-            >
-              {missionPage.commitment.heading}
-            </h2>
-            <p className="lede mt-6">{missionPage.commitment.body}</p>
-          </div>
+        <div className="shell">
+          <SectionHeading
+            id="mission-commitment-heading"
+            eyebrow={missionPage.commitment.eyebrow}
+            heading={missionPage.commitment.heading}
+            intro={missionPage.commitment.body}
+          />
         </div>
-        <div className="shell mt-12">
+        <div className="shell mt-10">
           <CommitmentCycle />
         </div>
       </section>

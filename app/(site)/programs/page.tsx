@@ -10,6 +10,7 @@ import { ProgramsNav } from "@/components/programs-nav";
 import { ShortlistButton } from "@/components/shortlist-button";
 import { ShortlistProvider } from "@/components/shortlist-provider";
 import { ShortlistSummary } from "@/components/shortlist-summary";
+import { ReadMore } from "@/components/ui/read-more";
 import { ViewTransition } from "@/components/view-transition";
 import { homePage } from "@/content/home";
 import { programImages } from "@/content/program-images";
@@ -34,7 +35,7 @@ function ProgramPhoto({ slug }: { slug: string }) {
 
   return (
     <figure>
-      <div className="relative aspect-square overflow-hidden rounded-[1.5rem] shadow-[0_0_0_5px_var(--surface),0_0_0_6px_var(--line)] max-lg:aspect-[16/10]">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] shadow-[0_0_0_5px_var(--surface),0_0_0_6px_var(--line)] max-lg:aspect-[16/10]">
         <Image
           src={image.src}
           alt={image.alt}
@@ -69,22 +70,16 @@ export default function ProgramsPage() {
           lede="Support begins with where a student is and what they need next. These programs are built to work together, not in isolation."
           aside={
             <ArchMedia
-              src="/images/classroom-ghana.jpg"
-              alt="A student speaking into a microphone during a classroom session in Ghana."
-              caption="Placeholder photograph. Photo by Asamoah Daniel Kwame Oware, CC0. Not an SEF program image."
-              blur="classroom"
+              src="/images/sef/cohort-programs.jpg"
+              alt="A Somboh Educational Foundation cohort standing together at the front of a classroom."
+              caption="An SEF cohort at a session."
+              blur="sefCohortPrograms"
               ratio="4 / 5"
               sizes="(min-width: 1024px) 24vw, 100vw"
               className="w-full max-w-[15rem]"
             />
           }
         />
-
-        <section aria-label="Your shortlist" className="bg-paper">
-          <div className="shell py-5">
-            <ShortlistSummary />
-          </div>
-        </section>
 
         <ProgramsNav />
 
@@ -94,11 +89,12 @@ export default function ProgramsPage() {
               key={program.slug}
               id={program.slug}
               aria-labelledby={`${program.slug}-heading`}
-              className="card scroll-mt-40 p-5 sm:p-8 lg:p-10"
+              className="card scroll-mt-40 p-5 sm:p-7 lg:p-8"
             >
               <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
                 <div className="lg:sticky lg:top-[calc(var(--nav-height)+6.5rem)] lg:col-span-4 lg:self-start">
                   <ProgramPhoto slug={program.slug} />
+                  {/* Number badge and label stacked: replaced by the row below.
                   <span className="tnum mt-6 grid h-12 w-12 place-items-center rounded-full border border-gold/45 bg-gold/10 font-display text-[1rem] text-gold-ink">
                     {program.number}
                   </span>
@@ -110,6 +106,16 @@ export default function ProgramsPage() {
                       slug={program.slug}
                       title={program.title}
                     />
+                  </div>
+                  */}
+                  <div className="mt-5 flex items-center justify-between gap-3">
+                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                      Program {program.number}
+                    </p>
+                    {/* <ShortlistButton
+                      slug={program.slug}
+                      title={program.title}
+                    /> */}
                   </div>
                 </div>
 
@@ -127,10 +133,10 @@ export default function ProgramsPage() {
                     </h2>
                   </ViewTransition>
 
-                  <p className="lede mt-5">{program.summary}</p>
+                  <p className="mt-5 ">{program.summary}</p>
 
-                  <div className="mt-8 flex flex-col gap-2 rounded-[1.25rem] border border-gold/35 bg-gold/[0.07] px-5 py-4 sm:flex-row sm:items-baseline sm:gap-4">
-                    <p className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-gold-ink">
+                  <div className="mt-8 flex flex-col gap-2 rounded-[1.25rem] border  bg-white px-5 py-4 sm:flex-row sm:items-baseline sm:gap-4">
+                    <p className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.6em] text-gold-ink">
                       {homePage.programs.studentsGetLabel}
                     </p>
                     <p className="text-[0.9375rem] leading-relaxed text-ink">
@@ -138,29 +144,31 @@ export default function ProgramsPage() {
                     </p>
                   </div>
 
-                  <div className="prose-editorial mt-7">
-                    {program.detail.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
+                  <ReadMore label="Read more about this program">
+                    <div className="prose-editorial mt-7">
+                      {program.detail.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
 
-                  <ul className="mt-7 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-                    {program.bullets.map((bullet) => (
-                      <li
-                        key={bullet}
-                        className="flex items-start gap-2.5 text-[0.875rem] leading-relaxed text-ink-soft"
-                      >
-                        <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold-ink" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="mt-7 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                      {program.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="flex items-start gap-2.5 text-[0.875rem] leading-relaxed text-ink-soft"
+                        >
+                          <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold-ink" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </ReadMore>
 
-                  <div className="mt-9 flex flex-wrap items-center gap-4 border-t border-line pt-7">
+                  <div className=" flex flex-wrap items-center gap-4 border-t border-line pt-3">
                     <Link
                       href="/get-involved#students"
                       prefetch
-                      className="btn btn-gold"
+                      className="btn btn-forest"
                     >
                       Apply for support
                       <span className="btn-arrow" aria-hidden="true">
@@ -210,11 +218,11 @@ export default function ProgramsPage() {
 
             <div className="lg:col-span-5">
               <PhotoFrame
-                src="/images/school-courtyard.jpg"
+                src="/images/sef/student-next.jpg"
                 sticky
-                alt="Students gathered under a tree in a school courtyard in Ghana."
-                caption="Placeholder photograph: a secondary school courtyard in Ghana. Photo by Hakamal, CC0. Not an SEF program image."
-                blur="courtyard"
+                alt="A smiling Somboh Educational Foundation student in an SEF T-shirt."
+                caption="A Somboh Educational Foundation student."
+                blur="sefStudentNext"
                 ratio="4 / 3"
                 sizes="(min-width: 1024px) 36vw, 100vw"
               />

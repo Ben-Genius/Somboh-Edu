@@ -20,24 +20,7 @@ export function ShortlistSummary() {
     );
   }
 
-  if (items.length === 0) {
-    return (
-      <div className="paper-stack flex items-center gap-4 rounded-[1rem] border border-line bg-surface px-4 py-3.5">
-        <span
-          aria-hidden="true"
-          className="grid h-9 w-9 flex-none place-items-center rounded-full bg-gold/15 text-gold-ink"
-        >
-          <BookmarkIcon className="h-4 w-4" />
-        </span>
-        <p className="text-sm leading-snug text-ink-soft">
-          <span className="font-display text-[0.95rem] font-semibold tracking-[-0.01em] text-ink">
-            {ui.forms.shortlistEmptyTitle}
-          </span>{" "}
-          {ui.forms.shortlistHint}
-        </p>
-      </div>
-    );
-  }
+
 
   const selected = programs.filter((program) => items.includes(program.slug));
 

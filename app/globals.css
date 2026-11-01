@@ -51,6 +51,9 @@
   --danger: #9a2f20;
   --success: #1f6845;
   --nav-height: 4.5rem;
+  /* Logo colours, taken from the printed Somboh mark. */
+  --brand-blue: #0b4da8;
+  --brand-gold: #f8c000;
 
   /* The two sheets that peek out from under stacked documents. Warmer and
      darker than the top sheet so the stack reads even on paper-coloured
@@ -95,6 +98,7 @@
     --sheet-b: #26332b;
     --seam: rgba(0, 0, 0, 0.45);
     --tear-edge: rgba(0, 0, 0, 0.5);
+    --brand-blue: #f1ede3;
     --tape: rgba(221, 177, 90, 0.22);
     --tape-line: rgba(233, 197, 122, 0.3);
   }

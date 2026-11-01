@@ -41,8 +41,9 @@ export default function GetInvolvedPage() {
         lede={involvePage.hero.lede}
       />
 
-      <section aria-labelledby="ways-heading" className="section bg-surface">
+      <section aria-label="Ways to get involved" className="section-tight bg-surface">
         <div className="shell">
+          {/* "Three ways in" heading: hidden, the page hero already says it.
           <div className="grid gap-6 md:grid-cols-12">
             <div className="md:col-span-3">
               <p className="eyebrow">Three ways in</p>
@@ -53,6 +54,7 @@ export default function GetInvolvedPage() {
               </h2>
             </div>
           </div>
+          */}
 
           {/* The tab panels carry the #students, #partners and #donors ids, so
               links such as /get-involved#partners land on the panel itself and
@@ -119,10 +121,10 @@ function StudentsPanel() {
         <p className="lede mt-5">{content.intro}</p>
         <Note>{content.note}</Note>
         <ArchMedia
-          src="/images/students-portrait.jpg"
-          alt="Three students standing together on the KNUST campus in Kumasi."
-          caption={content.imageCaption}
-          blur="students"
+          src="/images/sef/student-apply.jpg"
+          alt="A smiling Somboh Educational Foundation student in a navy SEF T-shirt."
+          caption="A Somboh Educational Foundation student."
+          blur="sefStudentApply"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"
           className="mt-10"
@@ -148,10 +150,10 @@ function PartnersPanel() {
         <p className="lede mt-5">{content.intro}</p>
         <Note>{content.note}</Note>
         <ArchMedia
-          src="/images/community-planting.jpg"
-          alt="Students and a teacher gathered around a sapling they have planted."
-          caption="Placeholder photograph: students planting trees. Photo by Otuo-Akyampong Boakye, CC BY-SA 4.0. Not an SEF program image."
-          blur="planting"
+          src="/images/sef/cohort-partners.jpg"
+          alt="A Somboh Educational Foundation cohort standing together at the front of a classroom."
+          caption="An SEF cohort at a session."
+          blur="sefCohortPartners"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"
           peel="bl"
@@ -188,10 +190,10 @@ function DonorsPanel() {
         </div>
 
         <ArchMedia
-          src="/images/knust-great-hall.jpg"
-          alt="The Great Hall at KNUST in Kumasi, photographed from the lawn."
-          caption="Placeholder photograph: the Great Hall, KNUST, Kumasi. Photo by Pnlarbi, CC BY 4.0. Not an SEF program image."
-          blur="knust"
+          src="/images/sef/group-donors.jpg"
+          alt="Somboh Educational Foundation students standing together in SEF T-shirts."
+          caption="Somboh Educational Foundation students."
+          blur="sefGroupDonors"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"
           className="mt-10"

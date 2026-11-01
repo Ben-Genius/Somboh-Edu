@@ -11,7 +11,7 @@ import {
   FormNotice,
   Honeypot,
   IdempotencyField,
-  SelectField,
+  // SelectField, (topic field is hidden below)
   TextField,
   TextareaField,
 } from "./form-fields";
@@ -54,6 +54,7 @@ export function ContactForm() {
           required
           error={errors.email}
         />
+        {/* Topic: hidden to keep the form short (defaults in lib/schemas.ts).
         <SelectField
           id={id("topic")}
           name="topic"
@@ -67,6 +68,7 @@ export function ContactForm() {
           error={errors.topic}
           className="sm:col-span-2"
         />
+        */}
       </div>
 
       <TextareaField
@@ -76,7 +78,7 @@ export function ContactForm() {
         hint={fields.messageHint}
         required
         error={errors.message}
-        rows={7}
+        rows={4}
       />
 
       <ConsentField

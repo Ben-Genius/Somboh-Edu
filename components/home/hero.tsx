@@ -83,10 +83,10 @@ export function HomeHero() {
 
             <div className="lg:col-span-7 lg:col-start-6">
               <WaveMedia
-                src="/images/students-portrait.jpg"
-                alt="Three students standing together on the KNUST campus in Kumasi."
-                caption="Placeholder photograph: students at KNUST, Kumasi. Photo by Enyonam Caroline, CC BY 4.0. Not an SEF program image."
-                blur="students"
+                src="/images/sef/group-hero.jpg"
+                alt="A group of Somboh Educational Foundation students standing together in SEF T-shirts."
+                caption="Somboh Educational Foundation students."
+                blur="sefGroupHero"
                 priority
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 ratio="1 / 1"

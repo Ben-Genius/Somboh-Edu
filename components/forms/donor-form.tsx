@@ -54,6 +54,7 @@ export function DonorForm() {
           required
           error={errors.email}
         />
+        {/* Country: hidden to keep the form short (optional in lib/schemas.ts).
         <TextField
           id={id("country")}
           name="country"
@@ -62,6 +63,7 @@ export function DonorForm() {
           required
           error={errors.country}
         />
+        */}
         <SelectField
           id={id("interest")}
           name="interest"

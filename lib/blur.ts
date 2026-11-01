@@ -62,4 +62,45 @@ export const imageBlur = {
     "#898078",
     '<rect y="7" width="20" height="7" fill="#767C74"/><rect y="14" width="20" height="6" fill="#8C8A83"/>',
   ),
+  // SEF's own photographs, same three-band treatment.
+  sefGroupHero: svgBlur(
+    "#B6A8A2",
+    '<rect y="7" width="20" height="7" fill="#A9968A"/><rect y="14" width="20" height="6" fill="#767F87"/>',
+  ),
+  sefGroupDonors: svgBlur(
+    "#B3A8A1",
+    '<rect y="7" width="20" height="7" fill="#93918F"/><rect y="14" width="20" height="6" fill="#637C91"/>',
+  ),
+  sefGroupServe: svgBlur(
+    "#B9ABA4",
+    '<rect y="7" width="20" height="7" fill="#AB9A8F"/><rect y="14" width="20" height="6" fill="#818990"/>',
+  ),
+  sefClassroom: svgBlur(
+    "#ACA7A1",
+    '<rect y="7" width="20" height="7" fill="#89837B"/><rect y="14" width="20" height="6" fill="#797974"/>',
+  ),
+  sefCohortPrograms: svgBlur(
+    "#999EA0",
+    '<rect y="7" width="20" height="7" fill="#686A6C"/><rect y="14" width="20" height="6" fill="#868780"/>',
+  ),
+  sefCohortPartners: svgBlur(
+    "#989DA0",
+    '<rect y="7" width="20" height="7" fill="#686A6C"/><rect y="14" width="20" height="6" fill="#888A82"/>',
+  ),
+  sefCohortGap: svgBlur(
+    "#999DA0",
+    '<rect y="7" width="20" height="7" fill="#656769"/><rect y="14" width="20" height="6" fill="#8C8D85"/>',
+  ),
+  sefStudentApply: svgBlur(
+    "#C4C4C7",
+    '<rect y="7" width="20" height="7" fill="#7C8D9F"/><rect y="14" width="20" height="6" fill="#738496"/>',
+  ),
+  sefStudentNext: svgBlur(
+    "#D6D5D7",
+    '<rect y="7" width="20" height="7" fill="#D9CFC3"/><rect y="14" width="20" height="6" fill="#CBBCA9"/>',
+  ),
+  programMentorshipWorkshop: svgBlur(
+    "#EDF0F5",
+    '<rect y="7" width="20" height="7" fill="#969EAB"/><rect y="14" width="20" height="6" fill="#706D7B"/>',
+  ),
 } as const;

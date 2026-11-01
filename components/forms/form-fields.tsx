@@ -113,7 +113,12 @@ export function TextField({
         aria-describedby={describedBy}
         className="field-input"
       />
-      <FieldMessage hint={hint} error={error} hintId={hintId} errorId={errorId} />
+      <FieldMessage
+        hint={hint}
+        error={error}
+        hintId={hintId}
+        errorId={errorId}
+      />
     </div>
   );
 }
@@ -132,7 +137,10 @@ export function SelectField({
 }: BaseField & {
   options: readonly { value: string; label: string }[];
   placeholder?: string;
-} & Omit<SelectHTMLAttributes<HTMLSelectElement>, "id" | "name" | "className">) {
+} & Omit<
+    SelectHTMLAttributes<HTMLSelectElement>,
+    "id" | "name" | "className"
+  >) {
   const { hintId, errorId, describedBy } = ids(id, hint, error);
 
   return (
@@ -160,7 +168,12 @@ export function SelectField({
           </option>
         ))}
       </select>
-      <FieldMessage hint={hint} error={error} hintId={hintId} errorId={errorId} />
+      <FieldMessage
+        hint={hint}
+        error={error}
+        hintId={hintId}
+        errorId={errorId}
+      />
     </div>
   );
 }
@@ -176,7 +189,10 @@ export function TextareaField({
   rows = 5,
   ...textarea
 }: BaseField &
-  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "id" | "name" | "className">) {
+  Omit<
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    "id" | "name" | "className"
+  >) {
   const { hintId, errorId, describedBy } = ids(id, hint, error);
 
   return (
@@ -195,7 +211,12 @@ export function TextareaField({
         aria-describedby={describedBy}
         className="field-input"
       />
-      <FieldMessage hint={hint} error={error} hintId={hintId} errorId={errorId} />
+      <FieldMessage
+        hint={hint}
+        error={error}
+        hintId={hintId}
+        errorId={errorId}
+      />
     </div>
   );
 }
@@ -221,8 +242,7 @@ export function CheckboxGroup({
 }) {
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = error ? `${id}-error` : undefined;
-  const describedBy =
-    [hintId, errorId].filter(Boolean).join(" ") || undefined;
+  const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
 
   return (
     <fieldset
@@ -248,7 +268,12 @@ export function CheckboxGroup({
           </label>
         ))}
       </div>
-      <FieldMessage hint={hint} error={error} hintId={hintId} errorId={errorId} />
+      <FieldMessage
+        hint={hint}
+        error={error}
+        hintId={hintId}
+        errorId={errorId}
+      />
     </fieldset>
   );
 }
@@ -309,7 +334,9 @@ export function FormNotice({
           {state.message}
         </p>
         {state.duplicate ? (
-          <p className="mt-1 pl-6 text-ink-soft">{involvePage.form.duplicateMessage}</p>
+          <p className="mt-1 pl-6 text-ink-soft">
+            {involvePage.form.duplicateMessage}
+          </p>
         ) : null}
       </div>
     );
@@ -337,7 +364,9 @@ export function FormNotice({
     >
       <p className="font-semibold text-ink">{state.message}</p>
       {state.fieldErrors ? (
-        <p className="mt-1 text-ink-soft">Please check the highlighted fields.</p>
+        <p className="mt-1 text-ink-soft">
+          Please check the highlighted fields.
+        </p>
       ) : null}
     </div>
   );
@@ -362,9 +391,7 @@ export function Honeypot() {
 }
 
 export function IdempotencyField({ value }: { value: string }) {
-  return (
-    <input type="hidden" name="idempotencyKey" value={value} readOnly />
-  );
+  return <input type="hidden" name="idempotencyKey" value={value} readOnly />;
 }
 
 export function FormFootnote() {

@@ -71,11 +71,11 @@ export function GapSection() {
             <figure className="order-first lg:order-none">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_0_0_6px_var(--surface),0_0_0_7px_var(--line),var(--shadow-float)]">
                 <Image
-                  src="/images/classroom-ghana.jpg"
-                  alt="A student speaking into a microphone during a classroom session in Ghana."
+                  src="/images/sef/cohort-gap.jpg"
+                  alt="A Somboh Educational Foundation cohort standing together at the front of a classroom."
                   fill
                   placeholder="blur"
-                  blurDataURL={imageBlur.classroom}
+                  blurDataURL={imageBlur.sefCohortGap}
                   sizes="(min-width: 1024px) 28rem, 100vw"
                   className="object-cover"
                 />
