@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArchMedia } from "@/components/arch-media";
+import { CommitmentCycle } from "@/components/commitment-cycle";
+import { FounderNote } from "@/components/founder-note";
 import { JsonLd } from "@/components/json-ld";
 import { ArrowRight } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
@@ -58,7 +60,10 @@ export default function MissionPage() {
             />
           </div>
           <div className="lg:col-span-8 lg:col-start-5">
-            <h2 id="mission-statement-heading" className="display-2 max-w-[18ch]">
+            <h2
+              id="mission-statement-heading"
+              className="display-2 max-w-[18ch]"
+            >
               {missionPage.statement.heading}
             </h2>
             <div className="mt-8 border-l-2 border-gold pl-6">
@@ -159,6 +164,7 @@ export default function MissionPage() {
       </section>
 
       <section
+        id="who-we-serve"
         aria-labelledby="mission-serve-heading"
         className="section relative overflow-clip bg-clay"
       >
@@ -170,7 +176,10 @@ export default function MissionPage() {
         <div className="shell relative grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
             <p className="eyebrow">{missionPage.serve.eyebrow}</p>
-            <h2 id="mission-serve-heading" className="display-2 mt-6 max-w-[16ch]">
+            <h2
+              id="mission-serve-heading"
+              className="display-2 mt-6 max-w-[16ch]"
+            >
               {missionPage.serve.heading}
             </h2>
             <p className="mt-7 text-[1.0625rem] leading-relaxed text-ink-soft">
@@ -207,6 +216,7 @@ export default function MissionPage() {
       </section>
 
       <section
+        id="commitment"
         aria-labelledby="mission-commitment-heading"
         className="section bg-surface"
       >
@@ -222,20 +232,20 @@ export default function MissionPage() {
               {missionPage.commitment.heading}
             </h2>
             <p className="lede mt-6">{missionPage.commitment.body}</p>
-            <Link
-              href="/#commitment"
-              prefetch
-              className="link-quiet mt-6 text-sm"
-            >
-              See the cycle of commitment
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
+        </div>
+        <div className="shell mt-12">
+          <CommitmentCycle />
         </div>
       </section>
 
-      <PaperTear from="var(--surface)" to="var(--forest)" />
+      <PaperTear from="var(--surface)" to="var(--paper)" />
 
+      <FounderNote />
+
+      {/* Old banner that sent readers to the home page for the founder's
+          message. Hidden now that the full message is here.
+      <PaperTear from="var(--surface)" to="var(--forest)" />
       <section className="section-tight on-forest relative overflow-hidden">
         <div
           aria-hidden="true"
@@ -263,6 +273,7 @@ export default function MissionPage() {
           </Link>
         </div>
       </section>
+      */}
     </>
   );
 }

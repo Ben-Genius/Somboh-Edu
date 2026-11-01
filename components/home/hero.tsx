@@ -57,6 +57,7 @@ export function HomeHero() {
                 </Link>
               </div>
 
+              {/* Hidden: the programs section already says this.
               <WaveRule className="mt-12 text-line" />
 
               <dl className="mt-6 grid max-w-lg grid-cols-2 gap-x-6 gap-y-5">
@@ -77,6 +78,7 @@ export function HomeHero() {
                   </dd>
                 </div>
               </dl>
+              */}
             </div>
 
             <div className="lg:col-span-7 lg:col-start-6">

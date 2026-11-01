@@ -1,8 +1,60 @@
+import Link from "next/link";
 import { homePage } from "@/content/home";
 import { ArchMedia } from "./arch-media";
+import { ArrowRight } from "./icons";
 
-export function FounderNote() {
+/**
+ * The founder's message. In full on the mission page; `compact` is the home
+ * page's version: the conviction and the signature, with a link to the rest.
+ */
+export function FounderNote({ compact = false }: { compact?: boolean }) {
   const founder = homePage.founder;
+
+  if (compact) {
+    return (
+      <section
+        aria-labelledby="founder-heading"
+        className="section-tight bg-paper"
+      >
+        <div className="shell grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <div className="lg:col-span-4">
+            <p className="eyebrow">{founder.eyebrow}</p>
+            <h2
+              id="founder-heading"
+              className="display-3 mt-5 max-w-[14ch] text-ink"
+            >
+              {founder.heading}
+            </h2>
+          </div>
+          <figure className="lg:col-span-8">
+            <blockquote className="card paper-note rounded-[1.5rem] p-6 sm:p-8">
+              <p className="font-display text-[1.4rem] leading-snug tracking-[-0.025em] text-ink sm:text-[1.7rem]">
+                “{founder.quote}”
+              </p>
+            </blockquote>
+            <figcaption className="mt-6 flex flex-wrap items-center justify-between gap-4">
+              <span className="flex items-baseline gap-3">
+                <span className="font-display text-[1.6rem] italic leading-none text-ink">
+                  {founder.signature}
+                </span>
+                <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                  {founder.role}
+                </span>
+              </span>
+              <Link
+                href="/mission#founder"
+                prefetch
+                className="link-quiet text-sm"
+              >
+                Read the founder&apos;s full message
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="founder" className="section bg-paper">

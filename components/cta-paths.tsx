@@ -17,16 +17,14 @@ export function CtaPaths() {
       />
 
       <div className="shell relative">
-        <div className="grid gap-6 md:grid-cols-12">
-          <div className="md:col-span-3">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <div className="lg:col-span-7">
             <p className="eyebrow">{cta.eyebrow}</p>
-          </div>
-          <div className="md:col-span-8 md:col-start-5">
-            <h2 className="display-2 max-w-[18ch] text-[var(--on-forest)]">
+            <h2 className="display-2 mt-6 max-w-[18ch] text-[var(--on-forest)]">
               {cta.heading}
             </h2>
-            <p className="lede mt-6">{cta.intro}</p>
           </div>
+          <p className="lede lg:col-span-5">{cta.intro}</p>
         </div>
 
         <ol className="mt-12 border-t border-white/15">

@@ -39,6 +39,7 @@ export const missionPage = {
     heading: "Return, and reach back.",
     body: "Our goal is not simply to send students away. It is to raise leaders who will return their knowledge, networks, and energy to Ghana and Africa, and to the students coming behind them.",
   },
+  // Banner for the old founder link (hidden on the mission page, kept for reuse).
   founder: {
     eyebrow: "The founder's promise",
     heading: "A promise worth signing.",
