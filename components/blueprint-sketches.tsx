@@ -203,6 +203,25 @@ const sets: Record<string, Placement[]> = {
       motion: "scribble",
     },
   ],
+  // Small marks around the programs heading, in the gutter between the
+  // heading and its intro and above the intro on the right.
+  programs: [
+    {
+      drawing: "book",
+      className: "left-[46%] top-[8%] w-16 -rotate-6",
+      motion: "draw",
+    },
+    {
+      drawing: "cap",
+      className: "left-[49%] top-[19%] w-14 rotate-6",
+      motion: "pop",
+    },
+    {
+      drawing: "sat",
+      className: "right-[5%] top-[7%] w-16 rotate-3",
+      motion: "scribble",
+    },
+  ],
   // Inner-page heroes: headline on the left, an optional picture on the
   // right, so the sketches run along the top and through the middle.
   page: [

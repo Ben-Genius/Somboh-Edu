@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArchMedia, PhotoFrame } from "@/components/arch-media";
@@ -11,7 +12,9 @@ import { ShortlistProvider } from "@/components/shortlist-provider";
 import { ShortlistSummary } from "@/components/shortlist-summary";
 import { ViewTransition } from "@/components/view-transition";
 import { homePage } from "@/content/home";
+import { programImages } from "@/content/program-images";
 import { programs } from "@/content/programs";
+import { imageBlur } from "@/lib/blur";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
@@ -23,6 +26,31 @@ export const metadata: Metadata = pageMetadata({
     "Five SEF Ghana programs: SAT preparation, application mentorship, financial aid guidance, skills development, and community engagement for Ghanaian students.",
   path: "/programs",
 });
+
+/** The program's photograph; pinned beside its detail on large screens. */
+function ProgramPhoto({ slug }: { slug: string }) {
+  const image = programImages[slug];
+  if (!image) return null;
+
+  return (
+    <figure>
+      <div className="relative aspect-square overflow-hidden rounded-[1.5rem] shadow-[0_0_0_5px_var(--surface),0_0_0_6px_var(--line)] max-lg:aspect-[16/10]">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          placeholder="blur"
+          blurDataURL={imageBlur[image.blur]}
+          sizes="(min-width: 1024px) 28vw, 100vw"
+          className="object-cover"
+        />
+      </div>
+      <figcaption className="mt-3 text-[0.68rem] leading-relaxed text-ink-soft">
+        {image.credit}
+      </figcaption>
+    </figure>
+  );
+}
 
 export default function ProgramsPage() {
   return (
@@ -69,8 +97,9 @@ export default function ProgramsPage() {
               className="card scroll-mt-40 p-5 sm:p-8 lg:p-10"
             >
               <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
-                <div className="lg:col-span-3">
-                  <span className="tnum grid h-12 w-12 place-items-center rounded-full border border-gold/45 bg-gold/10 font-display text-[1rem] text-gold-ink">
+                <div className="lg:sticky lg:top-[calc(var(--nav-height)+6.5rem)] lg:col-span-4 lg:self-start">
+                  <ProgramPhoto slug={program.slug} />
+                  <span className="tnum mt-6 grid h-12 w-12 place-items-center rounded-full border border-gold/45 bg-gold/10 font-display text-[1rem] text-gold-ink">
                     {program.number}
                   </span>
                   <p className="mt-4 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
@@ -84,7 +113,7 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-8 lg:col-start-5">
+                <div className="lg:col-span-8">
                   <ViewTransition
                     name={`program-${program.slug}`}
                     share="morph"

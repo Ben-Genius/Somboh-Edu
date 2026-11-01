@@ -1,3 +1,5 @@
 {
-  "/(site)/page": "app/(site)/page.js"
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/(site)/page": "app/(site)/page.js",
+  "/(site)/programs/page": "app/(site)/programs/page.js"
 }
