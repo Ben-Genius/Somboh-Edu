@@ -1,1 +1,16 @@
 node_modules
+
+# Next.js and Cloudflare build output
+.next
+.open-next
+.wrangler
+out
+
+# Local secrets
+.env*.local
+.dev.vars*
+
+# OS / editor
+.DS_Store
+*.tsbuildinfo
+package-lock.json
