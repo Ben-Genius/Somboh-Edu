@@ -4,7 +4,7 @@ export function cn(...values: Array<string | false | null | undefined>): string 
 
 export function absoluteUrl(path: string): string {
   const base = (
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://sef-ghana.example"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://sef-ghana.example"
   ).replace(/\/$/, "");
   return path.startsWith("http") ? path : `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }

@@ -9,7 +9,7 @@ export const siteConfig = {
   tagline: "Brilliant minds. Equal chances. Global futures.",
   description:
     "Somboh Educational Foundation (SEF Ghana) helps brilliant students from every background win admission and full funding to top universities at home and abroad.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://sef-ghana.example").replace(
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://sef-ghana.example").replace(
     /\/$/,
     "",
   ),

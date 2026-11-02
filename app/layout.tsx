@@ -25,7 +25,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://sef-ghana.example",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://sef-ghana.example",
   ),
   title: {
     default: "SEF Ghana — Brilliant minds. Equal chances.",
