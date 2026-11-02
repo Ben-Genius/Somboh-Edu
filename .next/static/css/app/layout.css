@@ -340,6 +340,12 @@
   .inset-0 {
     inset: 0px;
   }
+  .inset-\[6px\] {
+    inset: 6px;
+  }
+  .inset-\[7px\] {
+    inset: 7px;
+  }
   .inset-x-0 {
     inset-inline: 0px;
   }
@@ -550,8 +556,14 @@
   .-mx-5 {
     margin-inline: calc(var(--spacing) * -5);
   }
+  .mx-4 {
+    margin-inline: calc(var(--spacing) * 4);
+  }
   .mx-auto {
     margin-inline: auto;
+  }
+  .-mt-8 {
+    margin-top: calc(var(--spacing) * -8);
   }
   .-mt-12 {
     margin-top: calc(var(--spacing) * -12);
@@ -1568,6 +1580,9 @@
   .pb-14 {
     padding-bottom: calc(var(--spacing) * 14);
   }
+  .pb-16 {
+    padding-bottom: calc(var(--spacing) * 16);
+  }
   .pb-24 {
     padding-bottom: calc(var(--spacing) * 24);
   }
@@ -2096,6 +2111,11 @@
   .data-\[selected\=true\]\:bg-clay[data-selected="true"] {
     background-color: var(--clay);
   }
+  @media (prefers-reduced-motion: reduce) {
+    .motion-reduce\:hidden {
+      display: none;
+    }
+  }
   @media (width < 380px) {
     .max-\[380px\]\:hidden {
       display: none;
@@ -2107,11 +2127,20 @@
     }
   }
   @media (width >= 40rem) {
+    .sm\:absolute {
+      position: absolute;
+    }
+    .sm\:inset-x-auto {
+      inset-inline: auto;
+    }
     .sm\:right-10 {
       right: calc(var(--spacing) * 10);
     }
     .sm\:right-auto {
       right: auto;
+    }
+    .sm\:-bottom-8 {
+      bottom: calc(var(--spacing) * -8);
     }
     .sm\:-left-8 {
       left: calc(var(--spacing) * -8);
@@ -2119,8 +2148,17 @@
     .sm\:col-span-2 {
       grid-column: span 2 / span 2;
     }
+    .sm\:mx-0 {
+      margin-inline: 0px;
+    }
     .sm\:-mt-14 {
       margin-top: calc(var(--spacing) * -14);
+    }
+    .sm\:mt-0 {
+      margin-top: 0px;
+    }
+    .sm\:mt-16 {
+      margin-top: calc(var(--spacing) * 16);
     }
     .sm\:block {
       display: block;
@@ -2203,8 +2241,14 @@
     .sm\:px-12 {
       padding-inline: calc(var(--spacing) * 12);
     }
+    .sm\:pt-10 {
+      padding-top: calc(var(--spacing) * 10);
+    }
     .sm\:pr-0 {
       padding-right: 0px;
+    }
+    .sm\:pb-24 {
+      padding-bottom: calc(var(--spacing) * 24);
     }
     .sm\:text-\[1\.7rem\] {
       font-size: 1.7rem;
@@ -2288,6 +2332,9 @@
     .lg\:order-none {
       order: 0;
     }
+    .lg\:col-span-1 {
+      grid-column: span 1 / span 1;
+    }
     .lg\:col-span-2 {
       grid-column: span 2 / span 2;
     }
@@ -2366,11 +2413,17 @@
     .lg\:items-end {
       align-items: flex-end;
     }
+    .lg\:items-start {
+      align-items: flex-start;
+    }
     .lg\:justify-end {
       justify-content: flex-end;
     }
     .lg\:gap-5 {
       gap: calc(var(--spacing) * 5);
+    }
+    .lg\:gap-6 {
+      gap: calc(var(--spacing) * 6);
     }
     .lg\:gap-8 {
       gap: calc(var(--spacing) * 8);
@@ -2392,6 +2445,9 @@
     }
     .lg\:p-8 {
       padding: calc(var(--spacing) * 8);
+    }
+    .lg\:px-4 {
+      padding-inline: calc(var(--spacing) * 4);
     }
     .lg\:px-16 {
       padding-inline: calc(var(--spacing) * 16);
@@ -2428,8 +2484,35 @@
     }
   }
   @media (width >= 80rem) {
+    .xl\:order-none {
+      order: 0;
+    }
     .xl\:block {
       display: block;
+    }
+    .xl\:hidden {
+      display: none;
+    }
+    .xl\:max-w-none {
+      max-width: none;
+    }
+    .xl\:grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .xl\:grid-cols-\[1fr_minmax\(0\,28rem\)_1fr\] {
+      grid-template-columns: 1fr minmax(0,28rem) 1fr;
+    }
+    .xl\:gap-5 {
+      gap: calc(var(--spacing) * 5);
+    }
+    .xl\:gap-10 {
+      gap: calc(var(--spacing) * 10);
+    }
+    .xl\:gap-12 {
+      gap: calc(var(--spacing) * 12);
+    }
+    .xl\:justify-self-end {
+      justify-self: flex-end;
     }
   }
   @container (width >= 32rem) {
@@ -3072,6 +3155,13 @@
     transform-origin: 50% 55%;
     pointer-events: none;
     clip-path: polygon(0% 0%, 100% 0%, 99.0% 3.8%, 98.0% 7.7%, 98.9% 11.5%, 99.6% 15.4%, 98.6% 19.2%, 99.8% 23.1%, 99.8% 26.9%, 98.5% 30.8%, 95.8% 34.6%, 98.6% 38.5%, 99.7% 42.3%, 98.8% 46.2%, 99.6% 50.0%, 99.9% 53.8%, 99.0% 57.7%, 98.9% 61.5%, 98.9% 65.4%, 99.0% 69.2%, 95.8% 73.1%, 98.2% 76.9%, 99.3% 80.8%, 99.4% 84.6%, 98.3% 88.5%, 98.1% 92.3%, 97.9% 96.2%, 100.0% 100.0%, 97.7% 97.6%, 95.5% 97.5%, 93.2% 99.8%, 90.9% 98.0%, 88.6% 99.8%, 86.4% 97.5%, 84.1% 99.7%, 81.8% 99.7%, 79.5% 97.9%, 77.3% 98.5%, 75.0% 99.5%, 72.7% 99.7%, 70.5% 99.7%, 68.2% 99.4%, 65.9% 97.5%, 63.6% 96.8%, 61.4% 99.5%, 59.1% 97.8%, 56.8% 97.3%, 54.5% 99.4%, 52.3% 98.0%, 50.0% 99.2%, 47.7% 99.8%, 45.5% 99.4%, 43.2% 99.0%, 40.9% 97.5%, 38.6% 96.1%, 36.4% 99.5%, 34.1% 97.6%, 31.8% 99.4%, 29.5% 95.7%, 27.3% 97.1%, 25.0% 97.7%, 22.7% 98.9%, 20.5% 97.5%, 18.2% 99.4%, 15.9% 99.3%, 13.6% 98.4%, 11.4% 99.5%, 9.1% 99.8%, 6.8% 96.1%, 4.5% 98.4%, 2.3% 97.6%, 0.0% 100.0%, 0% 100%);
+  }
+  .paper-backdrop-torn {
+    border: 0;
+    transform: rotate(-2.2deg) translate(10px, 10px);
+  }
+  .torn-shadow {
+    filter: drop-shadow(0 1px 0 var(--line)) drop-shadow(0 22px 26px rgba(12, 27, 51, 0.22));
   }
   .paper-backdrop-arch {
     border-radius: 999px 999px 1.4rem 1.4rem;

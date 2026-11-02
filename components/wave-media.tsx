@@ -29,8 +29,7 @@ function wavePolygon({
   const points: string[] = [];
   const ripple = (t: number, offset: number) =>
     Math.sin(t * Math.PI * 2 * waves + phase + offset) +
-    0.2 *
-      Math.sin(t * Math.PI * 2 * (waves + 3) + phase * 1.6 + offset * 1.9);
+    0.2 * Math.sin(t * Math.PI * 2 * (waves + 3) + phase * 1.6 + offset * 1.9);
   const push = (x: number, y: number) =>
     points.push(`${(x * 100).toFixed(2)}% ${(y * 100).toFixed(2)}%`);
 
@@ -143,10 +142,7 @@ export function WaveMedia({
 
         <div className="wave-shadow">
           <span aria-hidden="true" className="wave-mat" />
-          <div
-            className="wave-photo"
-            style={{ aspectRatio: ratio }}
-          >
+          <div className="wave-photo" style={{ aspectRatio: ratio }}>
             <Image
               src={src}
               alt={alt}
@@ -161,7 +157,7 @@ export function WaveMedia({
         </div>
 
         {badge ? (
-          <div className="absolute inset-x-0 -bottom-8 z-20 pr-10 sm:-left-8 sm:right-auto sm:w-[21rem] sm:pr-0">
+          <div className="relative z-20 mx-4 -mt-8 sm:absolute sm:inset-x-auto sm:-bottom-8 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[21rem]">
             <div className="wave-note-shadow">
               <div className="wave-note">{badge}</div>
             </div>
@@ -171,7 +167,7 @@ export function WaveMedia({
 
       <figcaption
         className={`max-w-sm text-[0.72rem] leading-relaxed text-ink-soft ${
-          badge ? "mt-16" : "mt-6"
+          badge ? "mt-5 sm:mt-16" : "mt-6"
         }`}
       >
         {caption}

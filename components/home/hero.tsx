@@ -15,7 +15,7 @@ export function HomeHero() {
     <>
       <section className="relative overflow-hidden bg-surface">
         <BlueprintSketches set="hero" />
-        <div className="shell relative pb-24 pt-10 lg:pb-32 lg:pt-14">
+        <div className="shell relative pb-16 pt-8 sm:pb-24 sm:pt-10 lg:pb-32 lg:pt-14">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <p className="eyebrow">{hero.eyebrow}</p>
             <p className="hidden text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-ink-soft sm:block">

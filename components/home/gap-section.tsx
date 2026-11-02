@@ -11,8 +11,9 @@ function GapStat({ stat }: { stat: (typeof homePage.gap.stats)[number] }) {
     <li>
       <div className="flex items-baseline gap-1">
         <span
-          className={`stat-value text-[clamp(2.2rem,3.6vw,3rem)] ${stat.emphasis ? "text-gold-ink" : "text-ink"
-            }`}
+          className={`stat-value text-[clamp(2.2rem,3.6vw,3rem)] ${
+            stat.emphasis ? "text-gold-ink" : "text-ink"
+          }`}
         >
           {stat.value}
           {"unit" in stat && stat.unit ? (
@@ -44,7 +45,7 @@ export function GapSection() {
         aria-labelledby="the-gap-heading"
         className="section-tight relative overflow-clip bg-gold-wash pb-10"
       >
-        <BlueprintSketches set="gap" onScroll />
+        <BlueprintSketches set="gap" onScroll from="xl" />
         <div className="shell pt-8">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
             <div className="lg:col-span-7">
@@ -61,14 +62,14 @@ export function GapSection() {
             </div>
           </div>
 
-          <div className="mt-10 grid items-center gap-10 lg:grid-cols-[1fr_minmax(0,28rem)_1fr] lg:gap-12">
-            <ul className="grid gap-8 lg:gap-10">
+          <div className="mt-10 grid items-center gap-10 xl:grid-cols-[1fr_minmax(0,28rem)_1fr] xl:gap-12">
+            <ul className="grid gap-8 sm:grid-cols-2 xl:grid-cols-1 xl:gap-10">
               {gap.stats.slice(0, 2).map((stat) => (
                 <GapStat key={stat.id} stat={stat} />
               ))}
             </ul>
 
-            <figure className="order-first lg:order-none">
+            <figure className="order-first mx-auto w-full max-w-md xl:order-none xl:max-w-none">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_0_0_6px_var(--surface),0_0_0_7px_var(--line),var(--shadow-float)]">
                 <Image
                   src="/images/sef/cohort-gap.jpg"
@@ -80,10 +81,9 @@ export function GapSection() {
                   className="object-cover"
                 />
               </div>
-
             </figure>
 
-            <ul className="grid gap-8 lg:gap-10">
+            <ul className="grid gap-8 sm:grid-cols-2 xl:grid-cols-1 xl:gap-10 xl:justify-self-end">
               {gap.stats.slice(2).map((stat) => (
                 <GapStat key={stat.id} stat={stat} />
               ))}
@@ -91,7 +91,6 @@ export function GapSection() {
           </div>
 
           <div className="mt-3 border-t border-line ">
-
             <SourcesList
               ids={gap.stats.map((stat) => stat.sourceId)}
               id="sources"

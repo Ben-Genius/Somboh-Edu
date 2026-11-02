@@ -102,11 +102,11 @@ export function SiteHeader() {
         data-scrolled={scrolled}
         className="site-header sticky top-0 z-50"
       >
-        <div className="flex min-h-[var(--nav-height)] items-center justify-between gap-4 px-6 py-3 sm:px-12 lg:px-16">
+        <div className="shell flex min-h-[var(--nav-height)] items-center justify-between gap-4 py-3">
           <Wordmark />
 
-          <div className="flex items-center gap-2 lg:gap-5">
-            <div className="hidden lg:block">
+          <div className="flex items-center gap-2 xl:gap-5">
+            <div className="hidden xl:block">
               <NavFrame>
                 <nav
                   aria-label={ui.primaryNav}
@@ -181,7 +181,7 @@ export function SiteHeader() {
             <Link
               href={navigation.cta.href}
               prefetch
-              className="btn btn-gold hidden md:inline-flex lg:hidden"
+              className="btn btn-gold hidden md:inline-flex xl:hidden"
             >
               {ui.nav.apply}
               <ArrowRight className="h-4 w-4" />
@@ -193,7 +193,7 @@ export function SiteHeader() {
               aria-label={ui.openMenu}
               aria-expanded={menuOpen}
               aria-controls="mobile-navigation"
-              className="icon-btn tap lg:hidden"
+              className="icon-btn tap xl:hidden"
             >
               <MenuIcon />
             </button>

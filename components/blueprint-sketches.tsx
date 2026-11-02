@@ -248,10 +248,13 @@ export function BlueprintSketches({
   className = "",
   /** Draw as soon as the page loads, or wait until the sketch scrolls in. */
   onScroll = false,
+  from = "lg",
 }: {
   set: keyof typeof sets;
   className?: string;
   onScroll?: boolean;
+  /** First breakpoint the layer shows at: positions assume that layout. */
+  from?: "lg" | "xl";
 }) {
   const host = useRef<HTMLDivElement>(null);
   const filterId = `sk-pencil-${useId().replace(/:/g, "")}`;
@@ -341,7 +344,7 @@ export function BlueprintSketches({
     <div
       ref={host}
       aria-hidden="true"
-      className={`hero-sketches pointer-events-none absolute inset-0 z-[5] hidden overflow-hidden lg:block ${className}`}
+      className={`hero-sketches pointer-events-none absolute inset-0 z-[5] hidden overflow-hidden ${from === "xl" ? "xl:block" : "lg:block"} ${className}`}
     >
       <svg width="0" height="0" focusable="false" className="absolute">
         <defs>

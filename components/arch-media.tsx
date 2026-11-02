@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { imageBlur } from "@/lib/blur";
+import { tornPolygon } from "@/lib/torn";
 import {
   PeelCurl,
   peelClasses,
@@ -8,6 +9,12 @@ import {
 } from "@/components/peel-corner";
 
 type BlurKey = keyof typeof imageBlur;
+
+/* Torn paper, in place of the arch: a white mat, the photograph inside it
+   with its own tear, and a sheet behind with a third. */
+const TORN_MAT = tornPolygon(17, 1.1, 58);
+const TORN_PHOTO = tornPolygon(41, 0.8, 64);
+const TORN_SHEET = tornPolygon(73, 1.6, 52);
 
 const stickyClass = "lg:sticky lg:top-[calc(var(--nav-height)+2rem)]";
 
@@ -27,7 +34,8 @@ export function ArchMedia({
   sizes = "(min-width: 1024px) 38vw, 100vw",
   badge,
   ratio = "4 / 5",
-  peel = "br",
+  // Kept so callers need no change; torn frames do not peel.
+  peel: _peel = "br",
   sticky = false,
   className = "",
 }: {
@@ -48,26 +56,46 @@ export function ArchMedia({
   return (
     <figure className={`relative ${sticky ? stickyClass : ""} ${className}`}>
       <div className="relative">
+        {/* Previous arch frame with a peeling corner:
         <span
           aria-hidden="true"
           className="paper-backdrop paper-backdrop-arch"
         />
-
         <div
           className={`arch-frame relative ${peelClasses(peel)}`}
           style={{ aspectRatio: ratio }}
         >
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            priority={priority}
-            placeholder="blur"
-            blurDataURL={imageBlur[blur]}
-            sizes={sizes}
-            className="peel-photo object-cover"
-          />
+          <Image ... className="peel-photo object-cover" />
           <PeelCurl corner={peel} />
+        </div>
+        */}
+        <span
+          aria-hidden="true"
+          className="paper-backdrop paper-backdrop-torn"
+          style={{ clipPath: TORN_SHEET }}
+        />
+
+        <div className="torn-shadow relative" style={{ aspectRatio: ratio }}>
+          <div
+            className="absolute inset-0 bg-surface"
+            style={{ clipPath: TORN_MAT }}
+          >
+            <div
+              className="absolute inset-[7px] overflow-hidden"
+              style={{ clipPath: TORN_PHOTO }}
+            >
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                priority={priority}
+                placeholder="blur"
+                blurDataURL={imageBlur[blur]}
+                sizes={sizes}
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
 
         {badge ? (
