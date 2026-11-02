@@ -2,7 +2,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ContactForm } from "@/components/forms/contact-form";
-import { ArrowRight, MailIcon, MapPinIcon, PhoneIcon } from "@/components/icons";
+import {
+  ArrowRight,
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 // import { PaperTear } from "@/components/paper-tear"; (its section is hidden below)
@@ -32,6 +37,7 @@ export default function ContactPage() {
       />
 
       <PageHero
+        sketch="magnifier"
         eyebrow={contactPage.hero.eyebrow}
         title={contactPage.hero.title}
         lede={contactPage.hero.lede}
@@ -173,7 +179,10 @@ function Channel({
           {icon}
         </span>
       ) : (
-        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true" />
+        <span
+          className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
+          aria-hidden="true"
+        />
       )}
       <div className="min-w-0">
         <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">

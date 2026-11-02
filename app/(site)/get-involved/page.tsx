@@ -36,12 +36,16 @@ export default function GetInvolvedPage() {
       />
 
       <PageHero
+        sketch="key"
         eyebrow={involvePage.hero.eyebrow}
         title={involvePage.hero.title}
         lede={involvePage.hero.lede}
       />
 
-      <section aria-label="Ways to get involved" className="section-tight bg-blend">
+      <section
+        aria-label="Ways to get involved"
+        className="section-tight bg-blend"
+      >
         <div className="shell">
           {/* "Three ways in" heading: hidden, the page hero already says it.
           <div className="grid gap-6 md:grid-cols-12">
@@ -89,11 +93,7 @@ export default function GetInvolvedPage() {
               {contactPage.form.intro}
             </p>
           </div>
-          <Link
-            href="/contact"
-            prefetch
-            className="btn btn-quiet shrink-0"
-          >
+          <Link href="/contact" prefetch className="btn btn-quiet shrink-0">
             Go to contact
           </Link>
         </div>

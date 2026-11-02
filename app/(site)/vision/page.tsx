@@ -33,6 +33,7 @@ export default function VisionPage() {
       />
 
       <PageHero
+        sketch="abroad"
         eyebrow={visionPage.hero.eyebrow}
         title={visionPage.hero.title}
         lede={visionPage.hero.lede}

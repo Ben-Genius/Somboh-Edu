@@ -65,6 +65,7 @@ export default function ProgramsPage() {
 
       <ShortlistProvider>
         <PageHero
+          sketch="book"
           eyebrow="Our programs"
           title="Five programs. One student at a time."
           lede="Support begins with where a student is and what they need next. These programs are built to work together, not in isolation."

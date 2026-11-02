@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { BlueprintSketches } from "./blueprint-sketches";
+import { BlueprintSketches, SketchAccent } from "./blueprint-sketches";
 import { ViewTransition } from "./view-transition";
 
 /**
@@ -11,11 +11,14 @@ export function PageHero({
   title,
   lede,
   aside,
+  sketch = "compass",
 }: {
   eyebrow: string;
   title: string;
   lede: string;
   aside?: ReactNode;
+  /** The small sketch shown beside the eyebrow on phones and tablets. */
+  sketch?: Parameters<typeof SketchAccent>[0]["drawing"];
 }) {
   return (
     <section className="bg-hero-blend relative overflow-hidden border-b border-line">
@@ -26,7 +29,16 @@ export function PageHero({
       />
 
       <div className="shell relative pb-14 pt-10 lg:pb-16 lg:pt-14">
-        <p className="eyebrow">{eyebrow}</p>
+        <div className="flex items-start justify-between gap-4">
+          <p className="eyebrow">{eyebrow}</p>
+          {/* Negative bottom margin: the sketch hangs into the space
+              above the headline instead of pushing it down. */}
+          <SketchAccent
+            drawing={sketch}
+            motion="pop"
+            className="-mb-12 -mt-3 w-14 shrink-0 rotate-6 sm:w-16"
+          />
+        </div>
 
         <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-8">
           <div className={aside ? "lg:col-span-8" : "lg:col-span-10"}>

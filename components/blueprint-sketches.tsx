@@ -409,3 +409,153 @@ export function BlueprintSketches({
     </div>
   );
 }
+
+/**
+ * One small sketch for screens below the desktop layer's breakpoint, where
+ * there are no margins to fill. It is placed by the caller next to a
+ * specific element (an eyebrow, a row of buttons) rather than by section
+ * percentages, so it stays in free space however the text wraps. It draws
+ * itself once, the first time it scrolls into view.
+ */
+export function SketchAccent({
+  drawing,
+  motion = "draw",
+  className = "",
+  /** Hidden from this breakpoint up, where the desktop layer takes over. */
+  until = "lg",
+}: {
+  drawing: keyof typeof drawings;
+  motion?: Motion;
+  className?: string;
+  until?: "lg" | "xl";
+}) {
+  const host = useRef<HTMLSpanElement>(null);
+  const filterId = `sk-accent-${useId().replace(/:/g, "")}`;
+  const art = drawings[drawing]!;
+
+  useEffect(() => {
+    const node = host.current;
+    if (!node) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    node.classList.add("sk-ready");
+    const paths = Array.from(node.querySelectorAll<SVGPathElement>(".sk-path"));
+    const label = node.querySelector(".sk-label");
+    const svg = node.querySelector("svg[data-sketch]");
+    const ctx = gsap.context(() => {}, node);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        observer.disconnect();
+        ctx.add(() => {
+          const tl = gsap.timeline();
+          if (motion === "pop" && svg) {
+            tl.fromTo(
+              svg,
+              { scale: 0.55, transformOrigin: "50% 50%" },
+              { scale: 1, duration: 0.9, ease: "back.out(1.8)" },
+              0,
+            );
+          }
+          tl.fromTo(
+            paths,
+            { strokeDashoffset: motion === "reverse" ? -1 : 1 },
+            {
+              strokeDashoffset: 0,
+              duration: motion === "scribble" ? 1.3 : 1,
+              stagger: 0.05,
+              ease: motion === "scribble" ? "steps(14)" : "power2.inOut",
+            },
+            0,
+          );
+          if (label) {
+            tl.fromTo(
+              label,
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5 },
+              ">-0.3",
+            );
+          }
+          if (motion === "float" && svg) {
+            tl.to(svg, {
+              y: -6,
+              duration: 2.4,
+              ease: "sine.inOut",
+              yoyo: true,
+              repeat: -1,
+            });
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+      ctx.revert();
+      node.classList.remove("sk-ready");
+    };
+  }, [motion]);
+
+  return (
+    <span
+      ref={host}
+      aria-hidden="true"
+      className={`pointer-events-none block opacity-70 ${until === "xl" ? "xl:hidden" : "lg:hidden"} ${className}`}
+    >
+      <svg width="0" height="0" focusable="false" className="absolute">
+        <defs>
+          <filter id={filterId} x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.035"
+              numOctaves="2"
+              seed="4"
+              result="noise"
+            />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" />
+          </filter>
+        </defs>
+      </svg>
+      <svg
+        data-sketch
+        viewBox="0 0 124 134"
+        focusable="false"
+        className="h-auto w-full text-ink-soft"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        style={{ filter: `url(#${filterId})` }}
+      >
+        {art.strokes.map((stroke, index) => (
+          <path
+            key={index}
+            d={stroke.d}
+            pathLength={1}
+            className="sk-path"
+            style={
+              stroke.accent
+                ? { stroke: "var(--gold)", strokeWidth: 1.4 }
+                : undefined
+            }
+          />
+        ))}
+        <text
+          x="62"
+          y="131"
+          textAnchor="middle"
+          className="sk-label"
+          fill="currentColor"
+          stroke="none"
+          fontSize="12"
+        >
+          {art.label}
+        </text>
+      </svg>
+    </span>
+  );
+}

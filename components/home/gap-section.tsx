@@ -1,5 +1,8 @@
 import Image from "next/image";
-import { BlueprintSketches } from "@/components/blueprint-sketches";
+import {
+  BlueprintSketches,
+  SketchAccent,
+} from "@/components/blueprint-sketches";
 import { PaperTear } from "@/components/paper-tear";
 import { SectionHeading } from "@/components/section-heading";
 import { SourceFootnote, SourcesList } from "@/components/sources";
@@ -48,7 +51,13 @@ export function GapSection() {
         <BlueprintSketches set="gap" onScroll from="xl" />
         <div className="shell pt-8">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
-            <div className="lg:col-span-7">
+            <div className="relative lg:col-span-7">
+              <SketchAccent
+                drawing="magnifier"
+                motion="float"
+                until="xl"
+                className="absolute -top-4 right-0 w-14 rotate-6"
+              />
               <SectionHeading
                 id="the-gap-heading"
                 eyebrow={gap.eyebrow}

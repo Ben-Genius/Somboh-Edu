@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { BlueprintSketches } from "@/components/blueprint-sketches";
+import {
+  BlueprintSketches,
+  SketchAccent,
+} from "@/components/blueprint-sketches";
 import { ArrowRight } from "@/components/icons";
 import { PaperTear } from "@/components/paper-tear";
 import { ViewTransition } from "@/components/view-transition";
@@ -34,7 +37,12 @@ export function HomeHero() {
 
               <p className="lede mt-8">{hero.subline}</p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="relative mt-8 flex flex-wrap gap-3">
+                <SketchAccent
+                  drawing="cap"
+                  motion="pop"
+                  className="absolute bottom-0 right-0 w-16 -rotate-6 sm:w-20"
+                />
                 <Link
                   href={hero.primary.href}
                   prefetch

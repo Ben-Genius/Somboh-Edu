@@ -38,6 +38,7 @@ export default function MissionPage() {
       />
 
       <PageHero
+        sketch="idea"
         eyebrow={missionPage.hero.eyebrow}
         title={missionPage.hero.title}
         lede={missionPage.hero.lede}
