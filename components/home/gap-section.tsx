@@ -42,7 +42,7 @@ export function GapSection() {
       <section
         id="the-gap"
         aria-labelledby="the-gap-heading"
-        className="section-tight relative overflow-clip bg-paper pb-10"
+        className="section-tight relative overflow-clip bg-gold-wash pb-10"
       >
         <BlueprintSketches set="gap" onScroll />
         <div className="shell pt-8">
@@ -104,7 +104,7 @@ export function GapSection() {
         </div>
       </section>
 
-      <PaperTear from="var(--paper)" to="var(--surface)" />
+      <PaperTear from="var(--gold-wash)" to="var(--surface)" />
     </>
   );
 }

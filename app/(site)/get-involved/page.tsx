@@ -41,7 +41,7 @@ export default function GetInvolvedPage() {
         lede={involvePage.hero.lede}
       />
 
-      <section aria-label="Ways to get involved" className="section-tight bg-surface">
+      <section aria-label="Ways to get involved" className="section-tight bg-blend">
         <div className="shell">
           {/* "Three ways in" heading: hidden, the page hero already says it.
           <div className="grid gap-6 md:grid-cols-12">
@@ -72,7 +72,7 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      <PaperTear from="var(--surface)" to="var(--forest)" />
+      <PaperTear from="var(--gold-wash)" to="var(--forest)" />
 
       <section className="section-tight on-forest relative overflow-hidden">
         <div

@@ -32,7 +32,7 @@ export default function HomePage() {
       <ProgramsSection />
 
       <FounderNote compact />
-      <PaperTear from="var(--paper)" to="var(--forest)" />
+      <PaperTear from="var(--blue-wash)" to="var(--forest)" />
       <CtaPaths />
     </>
   );

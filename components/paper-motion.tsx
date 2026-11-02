@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BrandLoader } from "./brand-loader";
 import { PaperTear } from "./paper-tear";
 
 let registered = false;
@@ -235,8 +236,17 @@ export function PaperMotion() {
     <div
       ref={cover}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 top-0 z-[111] hidden h-[100svh] bg-paper"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[111] hidden h-[100svh]"
+      // Same paper as the lifting sheet below, so the handover is invisible.
+      style={{
+        background:
+          "linear-gradient(180deg, var(--paper) 0%, var(--paper) 62%, var(--sheet-a) 100%)",
+      }}
     >
+      {/* Instead of a blank sheet while the next page loads. */}
+      <div className="grid h-full place-items-center">
+        <BrandLoader />
+      </div>
       <PaperTear
         flip
         className="absolute inset-x-0 bottom-full"
@@ -253,6 +263,11 @@ export function PaperMotion() {
         <PaperTear from="var(--sheet-b)" to="transparent" />
       </div>
       <div className="route-veil-sheet">
+        {/* The loader stays where the covering sheet showed it, then rides
+            up with the paper as the new page is revealed. */}
+        <div className="grid h-full place-items-center">
+          <BrandLoader still />
+        </div>
         <PaperTear
           className="absolute inset-x-0 top-full"
           from="var(--paper)"

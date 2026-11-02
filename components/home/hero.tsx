@@ -113,7 +113,7 @@ export function HomeHero() {
           </div>
         </div>
       </section>
-      <PaperTear from="var(--surface)" to="var(--paper)" />
+      <PaperTear from="var(--surface)" to="var(--gold-wash)" />
     </>
   );
 }

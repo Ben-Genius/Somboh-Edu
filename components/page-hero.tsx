@@ -18,7 +18,7 @@ export function PageHero({
   aside?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-surface">
+    <section className="bg-hero-blend relative overflow-hidden border-b border-line">
       <BlueprintSketches set="page" />
       <div
         aria-hidden="true"

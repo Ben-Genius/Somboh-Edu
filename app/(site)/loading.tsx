@@ -1,20 +1,10 @@
-import {
-  HeroSkeleton,
-  PageLoading,
-  RowsSkeleton,
-  StatStripSkeleton,
-} from "@/components/skeletons";
+import { BrandLoader } from "@/components/brand-loader";
 
-export default function HomeLoading() {
+/** Route loading state: the brand loader instead of a blank page. */
+export default function Loading() {
   return (
-    <PageLoading label="Loading the home page">
-      <HeroSkeleton lines={2} />
-      <div className="mt-16">
-        <StatStripSkeleton />
-      </div>
-      <div className="mt-16">
-        <RowsSkeleton count={5} />
-      </div>
-    </PageLoading>
+    <div className="bg-hero-blend grid min-h-[70svh] place-items-center">
+      <BrandLoader />
+    </div>
   );
 }

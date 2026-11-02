@@ -71,7 +71,7 @@ export default function VisionPage() {
 
       <section
         aria-labelledby="vision-distance-heading"
-        className="section-tight bg-paper"
+        className="section-tight bg-gold-wash"
       >
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-12">
@@ -136,7 +136,7 @@ export default function VisionPage() {
       <section
         id="what-transformation-looks-like"
         aria-labelledby="vision-pillars-heading"
-        className="section-tight bg-surface"
+        className="section-tight bg-blue-wash"
       >
         <div className="shell">
           <SectionHeading
@@ -165,7 +165,7 @@ export default function VisionPage() {
 
       <section
         aria-labelledby="vision-detail-heading"
-        className="section-tight bg-paper"
+        className="section-tight bg-surface"
       >
         <div className="shell">
           <div className="border-b border-line pb-8">
@@ -224,7 +224,7 @@ export default function VisionPage() {
         </div>
       </section>
 
-      <PaperTear from="var(--paper)" to="var(--forest)" />
+      <PaperTear from="var(--surface)" to="var(--forest)" />
 
       <section
         aria-labelledby="vision-closing-heading"

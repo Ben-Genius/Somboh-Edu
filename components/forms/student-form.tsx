@@ -139,6 +139,7 @@ export function StudentForm() {
           onChange={(event) => onEmailChange(event.target.value)}
           required
           error={errors.email ?? otpState.fieldErrors?.email}
+          className="sm:col-span-2"
         />
         {/* Phone: hidden to keep the form short (optional in lib/schemas.ts).
         <TextField

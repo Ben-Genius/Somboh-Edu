@@ -15,8 +15,8 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#FAF7F0",
-          color: "#17201B",
+          background: "#FFFFFF",
+          color: "#0C1B33",
           padding: "64px 72px",
           position: "relative",
         }}
@@ -44,7 +44,7 @@ export default function OpenGraphImage() {
                 fontSize: 14,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "#4B554E",
+                color: "#4A5872",
               }}
             >
               Somboh Educational Foundation
@@ -58,14 +58,14 @@ export default function OpenGraphImage() {
               fontSize: 15,
               letterSpacing: "0.16em",
               textTransform: "uppercase",
-              color: "#4B554E",
+              color: "#4A5872",
             }}
           >
             <div
               style={{
                 width: 36,
                 height: 2,
-                background: "#C8962E",
+                background: "#F8C000",
                 display: "flex",
               }}
             />
@@ -92,7 +92,7 @@ export default function OpenGraphImage() {
               marginTop: 26,
               fontSize: 26,
               lineHeight: 1.4,
-              color: "#4B554E",
+              color: "#4A5872",
               maxWidth: 820,
             }}
           >
@@ -106,14 +106,14 @@ export default function OpenGraphImage() {
             display: "flex",
             alignItems: "center",
             gap: 14,
-            borderTop: "1px solid rgba(23,32,27,0.18)",
+            borderTop: "1px solid rgba(12,27,51,0.18)",
             paddingTop: 22,
             fontSize: 16,
             letterSpacing: "0.06em",
-            color: "#4B554E",
+            color: "#4A5872",
           }}
         >
-          <div style={{ width: 12, height: 12, background: "#C8962E" }} />
+          <div style={{ width: 12, height: 12, background: "#F8C000" }} />
           sef-ghana.example
         </div>
 
@@ -124,7 +124,7 @@ export default function OpenGraphImage() {
             top: 0,
             bottom: 0,
             width: 18,
-            background: "#0F3D2E",
+            background: "#0B4DA8",
             display: "flex",
           }}
         />

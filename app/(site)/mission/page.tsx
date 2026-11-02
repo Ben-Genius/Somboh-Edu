@@ -96,7 +96,7 @@ export default function MissionPage() {
 
       <section
         aria-labelledby="mission-gap-heading"
-        className="section-tight bg-paper"
+        className="section-tight bg-gold-wash"
       >
         <div className="shell">
           <SectionHeading
@@ -196,7 +196,7 @@ export default function MissionPage() {
       <section
         id="who-we-serve"
         aria-labelledby="mission-serve-heading"
-        className="section-tight relative overflow-clip bg-clay"
+        className="section-tight bg-blend relative overflow-clip"
       >
         <div
           aria-hidden="true"
@@ -248,7 +248,7 @@ export default function MissionPage() {
       <section
         id="commitment"
         aria-labelledby="mission-commitment-heading"
-        className="section-tight bg-surface"
+        className="section-tight bg-blue-wash"
       >
         <div className="shell">
           <SectionHeading
@@ -263,7 +263,7 @@ export default function MissionPage() {
         </div>
       </section>
 
-      <PaperTear from="var(--surface)" to="var(--paper)" />
+      <PaperTear from="var(--blue-wash)" to="var(--gold-wash)" />
 
       <FounderNote />
 

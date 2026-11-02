@@ -83,18 +83,19 @@ export default function ProgramsPage() {
 
         <ProgramsNav />
 
-        <div className="shell space-y-5 py-10 lg:py-14">
-          {programs.map((program) => (
-            <section
-              key={program.slug}
-              id={program.slug}
-              aria-labelledby={`${program.slug}-heading`}
-              className="card scroll-mt-40 p-5 sm:p-7 lg:p-8"
-            >
-              <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
-                <div className="lg:sticky lg:top-[calc(var(--nav-height)+6.5rem)] lg:col-span-4 lg:self-start">
-                  <ProgramPhoto slug={program.slug} />
-                  {/* Number badge and label stacked: replaced by the row below.
+        <div className="bg-blue-wash">
+          <div className="shell space-y-5 py-10 lg:py-14">
+            {programs.map((program) => (
+              <section
+                key={program.slug}
+                id={program.slug}
+                aria-labelledby={`${program.slug}-heading`}
+                className="card scroll-mt-40 p-5 sm:p-7 lg:p-8"
+              >
+                <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+                  <div className="lg:sticky lg:top-[calc(var(--nav-height)+6.5rem)] lg:col-span-4 lg:self-start">
+                    <ProgramPhoto slug={program.slug} />
+                    {/* Number badge and label stacked: replaced by the row below.
                   <span className="tnum mt-6 grid h-12 w-12 place-items-center rounded-full border border-gold/45 bg-gold/10 font-display text-[1rem] text-gold-ink">
                     {program.number}
                   </span>
@@ -108,91 +109,92 @@ export default function ProgramsPage() {
                     />
                   </div>
                   */}
-                  <div className="mt-5 flex items-center justify-between gap-3">
-                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
-                      Program {program.number}
-                    </p>
-                    {/* <ShortlistButton
+                    <div className="mt-5 flex items-center justify-between gap-3">
+                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                        Program {program.number}
+                      </p>
+                      {/* <ShortlistButton
                       slug={program.slug}
                       title={program.title}
                     /> */}
+                    </div>
                   </div>
-                </div>
 
-                <div className="lg:col-span-8">
-                  <ViewTransition
-                    name={`program-${program.slug}`}
-                    share="morph"
-                    default="none"
-                  >
-                    <h2
-                      id={`${program.slug}-heading`}
-                      className="display-2 max-w-[20ch] text-ink"
+                  <div className="lg:col-span-8">
+                    <ViewTransition
+                      name={`program-${program.slug}`}
+                      share="morph"
+                      default="none"
                     >
-                      {program.title}
-                    </h2>
-                  </ViewTransition>
+                      <h2
+                        id={`${program.slug}-heading`}
+                        className="display-2 max-w-[20ch] text-ink"
+                      >
+                        {program.title}
+                      </h2>
+                    </ViewTransition>
 
-                  <p className="mt-5 ">{program.summary}</p>
+                    <p className="mt-5 ">{program.summary}</p>
 
-                  <div className="mt-8 flex flex-col gap-2 rounded-[1.25rem] border  bg-white px-5 py-4 sm:flex-row sm:items-baseline sm:gap-4">
-                    <p className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.6em] text-gold-ink">
-                      {homePage.programs.studentsGetLabel}
-                    </p>
-                    <p className="text-[0.9375rem] leading-relaxed text-ink">
-                      {program.studentsGet}
-                    </p>
-                  </div>
-
-                  <ReadMore label="Read more about this program">
-                    <div className="prose-editorial mt-7">
-                      {program.detail.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
+                    <div className="mt-8 flex flex-col gap-2 rounded-[1.25rem] border  bg-white px-5 py-4 sm:flex-row sm:items-baseline sm:gap-4">
+                      <p className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.6em] text-gold-ink">
+                        {homePage.programs.studentsGetLabel}
+                      </p>
+                      <p className="text-[0.9375rem] leading-relaxed text-ink">
+                        {program.studentsGet}
+                      </p>
                     </div>
 
-                    <ul className="mt-7 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-                      {program.bullets.map((bullet) => (
-                        <li
-                          key={bullet}
-                          className="flex items-start gap-2.5 text-[0.875rem] leading-relaxed text-ink-soft"
-                        >
-                          <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold-ink" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </ReadMore>
+                    <ReadMore label="Read more about this program">
+                      <div className="prose-editorial mt-7">
+                        {program.detail.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
 
-                  <div className=" flex flex-wrap items-center gap-4 border-t border-line pt-3">
-                    <Link
-                      href="/get-involved#students"
-                      prefetch
-                      className="btn btn-forest"
-                    >
-                      Apply for support
-                      <span className="btn-arrow" aria-hidden="true">
+                      <ul className="mt-7 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                        {program.bullets.map((bullet) => (
+                          <li
+                            key={bullet}
+                            className="flex items-start gap-2.5 text-[0.875rem] leading-relaxed text-ink-soft"
+                          >
+                            <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold-ink" />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </ReadMore>
+
+                    <div className=" flex flex-wrap items-center gap-4 border-t border-line pt-3">
+                      <Link
+                        href="/get-involved#students"
+                        prefetch
+                        className="btn btn-forest"
+                      >
+                        Apply for support
+                        <span className="btn-arrow" aria-hidden="true">
+                          <ArrowRight className="h-4 w-4" />
+                        </span>
+                      </Link>
+                      <Link
+                        href="/get-involved#partners"
+                        prefetch
+                        className="link-quiet text-sm"
+                      >
+                        Partner with SEF
                         <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </Link>
-                    <Link
-                      href="/get-involved#partners"
-                      prefetch
-                      className="link-quiet text-sm"
-                    >
-                      Partner with SEF
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
-          ))}
+              </section>
+            ))}
+          </div>
         </div>
 
-        <PaperTear from="var(--paper)" to="var(--clay)" />
+        <PaperTear from="var(--blue-wash)" to="var(--gold-wash)" />
 
-        <section className="section bg-clay">
+        <section className="section bg-gold-wash">
           <div className="shell grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <p className="eyebrow">Next step</p>

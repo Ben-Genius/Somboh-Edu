@@ -176,7 +176,7 @@ export function CommandMenu({
         open={open && !isMobile}
         onOpenChange={onOpenChange}
         label={ui.command.dialogLabel}
-        overlayClassName="fixed inset-0 z-[70] bg-[#06140f]/45"
+        overlayClassName="fixed inset-0 z-[70] bg-[#06101f]/45"
         contentClassName="fixed left-1/2 top-[10dvh] z-[80] w-[min(92vw,42rem)] -translate-x-1/2 overflow-hidden rounded-2xl border border-line bg-paper shadow-[var(--shadow-float)] outline-none"
       >
         <SearchField query={query} setQuery={setQuery} />
@@ -193,7 +193,7 @@ export function CommandMenu({
           setBackgroundColorOnScale={false}
         >
           <Drawer.Portal>
-            <Drawer.Overlay className="fixed inset-0 z-[70] bg-[#06140f]/45" />
+            <Drawer.Overlay className="fixed inset-0 z-[70] bg-[#06101f]/45" />
             <Drawer.Content
               className="fixed inset-x-0 bottom-0 z-[90] flex max-h-[90dvh] flex-col rounded-t-[1.75rem] border-t border-line bg-paper outline-none"
               aria-describedby="command-description"

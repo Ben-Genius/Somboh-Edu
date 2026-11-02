@@ -6,21 +6,31 @@
  * Pages and wordmark use `--brand-blue` (white in dark mode, as on the dark
  * T-shirts); the diamond and the middle pages use `--brand-gold`.
  */
-export function SombohMark({ className = "" }: { className?: string }) {
+export function SombohMark({
+  className = "",
+  animated = false,
+}: {
+  className?: string;
+  /** Pages fan open, the diamond settles and the spark twinkles (loader). */
+  animated?: boolean;
+}) {
   const left = (
     <>
       {/* outer page */}
       <path
+        className="lm-page lm-page-1"
         d="M60 95 C46 85 28 80 4 82 L6 73 C30 71 48 78 60 89 Z"
         fill="var(--brand-blue)"
       />
       {/* middle page */}
       <path
+        className="lm-page lm-page-2"
         d="M60 86 C51 75 37 68 17 66 L21 57 C38 59 52 67 60 79 Z"
         fill="var(--brand-gold)"
       />
       {/* inner page */}
       <path
+        className="lm-page lm-page-3"
         d="M60 77 C56 66 48 56 37 51 L43 45 C52 51 58 61 60 71 Z"
         fill="var(--brand-blue)"
       />
@@ -32,15 +42,16 @@ export function SombohMark({ className = "" }: { className?: string }) {
       viewBox="0 0 120 100"
       aria-hidden="true"
       focusable="false"
-      className={className}
+      className={`${animated ? "logo-animated" : ""} ${className}`}
     >
       {/* spark */}
       <path
+        className="lm-spark"
         d="M27 2 Q28.2 8.8 35 10 Q28.2 11.2 27 18 Q25.8 11.2 19 10 Q25.8 8.8 27 2 Z"
         fill="var(--brand-gold)"
       />
       {/* diamond: three crown facets over three pavilion facets */}
-      <g fill="var(--brand-gold)">
+      <g className="lm-diamond" fill="var(--brand-gold)">
         <path d="M40 18 H52.5 L48.5 30 H30 Z" />
         <path d="M54.5 18 H65.5 L69.5 30 H50.5 Z" />
         <path d="M67.5 18 H80 L90 30 H71.5 Z" />

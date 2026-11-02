@@ -1,9 +1,5 @@
 {
   "/icon.svg/route": "app/icon.svg/route.js",
-  "/(site)/vision/page": "app/(site)/vision/page.js",
   "/(site)/page": "app/(site)/page.js",
-  "/(site)/contact/page": "app/(site)/contact/page.js",
-  "/(site)/get-involved/page": "app/(site)/get-involved/page.js",
-  "/(site)/mission/page": "app/(site)/mission/page.js",
-  "/(site)/programs/page": "app/(site)/programs/page.js"
+  "/(site)/mission/page": "app/(site)/mission/page.js"
 }

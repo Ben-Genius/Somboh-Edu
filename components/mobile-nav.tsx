@@ -45,7 +45,7 @@ export function MobileNav({
       setBackgroundColorOnScale={false}
     >
       <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 z-[70] bg-[#06140f]/45" />
+        <Drawer.Overlay className="fixed inset-0 z-[70] bg-[#06101f]/45" />
         <Drawer.Content
           id="mobile-navigation"
           className="fixed inset-x-0 bottom-0 z-[80] flex max-h-[90dvh] flex-col rounded-t-[1.75rem] border-t border-line bg-paper outline-none"

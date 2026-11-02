@@ -15,7 +15,7 @@ export function FounderNote({ compact = false }: { compact?: boolean }) {
     return (
       <section
         aria-labelledby="founder-heading"
-        className="section-tight bg-paper"
+        className="section-tight bg-blue-wash"
       >
         <div className="shell grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="lg:col-span-4">
@@ -58,7 +58,7 @@ export function FounderNote({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <section id="founder" className="section-tight bg-paper">
+    <section id="founder" className="section-tight bg-gold-wash">
       <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-4">
           <ArchMedia

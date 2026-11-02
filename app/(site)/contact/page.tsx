@@ -39,7 +39,7 @@ export default function ContactPage() {
 
       <section
         aria-labelledby="contact-details-heading"
-        className="section bg-surface"
+        className="section bg-blend"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
