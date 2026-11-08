@@ -7,7 +7,8 @@ import { PartnerForm } from "@/components/forms/partner-form";
 import { StudentForm } from "@/components/forms/student-form";
 import { InvolveTabs } from "@/components/involve-tabs";
 import { JsonLd } from "@/components/json-ld";
-import { PageHero } from "@/components/page-hero";
+// import { PageHero } from "@/components/page-hero"; (replaced by InvolveHero)
+import { InvolveHero } from "@/components/heroes/involve-hero";
 import { PaperTear } from "@/components/paper-tear";
 import { contactPage } from "@/content/contact";
 import { involvePage } from "@/content/involve";
@@ -35,12 +36,15 @@ export default function GetInvolvedPage() {
         ])}
       />
 
+      {/* Previous shared hero, replaced by a page-specific one:
       <PageHero
         sketch="key"
         eyebrow={involvePage.hero.eyebrow}
         title={involvePage.hero.title}
         lede={involvePage.hero.lede}
       />
+      */}
+      <InvolveHero />
 
       <section
         aria-label="Ways to get involved"

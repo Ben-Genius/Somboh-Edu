@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { FaqList } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { ArrowRight } from "@/components/icons";
-import { PageHero } from "@/components/page-hero";
+// import { PageHero } from "@/components/page-hero"; (replaced by FaqHero)
+import { FaqHero } from "@/components/heroes/faq-hero";
 import {
   faqCategories,
   faqs,
@@ -32,12 +33,15 @@ export default function FaqPage() {
       />
       <JsonLd data={faqJsonLd(faqs)} />
 
+      {/* Previous shared hero, replaced by a page-specific one:
       <PageHero
         sketch="idea"
         eyebrow="Questions"
         title="Straight answers."
         lede="Who can apply, what support includes, what it costs, and what we can and cannot promise. If your question is not here, ask us directly."
       />
+      */}
+      <FaqHero />
 
       <section
         aria-labelledby="faq-heading"

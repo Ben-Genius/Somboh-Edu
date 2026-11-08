@@ -5,7 +5,8 @@ import { CommitmentCycle } from "@/components/commitment-cycle";
 import { FounderNote } from "@/components/founder-note";
 import { JsonLd } from "@/components/json-ld";
 import { ArrowRight } from "@/components/icons";
-import { PageHero } from "@/components/page-hero";
+// import { PageHero } from "@/components/page-hero"; (replaced by MissionHero)
+import { MissionHero } from "@/components/heroes/mission-hero";
 import { PaperTear } from "@/components/paper-tear";
 // import { ProgramIndex } from "@/components/program-index"; (list hidden below)
 import { ReadMore } from "@/components/ui/read-more";
@@ -37,12 +38,15 @@ export default function MissionPage() {
         ])}
       />
 
+      {/* Previous shared hero, replaced by a page-specific one:
       <PageHero
         sketch="idea"
         eyebrow={missionPage.hero.eyebrow}
         title={missionPage.hero.title}
         lede={missionPage.hero.lede}
       />
+      */}
+      <MissionHero />
 
       <section
         aria-labelledby="mission-statement-heading"

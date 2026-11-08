@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 // import { PhotoFrame } from "@/components/arch-media"; (wide photo hidden below)
 import { CampusImage } from "@/components/campus-image";
 import { JsonLd } from "@/components/json-ld";
-import { PageHero } from "@/components/page-hero";
+// import { PageHero } from "@/components/page-hero"; (replaced by VisionHero)
+import { VisionHero } from "@/components/heroes/vision-hero";
 import { PaperTear } from "@/components/paper-tear";
 import { SectionHeading } from "@/components/section-heading";
 import { SourceFootnote, SourcesList } from "@/components/sources";
@@ -32,12 +33,15 @@ export default function VisionPage() {
         ])}
       />
 
+      {/* Previous shared hero, replaced by a page-specific one:
       <PageHero
         sketch="abroad"
         eyebrow={visionPage.hero.eyebrow}
         title={visionPage.hero.title}
         lede={visionPage.hero.lede}
       />
+      */}
+      <VisionHero />
 
       <section
         aria-labelledby="vision-intro-heading"

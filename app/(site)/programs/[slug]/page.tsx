@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArchMedia } from "@/components/arch-media";
+// import { ArchMedia } from "@/components/arch-media"; (only in the commented-out hero)
 import { CheckIcon, ArrowRight } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
-import { PageHero } from "@/components/page-hero";
+// import { PageHero } from "@/components/page-hero"; (replaced by ProgramHero)
+import { ProgramHero } from "@/components/heroes/program-hero";
 import { PaperTear } from "@/components/paper-tear";
 import { ProgramsNav } from "@/components/programs-nav";
 import { programImages } from "@/content/program-images";
@@ -69,6 +70,7 @@ export default async function ProgramPage({
       />
       <JsonLd data={programJsonLd(program)} />
 
+      {/* Previous shared hero, replaced by a page-specific one:
       <PageHero
         sketch="book"
         eyebrow={`Program ${program.number} of ${String(programs.length).padStart(2, "0")}`}
@@ -85,6 +87,14 @@ export default async function ProgramPage({
             className="w-full max-w-[15rem]"
           />
         }
+      />
+      */}
+      <ProgramHero
+        number={program.number}
+        total={programs.length}
+        title={program.title}
+        summary={program.summary}
+        image={image}
       />
 
       <ProgramsNav />

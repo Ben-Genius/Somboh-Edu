@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArchMedia } from "@/components/arch-media";
+// import { ArchMedia } from "@/components/arch-media"; (only in the commented-out hero)
 import { ArrowRight, CheckIcon } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
-import { PageHero } from "@/components/page-hero";
+// import { PageHero } from "@/components/page-hero"; (replaced by ProgramsHero)
+import { ProgramsHero } from "@/components/heroes/programs-hero";
 import { PaperTear } from "@/components/paper-tear";
 import { ProgramsNav } from "@/components/programs-nav";
 import { homePage } from "@/content/home";
@@ -58,6 +59,7 @@ export default function ProgramsPage() {
         ])}
       />
 
+      {/* Previous shared hero, replaced by a page-specific one:
       <PageHero
         sketch="book"
         eyebrow="Our programs"
@@ -75,6 +77,8 @@ export default function ProgramsPage() {
           />
         }
       />
+      */}
+      <ProgramsHero />
 
       <ProgramsNav />
 
