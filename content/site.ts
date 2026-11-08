@@ -25,6 +25,11 @@ export const navigation = {
       href: "/vision",
       description: "The Ghana we are working toward",
     },
+    {
+      label: "FAQ",
+      href: "/faq",
+      description: "Answers about applying, costs, and next steps",
+    },
   ],
   cta: {
     label: "Apply for support",
@@ -34,6 +39,7 @@ export const navigation = {
     { label: "Mission", href: "/mission" },
     { label: "Vision", href: "/vision" },
     { label: "Programs", href: "/programs" },
+    { label: "FAQ", href: "/faq" },
     { label: "Get involved", href: "/get-involved" },
     { label: "Contact", href: "/contact" },
   ] satisfies Link[],

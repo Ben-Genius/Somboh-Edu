@@ -22,7 +22,7 @@ export function ProgramStrip() {
           {programs.map((program) => (
             <li key={program.slug}>
               <Link
-                href={`/programs#${program.slug}`}
+                href={`/programs/${program.slug}`}
                 prefetch
                 className="tap inline-flex min-h-[40px] items-center gap-2 rounded-full border border-line bg-paper/60 px-3.5 text-[0.8125rem] font-medium text-ink transition-colors hover:border-ink hover:bg-clay"
               >

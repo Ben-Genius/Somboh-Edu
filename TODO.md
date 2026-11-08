@@ -32,6 +32,18 @@ After filling these in, remove the placeholder note at `content/contact.ts` → 
 - [ ] Confirm the statistics and their source links in `content/sources.ts` are current, and that the footnote wording matches.
 - [ ] Decide whether to keep the temporary “not SEF program photography” wording once real photographs are in place.
 
+## Proof, FAQ and program pages
+
+The FAQ (`/faq`) and the five program pages (`/programs/[slug]`) are built. What remains is verification, not layout:
+
+- [ ] Confirm every answer in `content/faq.ts`. In particular: the four eligibility stages, what "cost to apply" means for each program, and whether SEF can offer any fee support.
+- [ ] Add a privacy answer to the FAQ once the privacy notice exists (see Legal and metadata).
+- [ ] Supply 3–5 named testimonials with written consent, then add them to the home and program pages.
+- [ ] Supply verified outcome figures (scholars supported, offers, scholarships, regions) before adding any proof strip or counter.
+- [ ] Supply partner school/university names and logos with written permission.
+- [ ] Supply board and team names, roles, one-line bios and photos with consent.
+- [ ] Re-check the program detail copy and the "What students get" line on each `/programs/[slug]` page.
+
 ## Forms and email
 
 - [ ] Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL` and `NEXT_PUBLIC_SITE_URL` in the hosting environment (see `.env.example`).

@@ -173,7 +173,7 @@ export default function MissionPage() {
             {programs.map((program) => (
               <li key={program.slug}>
                 <Link
-                  href={`/programs#${program.slug}`}
+                  href={`/programs/${program.slug}`}
                   prefetch
                   className="tap inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line bg-paper/60 px-4 text-[0.875rem] font-medium text-ink transition-colors hover:border-ink hover:bg-clay"
                 >

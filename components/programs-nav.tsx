@@ -1,67 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { programs } from "@/content/programs";
 
 /**
- * Sticky in-page navigation with a scroll-spy marker. It uses a small scroll
- * calculation rather than a full library, and stays out of the way of reduced
- * motion (the link jump itself is handled by CSS).
+ * Quick switch between the five program pages. The overview keeps anchors
+ * with the same slugs, so older links still land on the right card.
  */
 export function ProgramsNav() {
-  const [active, setActive] = useState(programs[0]!.slug);
-
-  useEffect(() => {
-    let frame = 0;
-
-    const update = () => {
-      frame = 0;
-      const marker = 180;
-      let current = programs[0]!.slug;
-
-      for (const program of programs) {
-        const element = document.getElementById(program.slug);
-        if (!element) continue;
-        if (element.getBoundingClientRect().top <= marker) {
-          current = program.slug;
-        }
-      }
-
-      setActive((previous) => (previous === current ? previous : current));
-    };
-
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, []);
+  const pathname = usePathname();
 
   return (
     <nav
-      aria-label="Programs on this page"
+      aria-label="Program pages"
       className="sticky top-[calc(var(--nav-height)+env(safe-area-inset-top))] z-30 border-y border-line bg-surface"
     >
       <div className="shell no-scrollbar overflow-x-auto">
         <ul className="flex min-w-max gap-1 py-1.5">
           {programs.map((program) => {
-            const current = active === program.slug;
+            const href = `/programs/${program.slug}`;
+            const current = pathname === href;
             return (
               <li key={program.slug}>
                 <Link
-                  href={`#${program.slug}`}
-                  aria-current={current ? "location" : undefined}
-                  onClick={() => setActive(program.slug)}
+                  href={href}
+                  prefetch
+                  aria-current={current ? "page" : undefined}
                   className={`tap inline-flex min-h-[44px] items-center gap-2 rounded-full px-3 text-sm font-medium transition-colors ${
                     current
                       ? "bg-clay text-ink"

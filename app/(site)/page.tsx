@@ -7,7 +7,6 @@ import { ProgramsSection } from "@/components/home/programs-section";
 import { PaperTear } from "@/components/paper-tear";
 import { homePage } from "@/content/home";
 import { pageMetadata } from "@/lib/metadata";
-import { ServeSection } from "@/components/home/serve-section";
 
 export const revalidate = 3600;
 

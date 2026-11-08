@@ -25,6 +25,8 @@ export type Program = {
   shortLabel: string;
   menuDescription: string;
   summary: string;
+  /** Standalone meta description for the program's own page. */
+  metaDescription: string;
   studentsGet: string;
   detail: string[];
   bullets: string[];

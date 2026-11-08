@@ -94,7 +94,7 @@ export function ProgramScroll() {
                 <Marker>{program.studentsGet}</Marker>
               </p>
               <Link
-                href={`/programs#${program.slug}`}
+                href={`/programs/${program.slug}`}
                 prefetch
                 className="link-quiet mt-7 self-start text-sm"
               >

@@ -1,6 +1,6 @@
 # SEF Ghana — website
 
-A production-ready marketing site for the **Somboh Educational Foundation (SEF Ghana)**: six pages, five programs, three involvement forms, a contact form, and a newsletter sign-up.
+A production-ready marketing site for the **Somboh Educational Foundation (SEF Ghana)**: twelve routes — seven pages and five program pages — three involvement forms, a contact form, and a newsletter sign-up.
 
 Built with Next.js 15 (App Router), React 19, TypeScript in strict mode, and Tailwind CSS v4. Pages are statically generated and revalidated hourly, so the site runs without a database.
 
@@ -74,7 +74,8 @@ All copy lives in typed objects under `content/`, not in JSX:
 | `content/home.ts` | Home |
 | `content/mission.ts` | Mission |
 | `content/vision.ts` | Vision |
-| `content/programs.ts` | The five programs |
+| `content/programs.ts` | The five programs and their detail pages |
+| `content/faq.ts` | The FAQ page and its structured data |
 | `content/involve.ts` | Get involved |
 | `content/contact.ts` | Contact |
 | `content/site.ts` | Navigation and footer |
@@ -133,7 +134,7 @@ Blur placeholders are generated in `lib/blur.ts`; add a key there when you add a
 - Static generation with `revalidate = 3600` on every page (ISR), no client-side data fetching.
 - Server Components by default; client code is limited to the header, palette, forms, tabs, shortlist and motion.
 - `next/image` with AVIF/WebP, explicit sizes, blur placeholders, and priority only on the home hero.
-- Per-page metadata with 150–158 character descriptions, canonical URLs, Open Graph and Twitter cards, a generated OG image, `sitemap.xml`, `robots.txt`, and Organization/Breadcrumb JSON-LD.
+- Per-page metadata with 150–158 character descriptions, canonical URLs, Open Graph and Twitter cards, a generated OG image, `sitemap.xml`, `robots.txt`, and Organization, Breadcrumb, FAQPage and Course JSON-LD.
 
 ## Deployment
 
@@ -149,7 +150,7 @@ Any Node host that supports `next start` works too. The in-memory idempotency an
 
 ```
 app/
-  (site)/            six pages, route-group layout, loading and error states
+  (site)/            seven pages plus five /programs/[slug] pages, layout, loading and error states
   layout.tsx         fonts, metadata, viewport, organization JSON-LD
   globals.css        tokens, paper material, components, dark mode
   icon.svg, opengraph-image.tsx, robots.ts, sitemap.ts

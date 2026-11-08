@@ -33,7 +33,7 @@ const programItems: NavDropdownItem[] = programs.map((program) => ({
   key: program.slug,
   title: program.title,
   description: program.menuDescription,
-  href: `/programs#${program.slug}`,
+  href: `/programs/${program.slug}`,
   number: program.number,
 }));
 

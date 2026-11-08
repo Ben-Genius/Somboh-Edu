@@ -1,3 +1,5 @@
+import type { FaqItem } from "@/content/faq";
+import type { Program } from "@/content/types";
 import { siteConfig, isPlaceholder } from "@/lib/site-config";
 
 export const organisationId = `${siteConfig.url}/#organisation`;
@@ -63,5 +65,44 @@ export function breadcrumbJsonLd(
       name: item.name,
       item: `${siteConfig.url}${item.path}`,
     })),
+  };
+}
+
+/**
+ * FAQ rich results. Only questions the foundation can substantiate belong in
+ * `content/faq.ts`; this helper publishes exactly what is there.
+ */
+export function faqJsonLd(items: FaqItem[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * One course entry per program page, tied to the organisation node in the
+ * root layout. A course describes the support, not a qualification.
+ */
+export function programJsonLd(program: Program): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: program.title,
+    description: program.summary,
+    url: `${siteConfig.url}/programs/${program.slug}`,
+    inLanguage: "en",
+    provider: {
+      "@type": "EducationalOrganization",
+      "@id": organisationId,
+      name: siteConfig.name,
+    },
   };
 }

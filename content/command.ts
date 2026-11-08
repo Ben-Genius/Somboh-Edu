@@ -45,6 +45,14 @@ export const commandEntries: CommandEntry[] = [
     keywords: ["apply", "partner", "donate", "support"],
   },
   {
+    id: "page-faq",
+    label: "FAQ",
+    description: "Eligibility, costs, and what happens next",
+    href: "/faq",
+    group: "Pages",
+    keywords: ["questions", "answers", "eligibility", "cost", "apply"],
+  },
+  {
     id: "page-contact",
     label: "Contact",
     description: "Send a message",
@@ -57,7 +65,7 @@ export const commandEntries: CommandEntry[] = [
     id: `program-${program.slug}`,
     label: program.title,
     description: program.summary,
-    href: `/programs#${program.slug}`,
+    href: `/programs/${program.slug}`,
     group: "Programs",
     keywords: [program.shortLabel, program.menuDescription],
   })),

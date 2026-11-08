@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { programs } from "@/content/programs";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/mission", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/vision", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/programs", priority: 0.9, changeFrequency: "monthly" as const },
+    ...programs.map((program) => ({
+      path: `/programs/${program.slug}`,
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    })),
+    { path: "/faq", priority: 0.7, changeFrequency: "monthly" as const },
     {
       path: "/get-involved",
       priority: 0.9,

@@ -13,6 +13,8 @@ export const programs: Program[] = [
     menuDescription: "SAT preparation, coaching, and study support",
     summary:
       "SAT preparation, academic coaching, and study support so students can show the full measure of their ability on a global stage.",
+    metaDescription:
+      "SAT preparation, academic coaching and study support for Ghanaian students aiming at universities in Ghana and abroad.",
     studentsGet: "A study plan, practice tests, and a coach who knows where they are.",
     detail: [
       "SAT preparation is the spine of this work: diagnostic practice, targeted review, and timed sections, so a student walks into test day having already met the format. Academic coaching and study support sit around it — help with schoolwork, a workable weekly plan, and someone who notices when a student is stuck.",
@@ -33,6 +35,8 @@ export const programs: Program[] = [
     menuDescription: "Personal statements, essays, activity lists, and resumes",
     summary:
       "One-on-one help with personal statements, supplemental essays, activity lists, and resumes that tell each student's story with depth and honesty.",
+    metaDescription:
+      "One-to-one mentorship for personal statements, supplemental essays, activity lists and resumes, from first draft to submission.",
     studentsGet: "An editor and an advocate, from first draft to final submission.",
     detail: [
       "Admissions is a writing and judgment process as much as an academic one. We work one to one through the personal statement, supplemental essays, activity list, and resume, asking the questions that help a student tell their own story with depth and honesty — never a story that sounds like someone else's.",
@@ -53,6 +57,8 @@ export const programs: Program[] = [
     menuDescription: "Need-based aid, documentation, and fee waivers",
     summary:
       "Demystifying need-based aid, preparing financial documentation, identifying universities that meet full demonstrated need for international students, and pursuing fee waivers.",
+    metaDescription:
+      "Plain-language help with need-based aid, financial documents, fee waivers and universities that meet full demonstrated need.",
     studentsGet: "A clear aid strategy and the paperwork to back it up.",
     detail: [
       "Cost should not be the reason a student does not apply. We explain how need-based aid actually works, prepare the financial documentation universities request, and help families find institutions that meet full demonstrated need for international students.",
@@ -73,6 +79,8 @@ export const programs: Program[] = [
     menuDescription: "Writing, speaking, research, digital literacy, interviews",
     summary:
       "Workshops in writing, public speaking, research, digital literacy, and interviewing, preparing students not only to be admitted but to thrive.",
+    metaDescription:
+      "Workshops in writing, public speaking, research, digital literacy and interviewing, so students thrive after admission.",
     studentsGet: "Practice, feedback, and the confidence to speak in any room.",
     detail: [
       "Admission is the beginning, not the end. Workshops in writing, public speaking, research, digital literacy, and interviewing prepare students to hold their own in a seminar room, a laboratory, and a first internship.",
@@ -93,6 +101,8 @@ export const programs: Program[] = [
     menuDescription: "Lead and serve at home, before leaving",
     summary:
       "Encouraging every student to lead and serve at home, long before they leave.",
+    metaDescription:
+      "A service or leadership project in each student's own community, with reflection and peer support that continues after admission.",
     studentsGet: "A project at home, and a habit of reaching back.",
     detail: [
       "Every student is encouraged to lead and serve at home, long before they leave. The habit of reaching back is part of the preparation, not an afterthought.",
