@@ -35,19 +35,19 @@ export function ProgramHero({
           />
           <span
             aria-hidden="true"
-            className="tnum pointer-events-none absolute -right-4 top-2 -z-10 font-display text-[clamp(10rem,22vw,19rem)] font-semibold leading-none tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.22)]"
+            className="tnum pointer-events-none absolute -right-4 top-16 -z-10 font-display text-[clamp(10rem,22vw,19rem)] font-semibold leading-none tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.22)]"
           >
             {number}
           </span>
 
           <div className="flex items-center justify-between gap-4">
-            <p className="eyebrow">
+            <p className="eyebrow !text-white/90">
               Program {number} of {String(total).padStart(2, "0")}
             </p>
             <Link
               href="/programs"
               prefetch
-              className="text-[0.75rem] font-semibold text-white/75 underline decoration-white/30 underline-offset-4 hover:text-white hover:decoration-white"
+              className="tap -my-2 inline-flex min-h-[44px] items-center text-[0.75rem] font-semibold text-white/90 underline decoration-white/40 underline-offset-4 hover:text-white hover:decoration-white"
             >
               All programs
             </Link>
@@ -84,7 +84,9 @@ export function ProgramHero({
               priority
               placeholder="blur"
               blurDataURL={imageBlur[image.blur]}
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              // Landscape photographs cropped into a tall box on desktop: the
+              // file must be wider than the box, or it is upscaled and soft.
+              sizes="100vw"
               className="object-cover"
             />
           </div>

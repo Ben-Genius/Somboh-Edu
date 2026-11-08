@@ -99,6 +99,31 @@ export const imageBlur = {
     "#D6D5D7",
     '<rect y="7" width="20" height="7" fill="#D9CFC3"/><rect y="14" width="20" height="6" fill="#CBBCA9"/>',
   ),
+  // Replacement stock photographs (Wikimedia Commons), sharper and larger.
+  programMentorshipEditathon: svgBlur(
+    "#8C92B8",
+    '<rect y="7" width="20" height="7" fill="#1B1F3B"/><rect y="14" width="20" height="6" fill="#412720"/>',
+  ),
+  programGraduates: svgBlur(
+    "#B1A1AA",
+    '<rect y="7" width="20" height="7" fill="#8D3843"/><rect y="14" width="20" height="6" fill="#442024"/>',
+  ),
+  programSkillsLecture: svgBlur(
+    "#938971",
+    '<rect y="7" width="20" height="7" fill="#8C856D"/><rect y="14" width="20" height="6" fill="#483D34"/>',
+  ),
+  programTreePlanting: svgBlur(
+    "#C5C1C5",
+    '<rect y="7" width="20" height="7" fill="#A5A4AD"/><rect y="14" width="20" height="6" fill="#695853"/>',
+  ),
+  visionGathering: svgBlur(
+    "#7D92B7",
+    '<rect y="7" width="20" height="7" fill="#585F56"/><rect y="14" width="20" height="6" fill="#387978"/>',
+  ),
+  visionPartners: svgBlur(
+    "#BEB29F",
+    '<rect y="7" width="20" height="7" fill="#B7A58A"/><rect y="14" width="20" height="6" fill="#494843"/>',
+  ),
   programMentorshipWorkshop: svgBlur(
     "#EDF0F5",
     '<rect y="7" width="20" height="7" fill="#969EAB"/><rect y="14" width="20" height="6" fill="#706D7B"/>',

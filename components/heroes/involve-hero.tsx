@@ -34,7 +34,7 @@ export function InvolveHero() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(8,54,122,0.94)_0%,rgba(11,77,168,0.82)_55%,rgba(11,77,168,0.55)_100%)]"
+          className="scrim-involve absolute inset-0 -z-10"
         />
 
         <div className="px-7 pb-8 pt-12 sm:px-12 sm:pt-16 lg:px-16 lg:pb-12 lg:pt-20">
@@ -42,7 +42,7 @@ export function InvolveHero() {
           <HeroTitle className="display-1 mt-7 max-w-[13ch] text-white">
             {hero.title}
           </HeroTitle>
-          <p className="mt-6 max-w-[38ch] text-[1.0625rem] leading-relaxed text-white/80 sm:text-[1.2rem]">
+          <p className="mt-6 max-w-[38ch] text-[1.0625rem] leading-relaxed text-white/90 sm:text-[1.2rem]">
             {hero.lede}
           </p>
 
@@ -54,12 +54,12 @@ export function InvolveHero() {
               <a
                 key={door.id}
                 href={`#${door.id}`}
-                className="group flex min-h-[7.5rem] flex-col justify-between rounded-[1.25rem] border border-white/25 bg-white/10 p-5 backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-ink focus-visible:bg-white focus-visible:text-ink"
+                className="group flex min-h-[7.5rem] flex-col justify-between rounded-[1.25rem] scrim-glass border border-white/30 p-5 backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-ink focus-visible:bg-white focus-visible:text-ink"
               >
                 <span className="font-display text-[1.25rem] font-semibold leading-tight tracking-[-0.02em]">
                   {door.label}
                 </span>
-                <span className="mt-4 flex items-center justify-between text-[0.8125rem] font-semibold opacity-80">
+                <span className="mt-4 flex items-center justify-between text-[0.8125rem] font-semibold opacity-90">
                   {door.line}
                   <span className="grid h-8 w-8 place-items-center rounded-full bg-gold text-[var(--on-gold)] transition-transform duration-300 group-hover:translate-x-0.5">
                     <ArrowRight className="h-4 w-4" />

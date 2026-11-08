@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment } from "react";
+import { ArrowRight } from "@/components/icons";
 import { SketchAccent } from "@/components/blueprint-sketches";
 import { missionPage } from "@/content/mission";
 import { imageBlur } from "@/lib/blur";
@@ -104,6 +106,14 @@ export function MissionHero() {
         </HeroTitle>
 
         <p className="lede mx-auto mt-9 max-w-[34rem]">{hero.lede}</p>
+
+        {/* The next step after the why: what SEF actually does. */}
+        <Link href="/programs" prefetch className="btn btn-forest mt-9">
+          See the five programs
+          <span className="btn-arrow" aria-hidden="true">
+            <ArrowRight className="h-4 w-4" />
+          </span>
+        </Link>
       </div>
     </section>
   );

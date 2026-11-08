@@ -24,14 +24,14 @@ export function FaqHero() {
             can and cannot promise. If your question is not here, ask us
             directly.
           </p>
-          <QuestionDiagram className="mt-10 hidden w-full max-w-[22rem] text-forest sm:block" />
+          <QuestionDiagram className="mt-10 hidden w-full max-w-[22rem] text-blue-ink sm:block" />
         </div>
 
         <nav
           aria-label="Contents"
           className="lg:col-span-5 lg:col-start-8 lg:self-end"
         >
-          <p className="flex items-baseline justify-between border-b-2 border-forest pb-3 text-[0.6875rem] font-semibold uppercase tracking-[0.185em] text-forest">
+          <p className="flex items-baseline justify-between border-b-2 border-blue-ink pb-3 text-[0.6875rem] font-semibold uppercase tracking-[0.185em] text-blue-ink">
             <span>Contents</span>
             <span>Questions</span>
           </p>
@@ -42,12 +42,12 @@ export function FaqHero() {
                   href={`#${category.id}`}
                   className="group flex items-baseline gap-4 border-b border-line py-5 transition-colors hover:bg-blue-wash/60"
                 >
-                  <span className="tnum w-7 font-display text-sm text-forest">
+                  <span className="tnum w-7 font-display text-sm text-blue-ink">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline gap-3">
-                      <span className="font-display text-[1.3rem] font-semibold leading-tight tracking-[-0.02em] text-ink group-hover:text-forest sm:text-[1.5rem]">
+                      <span className="font-display text-[1.3rem] font-semibold leading-tight tracking-[-0.02em] text-ink group-hover:text-blue-ink sm:text-[1.5rem]">
                         {category.label}
                       </span>
                       <span

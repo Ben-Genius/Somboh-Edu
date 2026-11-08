@@ -211,11 +211,17 @@ export default function VisionPage() {
                     </div>
 
                     {index === 0 ? (
-                      <CampusImage
+                      /* Was the Balme Library photograph:
                         src="/images/balme-library.jpg"
                         alt="The Balme Library at the University of Ghana, Accra."
                         caption="Placeholder photograph: Balme Library, University of Ghana, Accra. Photo by Cca Raheem, CC BY 4.0. Not an SEF program image."
                         blur="balme"
+                      */
+                      <CampusImage
+                        src="/images/vision/partners-abroad.jpg"
+                        alt="Two young professionals talk and laugh over coffee at a leadership conference, with other delegates around them."
+                        caption="Stock photograph: delegates at a Young African Leaders Initiative conference. Photo by USAID in Africa, public domain. Not an SEF program image."
+                        blur="visionPartners"
                         ratio="16 / 10"
                         sizes="(min-width: 768px) 55vw, 100vw"
                         className="mt-8"

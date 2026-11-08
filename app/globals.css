@@ -21,6 +21,7 @@
   --color-line: var(--line);
   --color-blue-wash: var(--blue-wash);
   --color-gold-wash: var(--gold-wash);
+  --color-blue-ink: var(--blue-ink);
   --color-danger: var(--danger);
   --color-success: var(--success);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -61,6 +62,14 @@
   --nav-height: 4.5rem;
   /* Logo colours, taken from the printed Somboh mark. */
   --brand-blue: #0b4da8;
+  /* Blue used as text: brand blue on light, lifted on dark to keep 4.5:1. */
+  --blue-ink: #0b4da8;
+  /* Navy scrims laid over photographs so white type holds 4.5:1. Not
+     redefined in dark mode: a photo is the same photo in either scheme. */
+  --scrim: #08285c;
+  --scrim-deep: #061838;
+  --scrim-blue: #08367a;
+  --scrim-bright: #0b4da8;
   --brand-gold: #f8c000;
   /* Section tints in the logo colours, so pages are not all white. */
   --blue-wash: #eaf1fb;
@@ -111,6 +120,7 @@
     --seam: rgba(0, 0, 0, 0.45);
     --tear-edge: rgba(0, 0, 0, 0.5);
     --brand-blue: #ffffff;
+    --blue-ink: #8fb6ff;
     --blue-wash: #0f1d36;
     --gold-wash: #1b180c;
     --blend: linear-gradient(135deg, #0f1d36 0%, #121a22 55%, #1d1a0d 100%);
@@ -1115,6 +1125,61 @@
   .on-forest .btn-quiet:hover {
     background: color-mix(in srgb, var(--on-forest) 12%, transparent);
     border-color: var(--on-forest);
+  }
+
+  /* Photo scrims for the page heroes, built from the --scrim tokens.
+     Vision: dark only behind the headline and the lede, so faces stay clear. */
+  .scrim-vision {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--scrim) 88%, transparent) 0%,
+      color-mix(in srgb, var(--scrim) 55%, transparent) 34%,
+      color-mix(in srgb, var(--scrim) 15%, transparent) 42%,
+      color-mix(in srgb, var(--scrim-deep) 85%, transparent) 54%,
+      color-mix(in srgb, var(--scrim-deep) 92%, transparent) 100%
+    );
+  }
+
+  @media (min-width: 64rem) {
+    .scrim-vision {
+      background:
+        linear-gradient(
+          100deg,
+          color-mix(in srgb, var(--scrim) 92%, transparent) 0%,
+          color-mix(in srgb, var(--scrim) 60%, transparent) 45%,
+          color-mix(in srgb, var(--scrim) 5%, transparent) 75%
+        ),
+        linear-gradient(
+          180deg,
+          transparent 55%,
+          color-mix(in srgb, var(--scrim-deep) 80%, transparent) 100%
+        );
+    }
+  }
+
+  /* Get involved: a flat wash on phones, where text runs the full width. */
+  .scrim-involve {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--scrim-blue) 92%, transparent) 0%,
+      color-mix(in srgb, var(--scrim-blue) 88%, transparent) 100%
+    );
+  }
+
+  @media (min-width: 40rem) {
+    .scrim-involve {
+      background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--scrim-blue) 94%, transparent) 0%,
+        color-mix(in srgb, var(--scrim-bright) 84%, transparent) 55%,
+        color-mix(in srgb, var(--scrim-bright) 60%, transparent) 100%
+      );
+    }
+  }
+
+  /* A glass card on a scrimmed photo. */
+  .scrim-glass {
+    background: color-mix(in srgb, var(--scrim) 55%, transparent);
   }
 
   .on-clay {

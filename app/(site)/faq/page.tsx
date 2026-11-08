@@ -54,10 +54,13 @@ export default function FaqPage() {
                 Find your question.
               </h2>
               <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-ink-soft">
-                Four short sections. Every answer is written from what SEF
+                Four short sections, listed in the contents above. Every answer is written from what SEF
                 actually publishes, not from what sounds reassuring.
               </p>
 
+              {/* Section chips removed: the FAQ hero's contents table already
+              lists these four sections with counts, so this was the same
+              list twice.
               <nav
                 aria-label="FAQ sections"
                 className="mt-7 flex flex-wrap gap-2 lg:flex-col lg:items-start"
@@ -72,6 +75,7 @@ export default function FaqPage() {
                   </a>
                 ))}
               </nav>
+              */}
 
               <div className="panel paper-stack squircle mt-8 bg-surface p-5 sm:p-6">
                 <p className="font-display text-[1.15rem] font-semibold leading-snug tracking-[-0.02em] text-ink">
