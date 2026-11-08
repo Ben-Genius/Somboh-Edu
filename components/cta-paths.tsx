@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { homePage } from "@/content/home";
+import type { AudiencePath } from "@/content/types";
 import { ArrowRight } from "./icons";
 
 export function CtaPaths() {
@@ -28,12 +29,15 @@ export function CtaPaths() {
         </div>
 
         <ol className="mt-12 border-t border-white/15">
-          {cta.paths.map((path, index) => (
-            <li key={path.href} className="border-b border-white/15">
+          {(cta.paths as readonly AudiencePath[]).map((path, index) => (
+            <li
+              key={path.href}
+              className="border-b border-white/15 lg:grid lg:grid-cols-12 lg:gap-6"
+            >
               <Link
                 href={path.href}
                 prefetch
-                className="group grid gap-4 py-8 transition-colors hover:bg-white/5 lg:grid-cols-12 lg:items-start lg:gap-6 lg:px-4"
+                className="group grid gap-4 py-8 transition-colors lg:col-span-12 lg:col-start-1 lg:row-start-1 hover:bg-white/5 lg:grid-cols-12 lg:items-start lg:gap-6 lg:px-4"
               >
                 <span className="tnum font-display text-sm text-[var(--on-forest)] opacity-60 lg:col-span-1">
                   {String(index + 1).padStart(2, "0")}
@@ -56,6 +60,22 @@ export function CtaPaths() {
                   </span>
                 </span>
               </Link>
+              {path.note ? (
+                // Sits at the foot of the body column on large screens (same
+                // grid row as the link, not inside it: links cannot nest).
+                <div className="-mt-3 pb-7 lg:relative lg:z-10 lg:col-span-5 lg:col-start-6 lg:row-start-1 lg:mt-0 lg:self-end lg:pb-8">
+                  <p className="text-[0.8125rem] leading-relaxed text-[var(--on-forest)]">
+                    <span className="opacity-90">{path.note.text}</span>{" "}
+                    <Link
+                      href={path.note.href}
+                      prefetch
+                      className="font-semibold underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                    >
+                      {path.note.linkLabel}
+                    </Link>
+                  </p>
+                </div>
+              ) : null}
             </li>
           ))}
         </ol>

@@ -19,26 +19,7 @@ export const visionPage = {
       "We imagine a Ghana where a gifted student in a rural district has the same chance at a world-class education as a student in the heart of Accra. Where a girl who loves physics is encouraged to pursue engineering. Where a family's income determines nothing about how far a child's mind can travel.",
     ],
   },
-  distance: {
-    label: "The distance to travel",
-    body: "Today, that Ghana does not yet exist. Ghana has set itself a goal of reaching a 40% gross tertiary enrollment rate by 2030. We want to help the nation not only meet that goal but surpass it, and we want the students who rise to be chosen by their potential, not their postcode.",
-    stats: [
-      {
-        id: "vision-transition",
-        value: "36",
-        unit: "%",
-        label: "of 2021 WASSCE candidates entered tertiary education the following year",
-        sourceId: "wasce-tertiary",
-      },
-      {
-        id: "vision-goal",
-        value: "40",
-        unit: "%",
-        label: "gross tertiary enrollment goal for 2030",
-        sourceId: "tertiary-goal",
-      },
-    ],
-  },
+
   pillars: {
     eyebrow: "What transformation looks like",
     heading: "Four changes families can see.",
@@ -68,6 +49,28 @@ export const visionPage = {
   sections: [
     {
       id: "community",
+      summary: "A network that surrounds every student with support, from mentors and alumni to parents and partners.",
+      caption: "Mentors, alumni, parents and partners, all pulling in the same direction.",
+      points: [
+        "Mentors who have walked the path before.",
+        "Alumni who reach back to pull others forward.",
+        "Parents who understand the process.",
+      ],
+      /* Previous photograph:
+      image: {
+        src: "/images/sef/serve-group.jpg",
+        alt: "A group of SEF students in foundation T-shirts standing together.",
+        blur: "sefServeGroup",
+        credit: "Somboh Educational Foundation students.",
+      },
+      */
+      image: {
+        src: "/images/vision/future-community.jpg",
+        alt: "Secondary school students in striped uniforms read and share books together in a school library.",
+        blur: "visionFutureCommunity",
+        credit:
+          "Stock photograph: students studying together in a school library in Ghana. Photo by Bright Kwame Ayisi, CC0. Not an SEF program image.",
+      },
       eyebrow: "A thriving community",
       heading: "No student succeeds alone.",
       paragraphs: [
@@ -77,6 +80,29 @@ export const visionPage = {
     },
     {
       id: "beacon",
+      summary: "College preparation for West Africa that is rigorous, personal and measured by real outcomes.",
+      caption: "A name families trust and universities recognise.",
+      points: [
+        "Programs that are rigorous, personal and evidence-based.",
+        "Success measured by admissions, scholarships and degrees.",
+        "A model other organisations can share and multiply.",
+      ],
+      /* Previous photograph:
+      image: {
+        src: "/images/sef/classroom.jpg",
+        alt: "Somboh Educational Foundation students working at their desks during a session.",
+        blur: "sefClassroom",
+        credit: "An SEF study session.",
+      },
+      */
+      image: {
+        src: "/images/vision/future-beacon.jpg",
+        alt: "Two Ghanaian university graduates in blue gowns and medals hold their caps on graduation day.",
+        blur: "visionFutureBeacon",
+        position: "35% center",
+        credit:
+          "Stock photograph: university graduates in Ghana. Photo by Tahiru Rajab, CC BY-SA 4.0. Not an SEF program image.",
+      },
       eyebrow: "A beacon of educational excellence",
       heading: "Set the standard, then share it.",
       paragraphs: [
@@ -86,6 +112,30 @@ export const visionPage = {
     },
     {
       id: "catalyst",
+      summary: "Every student who reaches a world-class education can change their family, their community and their country.",
+      caption: "Education is the most powerful lever we know for changing a nation's trajectory.",
+      points: [
+        "Engineers, physicians and scientists for Ghana.",
+        "Entrepreneurs who create jobs.",
+        "Policymakers, educators and artists who shape the future.",
+      ],
+      /* Previous photograph:
+      image: {
+        src: "/images/programs/community-engagement.jpg",
+        alt: "Students in a school compound digging and planting a young tree together.",
+        blur: "programCommunity",
+        credit:
+          "Stock photograph: students planting a tree at their school in Ghana. Photo by Antorsu10, CC BY-SA 4.0. Not an SEF program image.",
+      },
+      */
+      image: {
+        src: "/images/vision/future-catalyst.jpg",
+        alt: "A young woman holds up a solar panel and lamp she has built while a cameraman films her display.",
+        blur: "visionFutureCatalyst",
+        position: "28% center",
+        credit:
+          "Stock photograph: an exhibitor shows a solar product at the YALI West Africa Regional Conference, 2015. Photo by USAID in Africa, public domain. Not an SEF program image.",
+      },
       eyebrow: "A catalyst for positive societal change",
       heading: "One student changes more than one life.",
       paragraphs: [
@@ -95,6 +145,30 @@ export const visionPage = {
     },
     {
       id: "leaders",
+      summary: "Leaders who move confidently between Accra and Boston, and bring the best of the world home.",
+      caption: "Africa will be at the centre of the world's future.",
+      points: [
+        "Ready for climate, health, technology and governance.",
+        "At home in Ghana and abroad.",
+        "Defined by integrity, empathy and resilience.",
+      ],
+      /* Previous photograph:
+      image: {
+        src: "/images/vision/partners-abroad.jpg",
+        alt: "Two young professionals talk and laugh over coffee at a leadership conference, with other delegates around them.",
+        blur: "visionPartners",
+        credit:
+          "Stock photograph: delegates at a Young African Leaders Initiative conference. Photo by USAID in Africa, public domain. Not an SEF program image.",
+      },
+      */
+      image: {
+        src: "/images/vision/future-leaders.jpg",
+        alt: "A group of young West African leaders cheer and pose together at a Mandela Washington Fellowship conference.",
+        blur: "visionFutureLeaders",
+        position: "45% center",
+        credit:
+          "Stock photograph: Mandela Washington Fellows at the YALI West Africa Regional Conference, 2015. Photo by USAID in Africa, public domain. Not an SEF program image.",
+      },
       eyebrow: "Leaders equipped for global challenges",
       heading: "Globally educated, deeply rooted.",
       paragraphs: [
@@ -104,6 +178,30 @@ export const visionPage = {
     },
     {
       id: "contribute",
+      summary: "A generation that measures success by what it gives back to the communities that raised it.",
+      caption: "In their success, we will see the true fulfilment of our vision.",
+      points: [
+        "Founding schools and funding scholarships.",
+        "Mentoring the next generation.",
+        "Leading change in their home communities.",
+      ],
+      /* Previous photograph:
+      image: {
+        src: "/images/programs/mentorship-editathon.jpg",
+        alt: "A facilitator leans over a student's laptop to guide him at a workshop at the Parliament of Ghana.",
+        blur: "programMentorshipEditathon",
+        credit:
+          "Stock photograph: a Wikipedia workshop at the Parliament of Ghana. Photo by Dico Saliou, CC BY-SA 4.0. Not an SEF program image.",
+      },
+      */
+      image: {
+        src: "/images/vision/future-contribute.jpg",
+        alt: "Former pupils stand at the front of their old classroom to mentor the students now seated there.",
+        blur: "visionFutureContribute",
+        position: "40% center",
+        credit:
+          "Stock photograph: former students mentoring pupils at their old basic school in Ghana. Photo by Musahfm, CC BY-SA 4.0. Not an SEF program image.",
+      },
       eyebrow: "Contributing meaningfully",
       heading: "Success measured by what it gives back.",
       paragraphs: [

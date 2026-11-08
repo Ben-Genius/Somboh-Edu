@@ -34,6 +34,11 @@ export const involvePage = {
     intro:
       "SEF works with students aiming for universities at home and abroad. Tell us where you are and what you are aiming for. If we are not the right fit, we will say so.",
     note: "This is an expression of interest, not an offer of a place in a program. We review every submission.",
+    guideLink: {
+      lead: "Not ready yet?",
+      label: "Read the free student guide",
+      href: "/guide",
+    },
     imageCaption:
       "A Somboh Educational Foundation student.",
   },

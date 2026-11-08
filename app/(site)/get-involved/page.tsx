@@ -7,7 +7,8 @@ import { PartnerForm } from "@/components/forms/partner-form";
 import { StudentForm } from "@/components/forms/student-form";
 import { InvolveTabs } from "@/components/involve-tabs";
 import { JsonLd } from "@/components/json-ld";
-import { PageHero } from "@/components/page-hero";
+// import { PageHero } from "@/components/page-hero"; (replaced by InvolveHero)
+import { InvolveHero } from "@/components/heroes/involve-hero";
 import { PaperTear } from "@/components/paper-tear";
 import { contactPage } from "@/content/contact";
 import { involvePage } from "@/content/involve";
@@ -35,12 +36,15 @@ export default function GetInvolvedPage() {
         ])}
       />
 
+      {/* Previous shared hero, replaced by a page-specific one:
       <PageHero
         sketch="key"
         eyebrow={involvePage.hero.eyebrow}
         title={involvePage.hero.title}
         lede={involvePage.hero.lede}
       />
+      */}
+      <InvolveHero />
 
       <section
         aria-label="Ways to get involved"
@@ -120,6 +124,16 @@ function StudentsPanel() {
         <h2 className="display-2 mt-6 max-w-[14ch]">{content.heading}</h2>
         <p className="lede mt-5">{content.intro}</p>
         <Note>{content.note}</Note>
+        <p className="mt-5 text-[0.9375rem] text-ink-soft">
+          {content.guideLink.lead}{" "}
+          <Link
+            href={content.guideLink.href}
+            prefetch
+            className="font-semibold text-blue-ink underline decoration-blue-ink/40 underline-offset-4 hover:decoration-blue-ink"
+          >
+            {content.guideLink.label}
+          </Link>
+        </p>
         <ArchMedia
           src="/images/sef/student-apply.jpg"
           alt="A smiling Somboh Educational Foundation student in a navy SEF T-shirt."

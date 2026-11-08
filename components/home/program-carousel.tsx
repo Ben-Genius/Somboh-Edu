@@ -83,7 +83,7 @@ function ProgramCopy({ index, shown }: { index: number; shown: boolean }) {
         </p>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <Link
-            href={`/programs#${program.slug}`}
+            href={`/programs/${program.slug}`}
             prefetch
             tabIndex={shown ? 0 : -1}
             className="btn btn-forest"
@@ -139,7 +139,7 @@ function ProgramCards() {
                 <Marker>{program.studentsGet}</Marker>
               </p>
               <Link
-                href={`/programs#${program.slug}`}
+                href={`/programs/${program.slug}`}
                 prefetch
                 className="link-quiet mt-5 text-sm"
               >

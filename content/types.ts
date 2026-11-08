@@ -25,6 +25,8 @@ export type Program = {
   shortLabel: string;
   menuDescription: string;
   summary: string;
+  /** Standalone meta description for the program's own page. */
+  metaDescription: string;
   studentsGet: string;
   detail: string[];
   bullets: string[];
@@ -41,6 +43,8 @@ export type AudiencePath = {
   body: string;
   linkLabel: string;
   href: string;
+  /** One essential fact for this audience, shown small under the body. */
+  note?: { text: string; linkLabel: string; href: string };
 };
 
 export type Step = {

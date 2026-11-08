@@ -27,7 +27,7 @@ export function ProgramIndex({
       {items.map((program) => (
         <li key={program.slug} className="border-t border-line">
           <Link
-            href={`/programs#${program.slug}`}
+            href={`/programs/${program.slug}`}
             prefetch
             className="group grid gap-4 py-7 transition-colors hover:bg-surface sm:grid-cols-[3.5rem_1fr_auto] sm:items-start sm:gap-6 sm:rounded-2xl sm:px-4"
           >

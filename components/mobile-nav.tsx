@@ -113,7 +113,7 @@ export function MobileNav({
                         {programs.map((program) => (
                           <li key={program.slug}>
                             <Link
-                              href={`/programs#${program.slug}`}
+                              href={`/programs/${program.slug}`}
                               prefetch
                               onClick={() => onOpenChange(false)}
                               className="flex min-h-[48px] items-center gap-3 py-2 text-[0.9375rem] font-medium text-ink-soft"

@@ -14,5 +14,12 @@
   },
   "observability": {
     "enabled": true
+  },
+  // Branch previews (`wrangler preview`, used by Workers Builds for
+  // non-production branches) need their own bindings, mirroring the above.
+  "previews": {
+    "images": {
+      "binding": "IMAGES"
+    }
   }
 }

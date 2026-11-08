@@ -38,6 +38,99 @@ export const missionPage = {
     eyebrow: "Our commitment to Ghana",
     heading: "Return, and reach back.",
     body: "Our goal is not simply to send students away. It is to raise leaders who will return their knowledge, networks, and energy to Ghana and Africa, and to the students coming behind them.",
+    listLabel: "The scholarship cycle",
+    helpLabel: "Where SEF helps",
+    loopNote: "Reach back feeds Prepare. The cycle continues.",
+    /**
+     * One entry per step in homePage.commitment.steps, in the same order:
+     * the photograph shown beside the step and the pages that cover it.
+     */
+    steps: [
+      {
+        image: {
+          src: "/images/sef/student-prepare.jpg",
+          alt: "A smiling SEF student in a cream foundation T-shirt.",
+          blur: "sefStudentPrepare",
+          caption: "A student in SEF's current cohort.",
+        },
+        links: [
+          { label: "Academic excellence", href: "/programs/academic-excellence" },
+          { label: "Application mentorship", href: "/programs/application-mentorship" },
+          { label: "Skills development", href: "/programs/skills-development" },
+        ],
+      },
+      {
+        image: {
+          src: "/images/sef/student-admit.jpg",
+          alt: "An SEF student in a red foundation T-shirt, looking at the camera.",
+          blur: "sefStudentAdmit",
+          caption: "A student in SEF's current cohort.",
+        },
+        links: [
+          { label: "Financial aid and scholarships", href: "/programs/financial-aid" },
+          { label: "What it costs, and what we guarantee", href: "/faq#cost" },
+        ],
+      },
+      {
+        image: {
+          src: "/images/vision/partners-abroad.jpg",
+          alt: "Two young professionals talk and laugh over coffee at a leadership conference.",
+          blur: "visionPartners",
+          caption:
+            "Stock photograph: delegates at a Young African Leaders Initiative conference. Photo by USAID in Africa, public domain.",
+        },
+        links: [
+          { label: "Our vision for Ghana", href: "/vision" },
+          { label: "Community engagement", href: "/programs/community-engagement" },
+        ],
+      },
+      {
+        image: {
+          src: "/images/sef/cohort-reach.jpg",
+          alt: "An SEF cohort standing together at the front of a classroom.",
+          blur: "sefCohortReach",
+          caption: "An SEF cohort, together in class.",
+        },
+        links: [
+          { label: "The free student guide", href: "/guide" },
+          { label: "Partner with SEF", href: "/get-involved#partners" },
+        ],
+      },
+    ],
+  },
+  serveImages: {
+    caption: "Somboh Educational Foundation students.",
+    wide: {
+      src: "/images/sef/serve-group.jpg",
+      alt: "A group of SEF students in foundation T-shirts standing together.",
+      blur: "sefServeGroup",
+    },
+    portraits: [
+      {
+        src: "/images/sef/serve-student-a.jpg",
+        alt: "A smiling SEF student in a cream foundation T-shirt.",
+        blur: "sefServeA",
+      },
+      {
+        src: "/images/sef/serve-student-b.jpg",
+        alt: "An SEF student in a grey foundation T-shirt.",
+        blur: "sefServeB",
+      },
+      {
+        src: "/images/sef/serve-student-c.jpg",
+        alt: "An SEF student in glasses and a cream foundation T-shirt.",
+        blur: "sefServeC",
+      },
+    ],
+  },
+  programRail: {
+    linkLabel: "All programs",
+    previousLabel: "Previous programs",
+    nextLabel: "Next programs",
+    creditsLabel: "Photo credits",
+  },
+  gapChart: {
+    caption: "Each dot is one in every hundred WASSCE candidates. Filled dots entered tertiary education the next year.",
   },
   // Banner for the old founder link (hidden on the mission page, kept for reuse).
   founder: {

@@ -9,7 +9,8 @@ import {
   PhoneIcon,
 } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
-import { PageHero } from "@/components/page-hero";
+// import { PageHero } from "@/components/page-hero"; (replaced by ContactHero)
+import { ContactHero } from "@/components/heroes/contact-hero";
 // import { PaperTear } from "@/components/paper-tear"; (its section is hidden below)
 import { contactPage } from "@/content/contact";
 import { pageMetadata } from "@/lib/metadata";
@@ -36,12 +37,15 @@ export default function ContactPage() {
         ])}
       />
 
+      {/* Previous shared hero, replaced by a page-specific one:
       <PageHero
         sketch="magnifier"
         eyebrow={contactPage.hero.eyebrow}
         title={contactPage.hero.title}
         lede={contactPage.hero.lede}
       />
+      */}
+      <ContactHero />
 
       <section
         aria-labelledby="contact-details-heading"
@@ -112,7 +116,7 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-7 lg:col-start-6">
-            <div className="panel paper-stack p-5 sm:p-8">
+            <div id="contact-form" className="panel paper-stack scroll-mt-32 p-5 sm:p-8">
               <h2 className="display-3">{contactPage.form.heading}</h2>
               <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-soft">
                 {contactPage.form.intro}

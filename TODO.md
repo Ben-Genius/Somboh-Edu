@@ -32,6 +32,18 @@ After filling these in, remove the placeholder note at `content/contact.ts` → 
 - [ ] Confirm the statistics and their source links in `content/sources.ts` are current, and that the footnote wording matches.
 - [ ] Decide whether to keep the temporary “not SEF program photography” wording once real photographs are in place.
 
+## Proof, FAQ and program pages
+
+The FAQ (`/faq`) and the five program pages (`/programs/[slug]`) are built. What remains is verification, not layout:
+
+- [ ] Confirm every answer in `content/faq.ts`. In particular: the four eligibility stages, what "cost to apply" means for each program, and whether SEF can offer any fee support.
+- [ ] Add a privacy answer to the FAQ once the privacy notice exists (see Legal and metadata).
+- [ ] Supply 3–5 named testimonials with written consent, then add them to the home and program pages.
+- [ ] Supply verified outcome figures (scholars supported, offers, scholarships, regions) before adding any proof strip or counter.
+- [ ] Supply partner school/university names and logos with written permission.
+- [ ] Supply board and team names, roles, one-line bios and photos with consent.
+- [ ] Re-check the program detail copy and the "What students get" line on each `/programs/[slug]` page.
+
 ## Forms and email
 
 - [ ] Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL` and `NEXT_PUBLIC_SITE_URL` in the hosting environment (see `.env.example`).
@@ -42,6 +54,16 @@ After filling these in, remove the placeholder note at `content/contact.ts` → 
 - [ ] Confirm the donor flow: the form records intent, it does not take payment. Either add a payment provider or make the “payment link” copy explicit.
 - [ ] Add spam protection appropriate to the host (rate limiting at the edge or a Turnstile-style check) if the forms attract abuse.
 
+## Proof (home page, hidden until filled)
+
+- [ ] Results: fill `siteConfig.unverifiedCounts`, then set `asOf` and `basis` for each figure in `content/impact.ts`. A figure shows only when value, date and basis are all real.
+- [ ] Voices: add real quotes to `content/voices.ts` — a mix of student, parent, school and partner — each with written consent to be named, recorded in `permission`. Nothing renders until one entry has permission.
+
+## Student guide (`/guide`)
+
+- [ ] Each August, re-check the dates in `content/guide.ts` (Common App, CSS Profile, UCAS, US early and regular deadlines, WASSCE results) against the official sites, then update `guidePage.hero.reviewed`.
+- [ ] Have SEF read the guide once: it is new general guidance, written from the vision's "information as a right", not taken from the PDFs.
+
 ## Legal and metadata
 
 - [ ] Add a privacy notice covering form submissions, email addresses and newsletter consent, and link it from the footer.
@@ -51,6 +73,7 @@ After filling these in, remove the placeholder note at `content/contact.ts` → 
 
 ## Quality gate
 
+- [ ] `pnpm check:launch` passes against the dev server and again against the deployed URL (`node scripts/prelaunch-check.mjs https://<domain>`). It fails on any `[Add …]` placeholder left in a page, template emails, `tel:`/`mailto:` links that differ from the number or address shown, dead links and anchors, filename alt text, and pages without exactly one h1. `pnpm deploy` now runs lint and typecheck first.
 - [ ] `pnpm typecheck`, `pnpm lint`, `pnpm build` pass with no errors.
 - [ ] Check at 320px, 360px, 768px, 1024px and 1440px, at 200% zoom, with keyboard only, and with reduced motion enabled.
 - [ ] Run Lighthouse (accessibility, SEO, best practices) on the production build and fix anything below 95.
