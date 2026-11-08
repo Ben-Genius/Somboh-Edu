@@ -138,6 +138,15 @@ export const homePage = {
   },
   // Pointer to /guide. Only the stage names and timing appear here; the
   // steps themselves live on the guide page.
+  faqBrief: {
+    eyebrow: "Questions",
+    heading: "What families ask first.",
+    intro: "Short, straight answers. The rest are on the FAQ page.",
+    /** FAQ item ids, in the order shown. */
+    ids: ["who-can-apply", "cost-to-apply", "guarantee", "after-submit"],
+    linkLabel: "All questions",
+    href: "/faq",
+  },
   guide: {
     eyebrow: "Free student guide",
     heading: "Not ready to apply yet? Start on the road.",

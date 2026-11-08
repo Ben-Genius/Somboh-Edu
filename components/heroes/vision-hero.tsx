@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "@/components/icons";
 import { visionPage } from "@/content/vision";
 import { imageBlur } from "@/lib/blur";
+import { SketchAccent } from "@/components/blueprint-sketches";
 import { HeroTitle } from "./hero-title";
 
 /**
@@ -40,7 +41,10 @@ export function VisionHero() {
         />
 
         <div className="relative px-7 pt-10 sm:px-12 sm:pt-14 lg:px-16 lg:pt-16">
-          <p className="eyebrow !text-white/80">{hero.eyebrow}</p>
+          <div className="flex items-center gap-3">
+            <p className="eyebrow !text-white/80">{hero.eyebrow}</p>
+            <SketchAccent drawing="abroad" motion="float" until="never" label={false} tone="light" className="w-12 -rotate-6" />
+          </div>
           <HeroTitle className="display-1 mt-7 max-w-[15ch] text-white lg:text-[clamp(3.6rem,6.4vw,6.6rem)]">
             {hero.title}
             <span className="text-gold">.</span>

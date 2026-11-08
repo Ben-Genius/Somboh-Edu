@@ -10,6 +10,7 @@ import { PaperTear } from "@/components/paper-tear";
 import { ProgramsNav } from "@/components/programs-nav";
 import { programImages } from "@/content/program-images";
 import { programBySlug, programs } from "@/content/programs";
+import { programSketches } from "@/content/sketches";
 import { pageMetadata } from "@/lib/metadata";
 import {
   breadcrumbJsonLd,
@@ -95,6 +96,7 @@ export default async function ProgramPage({
         title={program.title}
         summary={program.summary}
         image={image}
+        sketch={programSketches[program.slug]}
       />
 
       <ProgramsNav />

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 // import { ArchMedia } from "@/components/arch-media"; (only in the commented-out hero)
+import { SketchAccent } from "@/components/blueprint-sketches";
 import { ArrowRight, CheckIcon } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
 // import { PageHero } from "@/components/page-hero"; (replaced by ProgramsHero)
@@ -11,6 +12,7 @@ import { ProgramsNav } from "@/components/programs-nav";
 import { homePage } from "@/content/home";
 import { programImages } from "@/content/program-images";
 import { programs } from "@/content/programs";
+import { programSketches } from "@/content/sketches";
 import { imageBlur } from "@/lib/blur";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
@@ -106,12 +108,23 @@ export default function ProgramsPage() {
                 </div>
 
                 <div className="lg:col-span-8">
-                  <h2
-                    id={`${program.slug}-heading`}
-                    className="display-2 max-w-[20ch] text-ink"
-                  >
-                    {program.title}
-                  </h2>
+                  {/* The program's own sketch, pencilled beside its title. */}
+                  <div className="flex items-start justify-between gap-6">
+                    <h2
+                      id={`${program.slug}-heading`}
+                      className="display-2 max-w-[20ch] text-ink"
+                    >
+                      {program.title}
+                    </h2>
+                    {programSketches[program.slug] ? (
+                      <SketchAccent
+                        drawing={programSketches[program.slug]!.drawing}
+                        motion={programSketches[program.slug]!.motion}
+                        until="never"
+                        className={`w-16 shrink-0 sm:w-24 ${index % 2 ? "rotate-3" : "-rotate-3"}`}
+                      />
+                    ) : null}
+                  </div>
 
                   <p className="mt-5">{program.summary}</p>
 
@@ -168,7 +181,10 @@ export default function ProgramsPage() {
       <section className="section bg-gold-wash">
         <div className="shell grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-8">
-            <p className="eyebrow">Next step</p>
+            <div className="flex items-center gap-3">
+              <p className="eyebrow">Next step</p>
+              <SketchAccent drawing="key" motion="draw" until="never" label={false} className="w-11 -rotate-6" />
+            </div>
             <h2 className="display-2 mt-5 max-w-[20ch]">
               Not sure which program fits?
             </h2>

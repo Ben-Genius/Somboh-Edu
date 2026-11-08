@@ -135,6 +135,8 @@ const drawings: Record<string, { label: string; strokes: Stroke[] }> = {
   },
 };
 
+export type SketchName = keyof typeof drawings;
+
 type Placement = {
   drawing: keyof typeof drawings;
   className: string;
@@ -421,13 +423,20 @@ export function SketchAccent({
   drawing,
   motion = "draw",
   className = "",
-  /** Hidden from this breakpoint up, where the desktop layer takes over. */
+  /** Hidden from this breakpoint up, where the desktop layer takes over;
+   *  "never" keeps it at every size (pages without a desktop layer). */
   until = "lg",
+  /** The pencilled caption under the drawing; off for very small marks. */
+  label = true,
+  /** "light" for sketches drawn over a dark photograph. */
+  tone = "ink",
 }: {
-  drawing: keyof typeof drawings;
+  drawing: SketchName;
   motion?: Motion;
   className?: string;
-  until?: "lg" | "xl";
+  until?: "lg" | "xl" | "never";
+  label?: boolean;
+  tone?: "ink" | "light";
 }) {
   const host = useRef<HTMLSpanElement>(null);
   const filterId = `sk-accent-${useId().replace(/:/g, "")}`;
@@ -503,7 +512,9 @@ export function SketchAccent({
     <span
       ref={host}
       aria-hidden="true"
-      className={`pointer-events-none block opacity-70 ${until === "xl" ? "xl:hidden" : "lg:hidden"} ${className}`}
+      className={`pointer-events-none block ${tone === "light" ? "opacity-85" : "opacity-70"} ${
+        until === "xl" ? "xl:hidden" : until === "lg" ? "lg:hidden" : ""
+      } ${className}`}
     >
       <svg width="0" height="0" focusable="false" className="absolute">
         <defs>
@@ -523,7 +534,7 @@ export function SketchAccent({
         data-sketch
         viewBox="0 0 124 134"
         focusable="false"
-        className="h-auto w-full text-ink-soft"
+        className={`h-auto w-full ${tone === "light" ? "text-white" : "text-ink-soft"}`}
         fill="none"
         stroke="currentColor"
         strokeWidth="1.6"
@@ -544,17 +555,19 @@ export function SketchAccent({
             }
           />
         ))}
-        <text
-          x="62"
-          y="131"
-          textAnchor="middle"
-          className="sk-label"
-          fill="currentColor"
-          stroke="none"
-          fontSize="12"
-        >
-          {art.label}
-        </text>
+        {label ? (
+          <text
+            x="62"
+            y="131"
+            textAnchor="middle"
+            className="sk-label"
+            fill="currentColor"
+            stroke="none"
+            fontSize="12"
+          >
+            {art.label}
+          </text>
+        ) : null}
       </svg>
     </span>
   );

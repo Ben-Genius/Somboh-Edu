@@ -1,4 +1,5 @@
 import { guidePage, guideStages } from "@/content/guide";
+import { SketchAccent } from "@/components/blueprint-sketches";
 import { HeroTitle } from "./hero-title";
 
 /**
@@ -14,7 +15,10 @@ export function GuideHero() {
       <div className="shell relative pb-12 pt-10 lg:pb-16 lg:pt-14">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <p className="eyebrow">{hero.eyebrow}</p>
+            <div className="flex items-center gap-3">
+              <p className="eyebrow">{hero.eyebrow}</p>
+              <SketchAccent drawing="compass" motion="float" until="never" label={false} className="w-11 rotate-6" />
+            </div>
             <HeroTitle className="display-1 mt-7 max-w-[14ch] text-ink">
               {hero.title}
             </HeroTitle>

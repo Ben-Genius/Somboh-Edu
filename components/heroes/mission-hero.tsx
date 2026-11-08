@@ -72,7 +72,7 @@ export function MissionHero() {
       <div className="shell relative flex flex-col items-center pb-16 pt-12 text-center lg:pb-24 lg:pt-20">
         <div className="flex items-center gap-3">
           <p className="eyebrow">{hero.eyebrow}</p>
-          <SketchAccent drawing="idea" motion="pop" className="w-10 rotate-6" />
+          <SketchAccent drawing="idea" motion="pop" until="never" label={false} className="w-11 rotate-6" />
         </div>
 
         <HeroTitle className="display-1 mt-8 max-w-[13ch] text-ink lg:text-[clamp(4rem,7.4vw,7.2rem)]">

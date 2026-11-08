@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight } from "@/components/icons";
 import { involvePage } from "@/content/involve";
 import { imageBlur } from "@/lib/blur";
+import { SketchAccent } from "@/components/blueprint-sketches";
 import { HeroTitle } from "./hero-title";
 
 /** One door per audience, each the same size so no reader is second. */
@@ -38,7 +39,10 @@ export function InvolveHero() {
         />
 
         <div className="px-7 pb-8 pt-12 sm:px-12 sm:pt-16 lg:px-16 lg:pb-12 lg:pt-20">
-          <p className="eyebrow !text-white/80">{hero.eyebrow}</p>
+          <div className="flex items-center gap-3">
+            <p className="eyebrow !text-white/80">{hero.eyebrow}</p>
+            <SketchAccent drawing="key" motion="draw" until="never" label={false} tone="light" className="w-12 rotate-6" />
+          </div>
           <HeroTitle className="display-1 mt-7 max-w-[13ch] text-white">
             {hero.title}
           </HeroTitle>

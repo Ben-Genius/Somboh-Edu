@@ -9,6 +9,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { ReadMore } from "@/components/ui/read-more";
 // import { ViewTransition } from "@/components/view-transition"; (old detail layout)
 import { FutureTabs } from "@/components/vision/future-tabs";
+import { PillarLadder } from "@/components/vision/pillar-ladder";
 import { visionPage } from "@/content/vision";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
@@ -87,6 +88,9 @@ export default function VisionPage() {
             heading={pillars.heading}
           />
 
+          <PillarLadder items={pillars.items} />
+
+          {/* Previous layout: a two-by-two grid of cards.
           <ol className="mt-12 grid gap-4 sm:grid-cols-2">
             {pillars.items.map((item) => (
               <li key={item.number} className="card card-lift p-7 sm:p-8">
@@ -102,6 +106,7 @@ export default function VisionPage() {
               </li>
             ))}
           </ol>
+          */}
         </div>
       </section>
 

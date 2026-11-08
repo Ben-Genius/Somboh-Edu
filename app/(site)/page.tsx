@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CtaPaths } from "@/components/cta-paths";
 import { FounderNote } from "@/components/founder-note";
+import { FaqBrief } from "@/components/home/faq-brief";
 import { GapSection } from "@/components/home/gap-section";
 import { GuideBand } from "@/components/home/guide-band";
 import { HomeHero } from "@/components/home/hero";
@@ -33,6 +34,8 @@ export default function HomePage() {
       <ProgramsSection />
       {/* For students not ready to apply: the free guide, by stage. */}
       <GuideBand />
+      {/* The questions that decide whether a family applies. */}
+      <FaqBrief />
       {/* Dated results and named voices; renders nothing until verified. */}
       <ProofSection />
 

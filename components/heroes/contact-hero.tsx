@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "@/components/icons";
 import { contactPage } from "@/content/contact";
 import { imageBlur } from "@/lib/blur";
+import { SketchAccent } from "@/components/blueprint-sketches";
 import { HeroTitle } from "./hero-title";
 
 /** Quick routes for the commonest reasons people write. */
@@ -24,7 +25,10 @@ export function ContactHero() {
     <section className="relative overflow-hidden border-b border-line bg-hero-blend">
       <div className="shell relative grid gap-12 pb-14 pt-10 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pb-16 lg:pt-14">
         <div className="lg:col-span-6">
-          <p className="eyebrow">{hero.eyebrow}</p>
+          <div className="flex items-center gap-3">
+            <p className="eyebrow">{hero.eyebrow}</p>
+            <SketchAccent drawing="idea" motion="scribble" until="never" label={false} className="w-11 -rotate-3" />
+          </div>
           <HeroTitle className="display-1 mt-7 max-w-[11ch] text-ink">
             {hero.title}
           </HeroTitle>

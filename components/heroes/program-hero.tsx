@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "@/components/icons";
 import type { programImages } from "@/content/program-images";
 import { imageBlur } from "@/lib/blur";
+import { SketchAccent, type SketchName } from "@/components/blueprint-sketches";
 import { HeroTitle } from "./hero-title";
 
 type ProgramImage = (typeof programImages)[string];
@@ -18,12 +19,15 @@ export function ProgramHero({
   title,
   summary,
   image,
+  sketch,
 }: {
   number: string;
   total: number;
   title: string;
   summary: string;
   image: ProgramImage;
+  /** The program's pencil sketch, drawn in white beside the eyebrow. */
+  sketch?: { drawing: SketchName; motion: "draw" | "reverse" | "scribble" | "pop" | "float" };
 }) {
   return (
     <section className="bg-surface px-3 pb-3 pt-1 sm:px-4 sm:pb-4">
@@ -41,9 +45,21 @@ export function ProgramHero({
           </span>
 
           <div className="flex items-center justify-between gap-4">
-            <p className="eyebrow !text-white/90">
-              Program {number} of {String(total).padStart(2, "0")}
-            </p>
+            <div className="flex items-center gap-3">
+              <p className="eyebrow !text-white/90">
+                Program {number} of {String(total).padStart(2, "0")}
+              </p>
+              {sketch ? (
+                <SketchAccent
+                  drawing={sketch.drawing}
+                  motion={sketch.motion}
+                  until="never"
+                  label={false}
+                  tone="light"
+                  className="w-12 -rotate-3"
+                />
+              ) : null}
+            </div>
             <Link
               href="/programs"
               prefetch

@@ -1,4 +1,5 @@
 import { faqCategories, faqsByCategory } from "@/content/faq";
+import { SketchAccent } from "@/components/blueprint-sketches";
 import { HeroTitle } from "./hero-title";
 
 /**
@@ -15,7 +16,10 @@ export function FaqHero() {
 
       <div className="shell relative grid gap-12 pb-14 pt-10 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-14">
         <div className="lg:col-span-6">
-          <p className="eyebrow">Questions</p>
+          <div className="flex items-center gap-3">
+            <p className="eyebrow">Questions</p>
+            <SketchAccent drawing="magnifier" motion="pop" until="never" label={false} className="w-11 rotate-6" />
+          </div>
           <HeroTitle className="display-1 mt-7 max-w-[10ch] text-ink">
             Straight answers.
           </HeroTitle>

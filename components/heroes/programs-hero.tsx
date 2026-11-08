@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SketchAccent } from "@/components/blueprint-sketches";
 import { ArrowRight } from "@/components/icons";
 import { programImages } from "@/content/program-images";
 import { programs } from "@/content/programs";
@@ -17,12 +18,19 @@ export function ProgramsHero() {
       <div className="shell relative pb-12 pt-10 lg:pb-16 lg:pt-14">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="eyebrow">Our programs</p>
+            <div className="flex items-center gap-3">
+              <p className="eyebrow">Our programs</p>
+              <SketchAccent drawing="book" motion="scribble" until="never" label={false} className="w-11 rotate-6" />
+            </div>
             <HeroTitle className="display-1 mt-7 max-w-[14ch] text-ink">
               Five programs. One student at a time.
             </HeroTitle>
           </div>
           <div className="lg:col-span-4 lg:col-start-9">
+            {/* Desktop leaves this corner empty: a labelled sketch fills it. */}
+            <div className="mb-6 hidden lg:block">
+              <SketchAccent drawing="cap" motion="pop" until="never" className="w-24 rotate-6" />
+            </div>
             <p className="text-[1rem] leading-relaxed text-ink-soft">
               Support begins with where a student is and what they need next.
               These programs are built to work together, not in isolation.
