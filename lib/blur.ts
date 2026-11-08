@@ -124,8 +124,58 @@ export const imageBlur = {
     "#BEB29F",
     '<rect y="7" width="20" height="7" fill="#B7A58A"/><rect y="14" width="20" height="6" fill="#494843"/>',
   ),
+  // Vision page, "What that future asks of us" tabs.
+  visionFutureCommunity: svgBlur(
+    "#7D6C5D",
+    '<rect y="7" width="20" height="7" fill="#97867E"/><rect y="14" width="20" height="6" fill="#B19C90"/>',
+  ),
+  visionFutureBeacon: svgBlur(
+    "#BEC5AF",
+    '<rect y="7" width="20" height="7" fill="#8C82AC"/><rect y="14" width="20" height="6" fill="#6469AC"/>',
+  ),
+  visionFutureCatalyst: svgBlur(
+    "#B09B8B",
+    '<rect y="7" width="20" height="7" fill="#AF9D93"/><rect y="14" width="20" height="6" fill="#B49991"/>',
+  ),
+  visionFutureLeaders: svgBlur(
+    "#445978",
+    '<rect y="7" width="20" height="7" fill="#5B6A8F"/><rect y="14" width="20" height="6" fill="#4D5977"/>',
+  ),
+  visionFutureContribute: svgBlur(
+    "#867B6D",
+    '<rect y="7" width="20" height="7" fill="#7B7F87"/><rect y="14" width="20" height="6" fill="#393F4E"/>',
+  ),
   programMentorshipWorkshop: svgBlur(
     "#EDF0F5",
     '<rect y="7" width="20" height="7" fill="#969EAB"/><rect y="14" width="20" height="6" fill="#706D7B"/>',
+  ),
+  // Mission page: who we serve, and the commitment steps.
+  sefServeGroup: svgBlur(
+    "#BBAFA5",
+    '<rect y="7" width="20" height="7" fill="#AB9B8D"/><rect y="14" width="20" height="6" fill="#7F8184"/>',
+  ),
+  sefServeA: svgBlur(
+    "#D3D2D4",
+    '<rect y="7" width="20" height="7" fill="#DCD1C2"/><rect y="14" width="20" height="6" fill="#C2B5A3"/>',
+  ),
+  sefServeB: svgBlur(
+    "#CFCCCD",
+    '<rect y="7" width="20" height="7" fill="#98A4AC"/><rect y="14" width="20" height="6" fill="#9499A3"/>',
+  ),
+  sefServeC: svgBlur(
+    "#D6D5D8",
+    '<rect y="7" width="20" height="7" fill="#DCCEBB"/><rect y="14" width="20" height="6" fill="#D5C0AC"/>',
+  ),
+  sefStudentAdmit: svgBlur(
+    "#D3CFCE",
+    '<rect y="7" width="20" height="7" fill="#CE6E8A"/><rect y="14" width="20" height="6" fill="#B85B70"/>',
+  ),
+  sefStudentPrepare: svgBlur(
+    "#D7D6D8",
+    '<rect y="7" width="20" height="7" fill="#DED3C5"/><rect y="14" width="20" height="6" fill="#C4B6A6"/>',
+  ),
+  sefCohortReach: svgBlur(
+    "#9EA2A3",
+    '<rect y="7" width="20" height="7" fill="#5E6165"/><rect y="14" width="20" height="6" fill="#8D8E86"/>',
   ),
 } as const;

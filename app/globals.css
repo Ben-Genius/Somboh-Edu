@@ -1644,6 +1644,16 @@
   display: block;
 }
 
+/* Mission stepper: the photograph fades in when a step is chosen. */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 ::view-transition-group(page-title) {
   animation-duration: 420ms;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
@@ -1676,6 +1686,51 @@ html.lenis body {
 
 .lenis.lenis-stopped {
   overflow: hidden;
+}
+
+/* Vision page, "What that future asks of us": a tab's content settles in. */
+.future-swap:not([hidden]) {
+  animation: future-swap 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.future-swap:not([hidden]) .future-photo {
+  animation: future-photo 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The active tab's rule fills up as the autoplay timer. */
+.future-progress {
+  animation-name: future-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes future-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes future-photo {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes future-swap {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

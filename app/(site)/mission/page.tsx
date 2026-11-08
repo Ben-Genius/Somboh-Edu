@@ -1,7 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArchMedia } from "@/components/arch-media";
-import { CommitmentCycle } from "@/components/commitment-cycle";
+// import { ArchMedia } from "@/components/arch-media"; (replaced by ServeMosaic)
+// import { CommitmentCycle } from "@/components/commitment-cycle"; (replaced by CommitmentStepper)
+import { CommitmentStepper } from "@/components/mission/commitment-stepper";
+import { GapBento } from "@/components/mission/gap-bento";
+import { ProgramRail } from "@/components/mission/program-rail";
+import { ServeMosaic } from "@/components/mission/serve-mosaic";
 import { FounderNote } from "@/components/founder-note";
 import { JsonLd } from "@/components/json-ld";
 import { ArrowRight } from "@/components/icons";
@@ -11,10 +15,13 @@ import { PaperTear } from "@/components/paper-tear";
 // import { ProgramIndex } from "@/components/program-index"; (list hidden below)
 import { ReadMore } from "@/components/ui/read-more";
 import { SectionHeading } from "@/components/section-heading";
-import { SourceFootnote, SourcesList } from "@/components/sources";
+// SourceFootnote now renders inside GapBento.
+import { SourcesList } from "@/components/sources";
 import { homePage } from "@/content/home";
 import { missionPage } from "@/content/mission";
+import { programImages } from "@/content/program-images";
 import { programs } from "@/content/programs";
+import { imageBlur } from "@/lib/blur";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
@@ -27,6 +34,30 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const stats = homePage.gap.stats;
+
+const railItems = programs.flatMap((program) => {
+  const image = programImages[program.slug];
+  if (!image) return [];
+  return [
+    {
+      href: `/programs/${program.slug}`,
+      number: program.number,
+      title: program.shortLabel,
+      description: program.menuDescription,
+      src: image.src,
+      alt: image.alt,
+      blurDataURL: imageBlur[image.blur],
+    },
+  ];
+});
+
+/** Commons photographs need their credit shown with them. */
+const stockCredits = programs.flatMap((program) => {
+  const image = programImages[program.slug];
+  return image && image.credit.startsWith("Stock")
+    ? [{ label: program.shortLabel, credit: image.credit }]
+    : [];
+});
 
 export default function MissionPage() {
   return (
@@ -101,7 +132,7 @@ export default function MissionPage() {
 
       <section
         aria-labelledby="mission-gap-heading"
-        className="section-tight bg-gold-wash"
+        className="section-tight border-t border-line bg-surface"
       >
         <div className="shell">
           <SectionHeading
@@ -111,6 +142,11 @@ export default function MissionPage() {
             intro={missionPage.gap.body}
           />
 
+          {/* Bento: the headline figure wide with its hundred dots, the
+              context figures beneath. */}
+          <GapBento />
+
+          {/* Previous four equal stat cards:
           <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
               <li key={stat.id} className="card card-lift p-6">
@@ -132,16 +168,10 @@ export default function MissionPage() {
                 <p className="mt-4 text-[0.875rem] font-semibold leading-snug text-ink">
                   {stat.label}
                 </p>
-                {/* Detail line: hidden to keep the cards short.
-                {stat.detail ? (
-                  <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-soft">
-                    {stat.detail}
-                  </p>
-                ) : null}
-                */}
               </li>
             ))}
           </ul>
+          */}
 
           <div className="mt-6 border-t border-line pt-5">
             <SourcesList
@@ -157,15 +187,74 @@ export default function MissionPage() {
 
       <section
         aria-labelledby="mission-programs-heading"
-        className="section-tight bg-surface"
+        className="section-tight overflow-clip bg-gold-wash"
       >
         <div className="shell">
+          {/* Header in three parts: heading, the intro, the way to all programs. */}
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
+            <h2
+              id="mission-programs-heading"
+              className="display-2 max-w-[16ch] lg:col-span-6"
+            >
+              {missionPage.programs.heading}
+            </h2>
+            <div className="lg:col-span-4">
+              <p className="eyebrow">{missionPage.programs.eyebrow}</p>
+              <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-soft">
+                {missionPage.programs.intro}
+              </p>
+            </div>
+            <div className="lg:col-span-2 lg:flex lg:justify-end">
+              <Link
+                href="/programs"
+                prefetch
+                className="tap group inline-flex min-h-[48px] items-center gap-3 rounded-full border border-line-strong bg-surface py-1.5 pl-5 pr-1.5 text-[0.875rem] font-semibold text-ink transition-colors hover:border-ink"
+              >
+                {missionPage.programRail.linkLabel}
+                <span
+                  aria-hidden="true"
+                  className="grid h-9 w-9 place-items-center rounded-full bg-ink text-[var(--paper)] transition-transform group-hover:translate-x-0.5"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <ProgramRail
+              items={railItems}
+              previousLabel={missionPage.programRail.previousLabel}
+              nextLabel={missionPage.programRail.nextLabel}
+              footer={
+                stockCredits.length ? (
+                  <details className="group text-[0.75rem] leading-relaxed text-ink-soft">
+                    <summary className="tap inline-flex min-h-[44px] cursor-pointer list-none items-center gap-1.5 font-semibold [&::-webkit-details-marker]:hidden">
+                      {missionPage.programRail.creditsLabel}
+                      <span aria-hidden="true" className="transition-transform group-open:rotate-180">↓</span>
+                    </summary>
+                    <ul className="mt-1 max-w-3xl space-y-1">
+                      {stockCredits.map((entry) => (
+                        <li key={entry.label}>
+                          <span className="font-semibold text-ink">{entry.label}:</span>{" "}
+                          {entry.credit}
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                ) : null
+              }
+            />
+          </div>
+
+          {/* Previous heading and chip list:
           <SectionHeading
             id="mission-programs-heading"
             eyebrow={missionPage.programs.eyebrow}
             heading={missionPage.programs.heading}
             intro={missionPage.programs.intro}
           />
+          */}
           {/* Full program list: hidden here, the programs page owns it.
           <ProgramIndex
             items={programs}
@@ -173,6 +262,7 @@ export default function MissionPage() {
             className="mt-12"
           />
           */}
+          {/* Chip links, replaced by the photo rail above:
           <ul className="mt-10 flex flex-wrap gap-2.5">
             {programs.map((program) => (
               <li key={program.slug}>
@@ -195,6 +285,7 @@ export default function MissionPage() {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
+          */}
         </div>
       </section>
 
@@ -208,8 +299,8 @@ export default function MissionPage() {
           className="pointer-events-none absolute -left-40 -top-40 h-[26rem] w-[26rem] rounded-full border border-gold/30"
         />
 
-        <div className="shell relative grid gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-6">
+        <div className="shell relative grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
+          <div className="lg:col-span-5">
             <p className="eyebrow">{missionPage.serve.eyebrow}</p>
             <h2
               id="mission-serve-heading"
@@ -235,6 +326,10 @@ export default function MissionPage() {
             </figure>
           </div>
 
+          {/* Photo mosaic: the group, then one student large and two beside. */}
+          <ServeMosaic className="lg:col-span-6 lg:col-start-7" />
+
+          {/* Previous single torn-paper photograph:
           <div className="lg:col-span-5 lg:col-start-8">
             <ArchMedia
               src="/images/sef/group-serve.jpg"
@@ -247,13 +342,14 @@ export default function MissionPage() {
               peel="bl"
             />
           </div>
+          */}
         </div>
       </section>
 
       <section
         id="commitment"
         aria-labelledby="mission-commitment-heading"
-        className="section-tight bg-blue-wash"
+        className="section-tight border-t border-line bg-surface"
       >
         <div className="shell">
           <SectionHeading
@@ -263,12 +359,15 @@ export default function MissionPage() {
             intro={missionPage.commitment.body}
           />
         </div>
-        <div className="shell mt-10">
-          <CommitmentCycle />
+        <div className="shell mt-12">
+          {/* Stepper: steps on the left, a photograph and a panel for the
+              chosen one. Previously <CommitmentCycle />, four equal cards. */}
+          <CommitmentStepper />
         </div>
       </section>
 
-      <PaperTear from="var(--blue-wash)" to="var(--gold-wash)" />
+      {/* Was from var(--blue-wash), when this section was blue. */}
+      <PaperTear from="var(--surface)" to="var(--gold-wash)" />
 
       <FounderNote />
 
