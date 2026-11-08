@@ -54,6 +54,16 @@ The FAQ (`/faq`) and the five program pages (`/programs/[slug]`) are built. What
 - [ ] Confirm the donor flow: the form records intent, it does not take payment. Either add a payment provider or make the “payment link” copy explicit.
 - [ ] Add spam protection appropriate to the host (rate limiting at the edge or a Turnstile-style check) if the forms attract abuse.
 
+## Proof (home page, hidden until filled)
+
+- [ ] Results: fill `siteConfig.unverifiedCounts`, then set `asOf` and `basis` for each figure in `content/impact.ts`. A figure shows only when value, date and basis are all real.
+- [ ] Voices: add real quotes to `content/voices.ts` — a mix of student, parent, school and partner — each with written consent to be named, recorded in `permission`. Nothing renders until one entry has permission.
+
+## Student guide (`/guide`)
+
+- [ ] Each August, re-check the dates in `content/guide.ts` (Common App, CSS Profile, UCAS, US early and regular deadlines, WASSCE results) against the official sites, then update `guidePage.hero.reviewed`.
+- [ ] Have SEF read the guide once: it is new general guidance, written from the vision's "information as a right", not taken from the PDFs.
+
 ## Legal and metadata
 
 - [ ] Add a privacy notice covering form submissions, email addresses and newsletter consent, and link it from the footer.
@@ -63,6 +73,7 @@ The FAQ (`/faq`) and the five program pages (`/programs/[slug]`) are built. What
 
 ## Quality gate
 
+- [ ] `pnpm check:launch` passes against the dev server and again against the deployed URL (`node scripts/prelaunch-check.mjs https://<domain>`). It fails on any `[Add …]` placeholder left in a page, template emails, `tel:`/`mailto:` links that differ from the number or address shown, dead links and anchors, filename alt text, and pages without exactly one h1. `pnpm deploy` now runs lint and typecheck first.
 - [ ] `pnpm typecheck`, `pnpm lint`, `pnpm build` pass with no errors.
 - [ ] Check at 320px, 360px, 768px, 1024px and 1440px, at 200% zoom, with keyboard only, and with reduced motion enabled.
 - [ ] Run Lighthouse (accessibility, SEO, best practices) on the production build and fix anything below 95.

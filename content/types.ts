@@ -43,6 +43,8 @@ export type AudiencePath = {
   body: string;
   linkLabel: string;
   href: string;
+  /** One essential fact for this audience, shown small under the body. */
+  note?: { text: string; linkLabel: string; href: string };
 };
 
 export type Step = {

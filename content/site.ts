@@ -26,6 +26,11 @@ export const navigation = {
       description: "The Ghana we are working toward",
     },
     {
+      label: "Student guide",
+      href: "/guide",
+      description: "What to do, and when, on the road to a scholarship",
+    },
+    {
       label: "FAQ",
       href: "/faq",
       description: "Answers about applying, costs, and next steps",
@@ -39,6 +44,7 @@ export const navigation = {
     { label: "Mission", href: "/mission" },
     { label: "Vision", href: "/vision" },
     { label: "Programs", href: "/programs" },
+    { label: "Student guide", href: "/guide" },
     { label: "FAQ", href: "/faq" },
     { label: "Get involved", href: "/get-involved" },
     { label: "Contact", href: "/contact" },

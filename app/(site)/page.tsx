@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { CtaPaths } from "@/components/cta-paths";
 import { FounderNote } from "@/components/founder-note";
 import { GapSection } from "@/components/home/gap-section";
+import { GuideBand } from "@/components/home/guide-band";
 import { HomeHero } from "@/components/home/hero";
 import { ProgramsSection } from "@/components/home/programs-section";
 import { PaperTear } from "@/components/paper-tear";
+import { ProofSection } from "@/components/proof-section";
 import { homePage } from "@/content/home";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -29,6 +31,10 @@ export default function HomePage() {
       <HomeHero />
       <GapSection />
       <ProgramsSection />
+      {/* For students not ready to apply: the free guide, by stage. */}
+      <GuideBand />
+      {/* Dated results and named voices; renders nothing until verified. */}
+      <ProofSection />
 
       <FounderNote compact />
       <PaperTear from="var(--blue-wash)" to="var(--forest)" />

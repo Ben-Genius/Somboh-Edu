@@ -136,6 +136,14 @@ export const homePage = {
       "Abstract placeholder composition for a portrait of Ekow, Founder. No photograph has been supplied.",
     imageCaption: "Portrait placeholder",
   },
+  // Pointer to /guide. Only the stage names and timing appear here; the
+  // steps themselves live on the guide page.
+  guide: {
+    eyebrow: "Free student guide",
+    heading: "Not ready to apply yet? Start on the road.",
+    linkLabel: "Read the student guide",
+    href: "/guide",
+  },
   cta: {
     eyebrow: "Get involved",
     heading: "Find your place in the work.",
@@ -147,6 +155,12 @@ export const homePage = {
         body: "If you are aiming for a university that feels out of reach, start with us.",
         linkLabel: "Apply for support",
         href: "/get-involved#students",
+        // The two things families ask first; the full answers live in the FAQ.
+        note: {
+          text: "Free to apply. We prepare and advocate; universities make the decisions.",
+          linkLabel: "Costs and guarantees",
+          href: "/faq#cost",
+        },
       },
       {
         label: "Partners and universities",

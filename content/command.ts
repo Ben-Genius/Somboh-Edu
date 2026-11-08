@@ -53,6 +53,14 @@ export const commandEntries: CommandEntry[] = [
     keywords: ["questions", "answers", "eligibility", "cost", "apply"],
   },
   {
+    id: "page-guide",
+    label: "Student guide",
+    description: "Stages, documents and deadlines, step by step",
+    href: "/guide",
+    group: "Pages",
+    keywords: ["timeline", "deadlines", "documents", "checklist", "common app", "ucas", "css profile", "passport", "visa"],
+  },
+  {
     id: "page-contact",
     label: "Contact",
     description: "Send a message",

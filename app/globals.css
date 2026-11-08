@@ -1623,6 +1623,27 @@
   display: block;
 }
 
+/* Shared hash tabs (components/hash-tabs.tsx). Before hydration the URL
+   fragment decides, including a fragment that points inside a panel. */
+.hash-tabs .hash-panel {
+  display: none;
+}
+
+.hash-tabs:not([data-ready]) .hash-panel[data-default],
+.hash-tabs:not([data-ready]) .hash-panel:target,
+.hash-tabs:not([data-ready]) .hash-panel:has(:target) {
+  display: block;
+}
+
+.hash-tabs:not([data-ready]):has(.hash-panel:target, .hash-panel :target)
+  .hash-panel[data-default]:not(:target):not(:has(:target)) {
+  display: none;
+}
+
+.hash-tabs[data-ready] .hash-panel[data-selected] {
+  display: block;
+}
+
 ::view-transition-group(page-title) {
   animation-duration: 420ms;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
