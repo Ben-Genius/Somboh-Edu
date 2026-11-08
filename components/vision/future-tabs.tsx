@@ -269,8 +269,8 @@ export function FutureTabs({ sections }: { sections: readonly FutureSection[] })
             className="future-swap grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-9"
           >
             {/* Photograph card. */}
-            <figure className="lg:col-span-4">
-              <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[4/5] rounded-[1.25rem] bg-clay shadow-[var(--shadow-float)]">
+            <figure className="flex flex-col lg:col-span-4">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] sm:aspect-auto sm:min-h-[24rem] sm:flex-1 bg-clay shadow-[var(--shadow-float)]">
                 <Image
                   src={section.image.src}
                   alt={section.image.alt}
@@ -344,7 +344,7 @@ export function FutureTabs({ sections }: { sections: readonly FutureSection[] })
                 </>
               )}
 
-              <ul className="mt-auto pt-8">
+              <ul className="mt-auto pt-5">
                 {section.points.map((point, index) => (
                   <li
                     key={point}
