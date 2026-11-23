@@ -21,8 +21,8 @@ export const programImages: Record<string, ProgramImage> = {
   },
   "application-mentorship": {
     src: "/images/programs/medium-shot-students-desks.jpg",
-    alt: "Students collaborating warmly over study sheets and essay notes in a classroom.",
-    blur: "programMentorshipStudy",
+    alt: "A mentor guiding a student through essay and application notes beside a chalkboard highlighting teamwork and progress.",
+    blur: "programMentorshipTeamwork",
     credit: "One-on-one mentorship and application guidance.",
   },
   "financial-aid": {
@@ -33,16 +33,15 @@ export const programImages: Record<string, ProgramImage> = {
   },
   "skills-development": {
     src: "/images/programs/excellence.jpg",
-    alt: "Students collaborating with a laptop and study materials during a skills development workshop.",
-    blur: "programSkillsCohort",
+    alt: "Students engaged in skills development, research, and workshop activities in a classroom.",
+    blur: "programExcellence",
     credit: "Digital literacy, research, and skills workshops.",
   },
   "community-engagement": {
     src: "/images/programs/images3744-643d2c4705ea0.jpg",
-    alt: "A schoolgirl in a white headscarf crouches to plant a young tree in her school compound.",
-    blur: "programTreePlanting",
-    credit:
-      "Stock photograph: a student planting a tree at a school in Ghana. Photo by Nana Darkoaaa, CC BY-SA 4.0. Not an SEF program image.",
+    alt: "Students and community members participating in an educational and community development initiative in Ghana.",
+    blur: "programCommunityGhana",
+    credit: "Community outreach and civic engagement in Ghana.",
   },
   /* Previous stock photographs, replaced on 2026-11-08 with sharper ones:
   "application-mentorship": {

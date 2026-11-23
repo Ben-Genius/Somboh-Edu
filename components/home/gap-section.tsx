@@ -84,7 +84,7 @@ export function GapSection() {
                   alt="A Somboh Educational Foundation cohort standing together at the front of a classroom."
                   fill
                   placeholder="blur"
-                  blurDataURL={imageBlur.sefCohortGap}
+                  blurDataURL={imageBlur.sefGroupHero}
                   sizes="(min-width: 1024px) 28rem, 100vw"
                   className="object-cover"
                 />

@@ -89,7 +89,7 @@ export function HomeHero() {
             <div className="lg:col-span-7 lg:col-start-6">
               <WaveMedia
                 src="/images/sef/hero.png"
-                alt="A mentor and student collaborating closely over notes beside a chalkboard highlighting teamwork and progress."
+                alt="Two students smiling warmly as they collaborate over study notes at a classroom desk."
                 caption="SEF scholars preparing together for university admission."
                 blur="sefHeroStudents"
                 priority

@@ -10,8 +10,8 @@ function svgBlur(background: string, shapes: string): string {
 
 export const imageBlur = {
   founder: svgBlur(
-    "#EFE7D6",
-    '<rect x="3" y="6" width="14" height="14" rx="7" fill="#0F3D2E"/><circle cx="15" cy="5" r="4" fill="none" stroke="#C8962E" stroke-width=".6"/>',
+    "#D9D9D9",
+    '<rect y="7" width="20" height="7" fill="#D6D6D6"/><rect y="14" width="20" height="6" fill="#E6E6E5"/>',
   ),
   balme: svgBlur(
     "#D8DEE3",
@@ -64,8 +64,16 @@ export const imageBlur = {
   ),
   // SEF's own photographs, same three-band treatment.
   sefHeroStudents: svgBlur(
-    "#747270",
-    '<rect y="7" width="20" height="7" fill="#8B817E"/><rect y="14" width="20" height="6" fill="#948D8B"/>',
+    "#99928C",
+    '<rect y="7" width="20" height="7" fill="#7E7A7B"/><rect y="14" width="20" height="6" fill="#525B67"/>',
+  ),
+  sefGroupHero: svgBlur(
+    "#B8ADA8",
+    '<rect y="7" width="20" height="7" fill="#AC968B"/><rect y="14" width="20" height="6" fill="#737C85"/>',
+  ),
+  programMentorshipTeamwork: svgBlur(
+    "#747371",
+    '<rect y="7" width="20" height="7" fill="#89817E"/><rect y="14" width="20" height="6" fill="#928D8C"/>',
   ),
   programMentorshipStudy: svgBlur(
     "#99928C",
@@ -75,6 +83,18 @@ export const imageBlur = {
     "#FCFCFC",
     '<rect y="7" width="20" height="7" fill="#D2C7CD"/><rect y="14" width="20" height="6" fill="#706971"/>',
   ),
+  programExcellence: svgBlur(
+    "#C2BDB4",
+    '<rect y="7" width="20" height="7" fill="#95887B"/><rect y="14" width="20" height="6" fill="#BFB0A6"/>',
+  ),
+  programTutor: svgBlur(
+    "#A29C9A",
+    '<rect y="7" width="20" height="7" fill="#A18B7F"/><rect y="14" width="20" height="6" fill="#B2A7A6"/>',
+  ),
+  programCommunityGhana: svgBlur(
+    "#B3B4C8",
+    '<rect y="7" width="20" height="7" fill="#C0938A"/><rect y="14" width="20" height="6" fill="#976052"/>',
+  ),
   programSkillsCohort: svgBlur(
     "#FFFFFF",
     '<rect y="7" width="20" height="7" fill="#D0C5C4"/><rect y="14" width="20" height="6" fill="#534645"/>',
@@ -82,10 +102,6 @@ export const imageBlur = {
   programFinancialAidOptions: svgBlur(
     "#D5EBE3",
     '<rect y="7" width="20" height="7" fill="#EAEEE3"/><rect y="14" width="20" height="6" fill="#D6DED5"/>',
-  ),
-  sefGroupHero: svgBlur(
-    "#B6A8A2",
-    '<rect y="7" width="20" height="7" fill="#A9968A"/><rect y="14" width="20" height="6" fill="#767F87"/>',
   ),
   sefGroupDonors: svgBlur(
     "#B3A8A1",
@@ -137,8 +153,8 @@ export const imageBlur = {
     '<rect y="7" width="20" height="7" fill="#A5A4AD"/><rect y="14" width="20" height="6" fill="#695853"/>',
   ),
   visionGathering: svgBlur(
-    "#7D92B7",
-    '<rect y="7" width="20" height="7" fill="#585F56"/><rect y="14" width="20" height="6" fill="#387978"/>',
+    "#ADA59B",
+    '<rect y="7" width="20" height="7" fill="#938C83"/><rect y="14" width="20" height="6" fill="#857868"/>',
   ),
   visionPartners: svgBlur(
     "#BEB29F",
@@ -146,24 +162,24 @@ export const imageBlur = {
   ),
   // Vision page, "What that future asks of us" tabs.
   visionFutureCommunity: svgBlur(
-    "#7D6C5D",
-    '<rect y="7" width="20" height="7" fill="#97867E"/><rect y="14" width="20" height="6" fill="#B19C90"/>',
+    "#95908D",
+    '<rect y="7" width="20" height="7" fill="#5B585B"/><rect y="14" width="20" height="6" fill="#414149"/>',
   ),
   visionFutureBeacon: svgBlur(
-    "#BEC5AF",
-    '<rect y="7" width="20" height="7" fill="#8C82AC"/><rect y="14" width="20" height="6" fill="#6469AC"/>',
+    "#70846D",
+    '<rect y="7" width="20" height="7" fill="#8E9380"/><rect y="14" width="20" height="6" fill="#505246"/>',
   ),
   visionFutureCatalyst: svgBlur(
-    "#B09B8B",
-    '<rect y="7" width="20" height="7" fill="#AF9D93"/><rect y="14" width="20" height="6" fill="#B49991"/>',
+    "#D0D4D3",
+    '<rect y="7" width="20" height="7" fill="#BDC6C9"/><rect y="14" width="20" height="6" fill="#B8AEA6"/>',
   ),
   visionFutureLeaders: svgBlur(
-    "#445978",
-    '<rect y="7" width="20" height="7" fill="#5B6A8F"/><rect y="14" width="20" height="6" fill="#4D5977"/>',
+    "#917264",
+    '<rect y="7" width="20" height="7" fill="#4D433B"/><rect y="14" width="20" height="6" fill="#2C221A"/>',
   ),
   visionFutureContribute: svgBlur(
-    "#867B6D",
-    '<rect y="7" width="20" height="7" fill="#7B7F87"/><rect y="14" width="20" height="6" fill="#393F4E"/>',
+    "#9A938D",
+    '<rect y="7" width="20" height="7" fill="#7E7979"/><rect y="14" width="20" height="6" fill="#4E5762"/>',
   ),
   programMentorshipWorkshop: svgBlur(
     "#EDF0F5",

@@ -132,9 +132,8 @@ export const homePage = {
     ],
     signature: "Ekow",
     role: "Founder",
-    imageAlt:
-      "Abstract placeholder composition for a portrait of Ekow, Founder. No photograph has been supplied.",
-    imageCaption: "Portrait placeholder",
+    imageAlt: "Portrait placeholder of Ekow, Founder.",
+    imageCaption: "Founder portrait placeholder",
   },
   // Pointer to /guide. Only the stage names and timing appear here; the
   // steps themselves live on the guide page.
