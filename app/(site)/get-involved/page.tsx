@@ -135,10 +135,10 @@ function StudentsPanel() {
           </Link>
         </p>
         <ArchMedia
-          src="/images/sef/student-apply.jpg"
-          alt="A smiling Somboh Educational Foundation student in a navy SEF T-shirt."
-          caption="A Somboh Educational Foundation student."
-          blur="sefStudentApply"
+          src="/images/involve/students-apply.jpg"
+          alt="Diverse university students collaborating around laptops and study notes in a library."
+          caption="Scholars collaborating on college and scholarship preparation."
+          blur="involveStudents"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"
           className="mt-10"
@@ -164,10 +164,10 @@ function PartnersPanel() {
         <p className="lede mt-5">{content.intro}</p>
         <Note>{content.note}</Note>
         <ArchMedia
-          src="/images/sef/cohort-partners.jpg"
-          alt="A Somboh Educational Foundation cohort standing together at the front of a classroom."
-          caption="An SEF cohort at a session."
-          blur="sefCohortPartners"
+          src="/images/involve/partners-collaborate.jpg"
+          alt="Academic and institutional partners collaborating across a meeting table."
+          caption="Partners and advisors collaborating to expand student opportunities."
+          blur="involvePartners"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"
           peel="bl"
@@ -204,10 +204,10 @@ function DonorsPanel() {
         </div>
 
         <ArchMedia
-          src="/images/sef/group-donors.jpg"
-          alt="Somboh Educational Foundation students standing together in SEF T-shirts."
-          caption="Somboh Educational Foundation students."
-          blur="sefGroupDonors"
+          src="/images/involve/donors-support.jpg"
+          alt="Diverse university graduates celebrating their graduation and scholarship success."
+          caption="Scholarship recipients celebrating milestone educational achievements."
+          blur="involveDonors"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"
           className="mt-10"

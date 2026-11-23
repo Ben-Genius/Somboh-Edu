@@ -214,4 +214,51 @@ export const imageBlur = {
     "#9EA2A3",
     '<rect y="7" width="20" height="7" fill="#5E6165"/><rect y="14" width="20" height="6" fill="#8D8E86"/>',
   ),
+  // Get-involved page imagery
+  involveHero: svgBlur(
+    "#DACEBC",
+    '<rect y="7" width="20" height="7" fill="#C0B8AD"/><rect y="14" width="20" height="6" fill="#837263"/>',
+  ),
+  involveStudents: svgBlur(
+    "#5E6158",
+    '<rect y="7" width="20" height="7" fill="#5A5143"/><rect y="14" width="20" height="6" fill="#564634"/>',
+  ),
+  involvePartners: svgBlur(
+    "#B4987B",
+    '<rect y="7" width="20" height="7" fill="#9A9B93"/><rect y="14" width="20" height="6" fill="#817366"/>',
+  ),
+  involveDonors: svgBlur(
+    "#4D4A40",
+    '<rect y="7" width="20" height="7" fill="#7D7371"/><rect y="14" width="20" height="6" fill="#56534C"/>',
+  ),
+  // Contact page imagery
+  contactHero: svgBlur(
+    "#CB966A",
+    '<rect y="7" width="20" height="7" fill="#7F644B"/><rect y="14" width="20" height="6" fill="#6D5B4D"/>',
+  ),
+  contactAdvising: svgBlur(
+    "#808A85",
+    '<rect y="7" width="20" height="7" fill="#9A9386"/><rect y="14" width="20" height="6" fill="#8F8E8D"/>',
+  ),
+  // Student guide page imagery
+  guideHero: svgBlur(
+    "#C7CDCA",
+    '<rect y="7" width="20" height="7" fill="#ACA595"/><rect y="14" width="20" height="6" fill="#3F3A26"/>',
+  ),
+  guideStageBuild: svgBlur(
+    "#666F65",
+    '<rect y="7" width="20" height="7" fill="#7C8884"/><rect y="14" width="20" height="6" fill="#464740"/>',
+  ),
+  guideStagePrepare: svgBlur(
+    "#A6A099",
+    '<rect y="7" width="20" height="7" fill="#C7C7C8"/><rect y="14" width="20" height="6" fill="#A9A7A4"/>',
+  ),
+  guideStageApply: svgBlur(
+    "#B1B6B8",
+    '<rect y="7" width="20" height="7" fill="#B4B5B7"/><rect y="14" width="20" height="6" fill="#6B757C"/>',
+  ),
+  guideStageDecide: svgBlur(
+    "#CCCBC9",
+    '<rect y="7" width="20" height="7" fill="#69625A"/><rect y="14" width="20" height="6" fill="#32302D"/>',
+  ),
 } as const;

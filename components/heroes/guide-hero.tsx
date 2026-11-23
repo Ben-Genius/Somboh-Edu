@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { guidePage, guideStages } from "@/content/guide";
+import { imageBlur } from "@/lib/blur";
 import { SketchAccent } from "@/components/blueprint-sketches";
 import { HeroTitle } from "./hero-title";
 
@@ -30,6 +32,28 @@ export function GuideHero() {
             <p className="mt-4 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-gold-ink">
               {hero.reviewed}
             </p>
+          </div>
+        </div>
+
+        <div className="mt-10 overflow-hidden rounded-[1.5rem] border border-line bg-surface shadow-[var(--shadow-card)]">
+          <div className="relative aspect-[21/9] w-full sm:aspect-[24/8]">
+            <Image
+              src="/images/guide/guide-hero.jpg"
+              alt="Students walking along a scenic university campus pathway toward academic buildings."
+              fill
+              priority
+              placeholder="blur"
+              blurDataURL={imageBlur.guideHero}
+              sizes="100vw"
+              className="object-cover object-[50%_60%]"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
+            />
+            <span className="absolute bottom-3 right-4 text-[0.6875rem] font-medium tracking-wide text-white/90">
+              The pathway to leading universities worldwide
+            </span>
           </div>
         </div>
 

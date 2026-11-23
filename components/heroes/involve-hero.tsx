@@ -24,14 +24,14 @@ export function InvolveHero() {
     <section className="bg-surface px-3 pb-3 pt-1 sm:px-4 sm:pb-4">
       <div className="relative isolate overflow-hidden rounded-[1.75rem] text-white">
         <Image
-          src="/images/sef/group-donors.jpg"
-          alt="Somboh Educational Foundation students standing together in SEF T-shirts."
+          src="/images/involve/involve-hero.jpg"
+          alt="A diverse group of university students laughing and celebrating together outdoors."
           fill
           priority
           placeholder="blur"
-          blurDataURL={imageBlur.sefGroupDonors}
+          blurDataURL={imageBlur.involveHero}
           sizes="100vw"
-          className="-z-20 object-cover object-[50%_35%] grayscale"
+          className="-z-20 object-cover object-[50%_35%]"
         />
         <div
           aria-hidden="true"

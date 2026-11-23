@@ -40,12 +40,12 @@ export function ContactHero() {
           <div className="relative mx-auto aspect-[4/5] w-[78%] rounded-t-full bg-gold p-[6%] pb-0">
             <div className="relative h-full overflow-hidden rounded-t-full">
               <Image
-                src="/images/sef/student-next.jpg"
-                alt="A smiling Somboh Educational Foundation student in an SEF T-shirt."
+                src="/images/contact/contact-hero.jpg"
+                alt="An educational advisor smiling warmly, welcoming inquiries from students and partners."
                 fill
                 priority
                 placeholder="blur"
-                blurDataURL={imageBlur.sefStudentNext}
+                blurDataURL={imageBlur.contactHero}
                 sizes="(min-width: 1024px) 26vw, 70vw"
                 className="object-cover object-[50%_20%]"
               />
