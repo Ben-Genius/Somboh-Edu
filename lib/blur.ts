@@ -63,6 +63,26 @@ export const imageBlur = {
     '<rect y="7" width="20" height="7" fill="#767C74"/><rect y="14" width="20" height="6" fill="#8C8A83"/>',
   ),
   // SEF's own photographs, same three-band treatment.
+  sefHeroStudents: svgBlur(
+    "#747270",
+    '<rect y="7" width="20" height="7" fill="#8B817E"/><rect y="14" width="20" height="6" fill="#948D8B"/>',
+  ),
+  programMentorshipStudy: svgBlur(
+    "#99928C",
+    '<rect y="7" width="20" height="7" fill="#7E7A7B"/><rect y="14" width="20" height="6" fill="#525B67"/>',
+  ),
+  programAcademicPrep: svgBlur(
+    "#FCFCFC",
+    '<rect y="7" width="20" height="7" fill="#D2C7CD"/><rect y="14" width="20" height="6" fill="#706971"/>',
+  ),
+  programSkillsCohort: svgBlur(
+    "#FFFFFF",
+    '<rect y="7" width="20" height="7" fill="#D0C5C4"/><rect y="14" width="20" height="6" fill="#534645"/>',
+  ),
+  programFinancialAidOptions: svgBlur(
+    "#D5EBE3",
+    '<rect y="7" width="20" height="7" fill="#EAEEE3"/><rect y="14" width="20" height="6" fill="#D6DED5"/>',
+  ),
   sefGroupHero: svgBlur(
     "#B6A8A2",
     '<rect y="7" width="20" height="7" fill="#A9968A"/><rect y="14" width="20" height="6" fill="#767F87"/>',
