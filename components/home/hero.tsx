@@ -26,7 +26,6 @@ export function HomeHero() {
             </p>
           </div>
           <WaveRule className="mt-4 text-line" />
-
           <div className="mt-10 grid gap-14 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-5 lg:pb-6">
               <ViewTransition name="page-title" share="morph" default="none">
@@ -64,8 +63,6 @@ export function HomeHero() {
                   </span>
                 </Link>
               </div>
-
-              {/* Hidden: the programs section already says this.
               <WaveRule className="mt-12 text-line" />
 
               <dl className="mt-6 grid max-w-lg grid-cols-2 gap-x-6 gap-y-5">
@@ -86,15 +83,15 @@ export function HomeHero() {
                   </dd>
                 </div>
               </dl>
-              */}
+
             </div>
 
             <div className="lg:col-span-7 lg:col-start-6">
               <WaveMedia
-                src="/images/sef/group-hero.jpg"
-                alt="A group of Somboh Educational Foundation students standing together in SEF T-shirts."
-                caption="Somboh Educational Foundation students."
-                blur="sefGroupHero"
+                src="/images/sef/hero.png"
+                alt="Two students smiling warmly as they collaborate over study notes at a classroom desk."
+                caption="SEF scholars preparing together for university admission."
+                blur="sefHeroStudents"
                 priority
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 ratio="1 / 1"

@@ -14,39 +14,34 @@ type ProgramImage = {
  */
 export const programImages: Record<string, ProgramImage> = {
   "academic-excellence": {
-    // Was the Commons library photo (/images/programs/academic-excellence.jpg).
-    src: "/images/sef/classroom.jpg",
-    alt: "Somboh Educational Foundation students working at their desks during a session.",
-    blur: "sefClassroom",
-    credit: "An SEF study session.",
+    src: "/images/programs/academic-excellence-prep.jpg",
+    alt: "Students at a study desk with an open textbook and materials during an academic preparation session.",
+    blur: "programAcademicPrep",
+    credit: "SEF scholars in academic preparation and college counseling.",
   },
   "application-mentorship": {
-    src: "/images/programs/mentorship-editathon.jpg",
-    alt: "A facilitator leans over a student's laptop to guide him at a workshop at the Parliament of Ghana.",
-    blur: "programMentorshipEditathon",
-    credit:
-      "Stock photograph: a Wikipedia workshop at the Parliament of Ghana. Photo by Dico Saliou, CC BY-SA 4.0. Not an SEF program image.",
+    src: "/images/programs/medium-shot-students-desks.jpg",
+    alt: "A mentor guiding a student through essay and application notes beside a chalkboard highlighting teamwork and progress.",
+    blur: "programMentorshipTeamwork",
+    credit: "One-on-one mentorship and application guidance.",
   },
   "financial-aid": {
-    src: "/images/programs/graduates-celebrating.jpg",
-    alt: "A hall full of graduates in red gowns and caps raising their hands in celebration.",
-    blur: "programGraduates",
-    credit:
-      "Stock photograph: graduates at the American University of Nigeria. Photo by Thepresido, CC BY-SA 4.0. Not an SEF program image.",
+    src: "/images/programs/financial-aid-options.jpg",
+    alt: "An illustrated signpost directing students toward financial aid, scholarships, grants, loans, FAFSA, and work-study.",
+    blur: "programFinancialAidOptions",
+    credit: "Financial aid, grants, and scholarship pathways guidance.",
   },
   "skills-development": {
-    src: "/images/programs/skills-lecture.jpg",
-    alt: "A lecturer stands at the front of a classroom while students listen and work on laptops.",
-    blur: "programSkillsLecture",
-    credit:
-      "Stock photograph: a lecturer at work with her students. Photo by Flixtey, CC BY-SA 4.0. Not an SEF program image.",
+    src: "/images/programs/excellence.jpg",
+    alt: "Students engaged in skills development, research, and workshop activities in a classroom.",
+    blur: "programExcellence",
+    credit: "Digital literacy, research, and skills workshops.",
   },
   "community-engagement": {
-    src: "/images/programs/tree-planting-school.jpg",
-    alt: "A schoolgirl in a white headscarf crouches to plant a young tree in her school compound.",
-    blur: "programTreePlanting",
-    credit:
-      "Stock photograph: a student planting a tree at a school in Ghana. Photo by Nana Darkoaaa, CC BY-SA 4.0. Not an SEF program image.",
+    src: "/images/programs/images3744-643d2c4705ea0.jpg",
+    alt: "Students and community members participating in an educational and community development initiative in Ghana.",
+    blur: "programCommunityGhana",
+    credit: "Community outreach and civic engagement in Ghana.",
   },
   /* Previous stock photographs, replaced on 2026-11-08 with sharper ones:
   "application-mentorship": {

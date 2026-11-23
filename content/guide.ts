@@ -11,6 +11,8 @@
  * August: update `reviewed` and the dates below. See TODO.md.
  */
 
+import type { imageBlur } from "@/lib/blur";
+
 export type GuideStage = {
   id: string;
   number: string;
@@ -25,6 +27,12 @@ export type GuideStage = {
   /** The program that helps with this stage. */
   helpSlug: string;
   helpLabel: string;
+  image?: {
+    src: string;
+    alt: string;
+    blur: keyof typeof imageBlur;
+    caption: string;
+  };
 };
 
 export const guidePage = {
@@ -66,6 +74,12 @@ export const guideStages: GuideStage[] = [
     ],
     helpSlug: "community-engagement",
     helpLabel: "Community engagement",
+    image: {
+      src: "/images/guide/stage-build.jpg",
+      alt: "Students engaged in active classroom discussion and leadership development.",
+      blur: "guideStageBuild",
+      caption: "Building strong academic and leadership records early.",
+    },
   },
   {
     id: "prepare",
@@ -89,6 +103,12 @@ export const guideStages: GuideStage[] = [
     ],
     helpSlug: "academic-excellence",
     helpLabel: "Academic excellence",
+    image: {
+      src: "/images/guide/stage-prepare.jpg",
+      alt: "A student studying with textbooks and notes preparing for standardized testing.",
+      blur: "guideStagePrepare",
+      caption: "Focused testing and academic preparation.",
+    },
   },
   {
     id: "apply",
@@ -112,6 +132,12 @@ export const guideStages: GuideStage[] = [
     ],
     helpSlug: "application-mentorship",
     helpLabel: "Application mentorship",
+    image: {
+      src: "/images/guide/stage-apply.jpg",
+      alt: "Students collaborating on university application essays and forms.",
+      blur: "guideStageApply",
+      caption: "Preparing and submitting college and financial aid applications.",
+    },
   },
   {
     id: "decide",
@@ -134,6 +160,12 @@ export const guideStages: GuideStage[] = [
     ],
     helpSlug: "financial-aid",
     helpLabel: "Financial aid and scholarships",
+    image: {
+      src: "/images/guide/stage-decide.jpg",
+      alt: "Diverse students on campus celebrating university admission.",
+      blur: "guideStageDecide",
+      caption: "Comparing offers and preparing for university departure.",
+    },
   },
 ];
 

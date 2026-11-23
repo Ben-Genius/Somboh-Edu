@@ -17,41 +17,63 @@ export function FounderNote({ compact = false }: { compact?: boolean }) {
         aria-labelledby="founder-heading"
         className="section-tight bg-blue-wash"
       >
-        <div className="shell grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+        <div className="shell grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-10">
           <div className="lg:col-span-4">
+            <ArchMedia
+              src="/images/founder-slot.jpg"
+              alt={founder.imageAlt}
+              caption={
+                <span>
+                  {founder.imageCaption}. Vector illustration via{" "}
+                  <a
+                    href="https://www.vecteezy.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium underline decoration-line-strong hover:text-ink hover:decoration-ink"
+                  >
+                    Vecteezy.com
+                  </a>
+                </span>
+              }
+              blur="founder"
+              ratio="4 / 5"
+              sizes="(min-width: 1024px) 30vw, 100vw"
+            />
+          </div>
+          <div className="lg:col-span-8">
             <p className="eyebrow">{founder.eyebrow}</p>
             <h2
               id="founder-heading"
-              className="display-3 mt-5 max-w-[14ch] text-ink"
+              className="display-3 mt-4 max-w-[16ch] text-ink"
             >
               {founder.heading}
             </h2>
+            <figure className="mt-6">
+              <blockquote className="card paper-note rounded-[1.5rem] p-6 sm:p-8">
+                <p className="font-display text-[1.35rem] leading-snug tracking-[-0.025em] text-ink sm:text-[1.65rem]">
+                  “{founder.quote}”
+                </p>
+              </blockquote>
+              <figcaption className="mt-6 flex flex-wrap items-center justify-between gap-4">
+                <span className="flex items-baseline gap-3">
+                  <span className="font-display text-[1.6rem] italic leading-none text-ink">
+                    {founder.signature}
+                  </span>
+                  <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                    {founder.role}
+                  </span>
+                </span>
+                <Link
+                  href="/mission#founder"
+                  prefetch
+                  className="link-quiet text-sm"
+                >
+                  Read the founder&apos;s full message
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </figcaption>
+            </figure>
           </div>
-          <figure className="lg:col-span-8">
-            <blockquote className="card paper-note rounded-[1.5rem] p-6 sm:p-8">
-              <p className="font-display text-[1.4rem] leading-snug tracking-[-0.025em] text-ink sm:text-[1.7rem]">
-                “{founder.quote}”
-              </p>
-            </blockquote>
-            <figcaption className="mt-6 flex flex-wrap items-center justify-between gap-4">
-              <span className="flex items-baseline gap-3">
-                <span className="font-display text-[1.6rem] italic leading-none text-ink">
-                  {founder.signature}
-                </span>
-                <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-ink-soft">
-                  {founder.role}
-                </span>
-              </span>
-              <Link
-                href="/mission#founder"
-                prefetch
-                className="link-quiet text-sm"
-              >
-                Read the founder&apos;s full message
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </figcaption>
-          </figure>
         </div>
       </section>
     );
@@ -64,7 +86,19 @@ export function FounderNote({ compact = false }: { compact?: boolean }) {
           <ArchMedia
             src="/images/founder-slot.jpg"
             alt={founder.imageAlt}
-            caption={`${founder.imageCaption}. ${founder.imageAlt}`}
+            caption={
+              <span>
+                {founder.imageCaption}. Vector illustration via{" "}
+                <a
+                  href="https://www.vecteezy.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium underline decoration-line-strong hover:text-ink hover:decoration-ink"
+                >
+                  Vecteezy.com
+                </a>
+              </span>
+            }
             blur="founder"
             ratio="4 / 5"
             sizes="(min-width: 1024px) 30vw, 100vw"

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { ArchMedia } from "@/components/arch-media";
 import { ContactForm } from "@/components/forms/contact-form";
 import {
   ArrowRight,
@@ -113,6 +114,16 @@ export default function ContactPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
+
+            <ArchMedia
+              src="/images/contact/contact-advising.jpg"
+              alt="An educational counseling and advising discussion in progress."
+              caption="Advising and guidance for every applicant and partner."
+              blur="contactAdvising"
+              ratio="4 / 5"
+              sizes="(min-width: 1024px) 25vw, 100vw"
+              className="mt-8"
+            />
           </div>
 
           <div className="lg:col-span-7 lg:col-start-6">

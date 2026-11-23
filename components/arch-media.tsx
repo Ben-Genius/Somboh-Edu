@@ -41,7 +41,7 @@ export function ArchMedia({
 }: {
   src: string;
   alt: string;
-  caption: string;
+  caption: ReactNode;
   blur: BlurKey;
   priority?: boolean;
   sizes?: string;
@@ -133,7 +133,7 @@ export function PhotoFrame({
 }: {
   src: string;
   alt: string;
-  caption: string;
+  caption: ReactNode;
   blur: BlurKey;
   priority?: boolean;
   sizes?: string;

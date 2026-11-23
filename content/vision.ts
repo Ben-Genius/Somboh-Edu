@@ -66,10 +66,10 @@ export const visionPage = {
       */
       image: {
         src: "/images/vision/future-community.jpg",
-        alt: "Secondary school students in striped uniforms read and share books together in a school library.",
+        alt: "A diverse group of university students collaborating closely around an open laptop and study notes in an academic workspace.",
         blur: "visionFutureCommunity",
         credit:
-          "Stock photograph: students studying together in a school library in Ghana. Photo by Bright Kwame Ayisi, CC0. Not an SEF program image.",
+          "Stock photograph: students collaborating in an academic workspace. Photo by Windows on Unsplash. Not an SEF program image.",
       },
       eyebrow: "A thriving community",
       heading: "No student succeeds alone.",
@@ -97,11 +97,11 @@ export const visionPage = {
       */
       image: {
         src: "/images/vision/future-beacon.jpg",
-        alt: "Two Ghanaian university graduates in blue gowns and medals hold their caps on graduation day.",
+        alt: "A diverse group of university graduates smiling together in caps and gowns on graduation day.",
         blur: "visionFutureBeacon",
-        position: "35% center",
+        position: "center",
         credit:
-          "Stock photograph: university graduates in Ghana. Photo by Tahiru Rajab, CC BY-SA 4.0. Not an SEF program image.",
+          "Stock photograph: university graduates celebrating on commencement day. Photo by Good Faces Agency on Unsplash. Not an SEF program image.",
       },
       eyebrow: "A beacon of educational excellence",
       heading: "Set the standard, then share it.",
@@ -130,11 +130,11 @@ export const visionPage = {
       */
       image: {
         src: "/images/vision/future-catalyst.jpg",
-        alt: "A young woman holds up a solar panel and lamp she has built while a cameraman films her display.",
+        alt: "Diverse young STEM researchers and students collaborating with electronics and hardware in a modern technology laboratory.",
         blur: "visionFutureCatalyst",
-        position: "28% center",
+        position: "center",
         credit:
-          "Stock photograph: an exhibitor shows a solar product at the YALI West Africa Regional Conference, 2015. Photo by USAID in Africa, public domain. Not an SEF program image.",
+          "Stock photograph: researchers in an engineering laboratory. Photo by ThisisEngineering RAEng on Unsplash. Not an SEF program image.",
       },
       eyebrow: "A catalyst for positive societal change",
       heading: "One student changes more than one life.",
@@ -163,11 +163,11 @@ export const visionPage = {
       */
       image: {
         src: "/images/vision/future-leaders.jpg",
-        alt: "A group of young West African leaders cheer and pose together at a Mandela Washington Fellowship conference.",
+        alt: "Diverse young student leaders and delegates engaging in a breakout seminar discussion at a leadership conference.",
         blur: "visionFutureLeaders",
-        position: "45% center",
+        position: "center",
         credit:
-          "Stock photograph: Mandela Washington Fellows at the YALI West Africa Regional Conference, 2015. Photo by USAID in Africa, public domain. Not an SEF program image.",
+          "Stock photograph: delegates in a leadership workshop discussion. Photo by Antenna on Unsplash. Not an SEF program image.",
       },
       eyebrow: "Leaders equipped for global challenges",
       heading: "Globally educated, deeply rooted.",
@@ -196,11 +196,11 @@ export const visionPage = {
       */
       image: {
         src: "/images/vision/future-contribute.jpg",
-        alt: "Former pupils stand at the front of their old classroom to mentor the students now seated there.",
+        alt: "Students engaged in peer mentorship and academic collaboration, discussing notes and assignments together.",
         blur: "visionFutureContribute",
-        position: "40% center",
+        position: "center",
         credit:
-          "Stock photograph: former students mentoring pupils at their old basic school in Ghana. Photo by Musahfm, CC BY-SA 4.0. Not an SEF program image.",
+          "Stock photograph: students collaborating and mentoring at a study desk. Not an SEF program image.",
       },
       eyebrow: "Contributing meaningfully",
       heading: "Success measured by what it gives back.",

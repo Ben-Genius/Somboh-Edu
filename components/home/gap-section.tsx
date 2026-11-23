@@ -14,9 +14,8 @@ function GapStat({ stat }: { stat: (typeof homePage.gap.stats)[number] }) {
     <li>
       <div className="flex items-baseline gap-1">
         <span
-          className={`stat-value text-[clamp(2.2rem,3.6vw,3rem)] ${
-            stat.emphasis ? "text-gold-ink" : "text-ink"
-          }`}
+          className={`stat-value text-[clamp(2.2rem,3.6vw,3rem)] ${stat.emphasis ? "text-gold-ink" : "text-ink"
+            }`}
         >
           {stat.value}
           {"unit" in stat && stat.unit ? (
@@ -79,13 +78,13 @@ export function GapSection() {
             </ul>
 
             <figure className="order-first mx-auto w-full max-w-md xl:order-none xl:max-w-none">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_0_0_6px_var(--surface),0_0_0_7px_var(--line),var(--shadow-float)]">
+              <div className="relative aspect-[5/6] overflow-hidden rounded-[2rem] shadow-[0_0_0_6px_var(--surface),0_0_0_7px_var(--line),var(--shadow-float)]">
                 <Image
-                  src="/images/sef/cohort-gap.jpg"
+                  src="/images/sef/group-hero.jpg"
                   alt="A Somboh Educational Foundation cohort standing together at the front of a classroom."
                   fill
                   placeholder="blur"
-                  blurDataURL={imageBlur.sefCohortGap}
+                  blurDataURL={imageBlur.sefGroupHero}
                   sizes="(min-width: 1024px) 28rem, 100vw"
                   className="object-cover"
                 />

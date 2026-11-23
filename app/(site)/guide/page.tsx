@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { DocumentChecklist } from "@/components/guide/document-checklist";
@@ -12,6 +13,7 @@ import {
   guidePage,
   guideStages,
 } from "@/content/guide";
+import { imageBlur } from "@/lib/blur";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
@@ -72,6 +74,25 @@ export default function GuidePage() {
                   {stage.helpLabel}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
+
+                {stage.image ? (
+                  <div className="mt-8 overflow-hidden rounded-[1.25rem] border border-line bg-surface shadow-sm print:hidden">
+                    <div className="relative aspect-[16/10] w-full">
+                      <Image
+                        src={stage.image.src}
+                        alt={stage.image.alt}
+                        fill
+                        placeholder="blur"
+                        blurDataURL={imageBlur[stage.image.blur]}
+                        sizes="(min-width: 1024px) 35vw, 90vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <p className="px-3.5 py-2 text-[0.75rem] text-ink-soft">
+                      {stage.image.caption}
+                    </p>
+                  </div>
+                ) : null}
               </div>
 
               <div className="lg:col-span-7">
