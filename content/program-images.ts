@@ -38,7 +38,7 @@ export const programImages: Record<string, ProgramImage> = {
     credit: "Digital literacy, research, and skills workshops in Ghana.",
   },
   "community-engagement": {
-    src: "/images/programs/community-engagement.jpg",
+    src: "/images/volunteer.jpg",
     alt: "Ghanaian school students in green-and-white uniforms digging and planting a tree together as a community service project.",
     blur: "programCommunityGhana",
     credit: "Ghanaian youth community service — students planting a tree at their school. Photo by Antorsu10, CC BY-SA 4.0.",
