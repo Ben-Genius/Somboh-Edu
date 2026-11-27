@@ -41,7 +41,7 @@ export function ContactHero() {
             <div className="relative h-full overflow-hidden rounded-t-full">
               <Image
                 src="/images/contact/contact-hero.jpg"
-                alt="An educational advisor smiling warmly, welcoming inquiries from students and partners."
+                alt="Ghanaian university students at KNUST in Kumasi, welcoming inquiries from students and partners."
                 fill
                 priority
                 placeholder="blur"

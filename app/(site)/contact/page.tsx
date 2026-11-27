@@ -117,7 +117,7 @@ export default function ContactPage() {
 
             <ArchMedia
               src="/images/contact/contact-advising.jpg"
-              alt="An educational counseling and advising discussion in progress."
+              alt="Mentors and students engaged in college advising and application guidance in Ghana."
               caption="Advising and guidance for every applicant and partner."
               blur="contactAdvising"
               ratio="4 / 5"
