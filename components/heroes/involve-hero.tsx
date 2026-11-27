@@ -25,7 +25,7 @@ export function InvolveHero() {
       <div className="relative isolate overflow-hidden rounded-[1.75rem] text-white">
         <Image
           src="/images/involve/involve-hero.jpg"
-          alt="A diverse group of university students laughing and celebrating together outdoors."
+          alt="African university graduates smiling and cheering together in academic gowns on commencement day."
           fill
           priority
           placeholder="blur"

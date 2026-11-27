@@ -22,13 +22,13 @@ export function VisionHero() {
         */}
         <Image
           src="/images/vision/community-gathering.jpg"
-          alt="A diverse group of university students smiling and collaborating together on campus steps."
+          alt="A large, smiling group of young African leaders gathered together for a photograph at a conference."
           fill
           priority
           placeholder="blur"
           blurDataURL={imageBlur.visionGathering}
           sizes="100vw"
-          className="-z-20 object-cover object-[50%_45%]"
+          className="-z-20 object-cover object-[50%_70%]"
         />
         {/* Scrims in brand navy, only where the type sits, so faces stay clear. */}
         <div
@@ -71,8 +71,9 @@ export function VisionHero() {
           <div className="flex flex-col gap-1 text-[0.65rem] uppercase tracking-[0.16em] text-white/65 lg:col-span-4 lg:col-start-9 lg:items-end lg:text-right">
             <span>Ghana · the destination</span>
             <span className="normal-case tracking-normal">
-              Stock photograph: university students on campus. Photo by
-              Priscilla Du Preez on Unsplash. Not an SEF program image.
+              Stock photograph: Young African Leaders Initiative, West Africa.
+              Photo by USAID in Africa, public domain. Not an SEF program
+              image.
             </span>
           </div>
         </div>

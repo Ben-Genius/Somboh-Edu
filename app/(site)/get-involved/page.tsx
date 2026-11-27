@@ -136,8 +136,8 @@ function StudentsPanel() {
         </p>
         <ArchMedia
           src="/images/involve/students-apply.jpg"
-          alt="Diverse university students collaborating around laptops and study notes in a library."
-          caption="Scholars collaborating on college and scholarship preparation."
+          alt="A Somboh Educational Foundation student reviewing university application documents and course notes."
+          caption="SEF scholars preparing for admissions and scholarship opportunities."
           blur="involveStudents"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"
@@ -165,8 +165,8 @@ function PartnersPanel() {
         <Note>{content.note}</Note>
         <ArchMedia
           src="/images/involve/partners-collaborate.jpg"
-          alt="Academic and institutional partners collaborating across a meeting table."
-          caption="Partners and advisors collaborating to expand student opportunities."
+          alt="The SEF scholar cohort and educational partners gathered in a classroom session in Ghana."
+          caption="Partners and advisors collaborating to expand student opportunities across Ghana."
           blur="involvePartners"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"
@@ -205,8 +205,8 @@ function DonorsPanel() {
 
         <ArchMedia
           src="/images/involve/donors-support.jpg"
-          alt="Diverse university graduates celebrating their graduation and scholarship success."
-          caption="Scholarship recipients celebrating milestone educational achievements."
+          alt="A Ghanaian student holding up a university admission and scholarship offer letter."
+          caption="Donor support turns talent and hard work into funded university degrees."
           blur="involveDonors"
           ratio="4 / 5"
           sizes="(min-width: 1024px) 30vw, 100vw"

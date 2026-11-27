@@ -39,7 +39,7 @@ export function GuideHero() {
           <div className="relative aspect-[21/9] w-full sm:aspect-[24/8]">
             <Image
               src="/images/guide/guide-hero.jpg"
-              alt="Students walking along a scenic university campus pathway toward academic buildings."
+              alt="The iconic Balme Library and pathway at the University of Ghana, Legon."
               fill
               priority
               placeholder="blur"
@@ -52,7 +52,7 @@ export function GuideHero() {
               className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
             />
             <span className="absolute bottom-3 right-4 text-[0.6875rem] font-medium tracking-wide text-white/90">
-              The pathway to leading universities worldwide
+              The pathway to leading universities in Ghana and worldwide
             </span>
           </div>
         </div>

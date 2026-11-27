@@ -76,9 +76,9 @@ export const guideStages: GuideStage[] = [
     helpLabel: "Community engagement",
     image: {
       src: "/images/guide/stage-build.jpg",
-      alt: "Students engaged in active classroom discussion and leadership development.",
+      alt: "Secondary school students in Ghana engaged in classroom learning and leadership development.",
       blur: "guideStageBuild",
-      caption: "Building strong academic and leadership records early.",
+      caption: "Building strong academic and leadership foundations early in senior high school.",
     },
   },
   {
@@ -105,9 +105,9 @@ export const guideStages: GuideStage[] = [
     helpLabel: "Academic excellence",
     image: {
       src: "/images/guide/stage-prepare.jpg",
-      alt: "A student studying with textbooks and notes preparing for standardized testing.",
+      alt: "An SEF student studying diligently with textbooks and exam preparation materials.",
       blur: "guideStagePrepare",
-      caption: "Focused testing and academic preparation.",
+      caption: "Focused academic preparation and testing readiness.",
     },
   },
   {
@@ -134,7 +134,7 @@ export const guideStages: GuideStage[] = [
     helpLabel: "Application mentorship",
     image: {
       src: "/images/guide/stage-apply.jpg",
-      alt: "Students collaborating on university application essays and forms.",
+      alt: "Scholars and mentors collaborating on university applications and projects at laptops.",
       blur: "guideStageApply",
       caption: "Preparing and submitting college and financial aid applications.",
     },
@@ -162,9 +162,9 @@ export const guideStages: GuideStage[] = [
     helpLabel: "Financial aid and scholarships",
     image: {
       src: "/images/guide/stage-decide.jpg",
-      alt: "Diverse students on campus celebrating university admission.",
+      alt: "A Ghanaian student celebrating university admission and scholarship offer.",
       blur: "guideStageDecide",
-      caption: "Comparing offers and preparing for university departure.",
+      caption: "Comparing scholarship offers and preparing for university enrollment.",
     },
   },
 ];
